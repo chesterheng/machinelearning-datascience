@@ -93,6 +93,10 @@
   - Data science is running experiments on a set of data with the hopes of finding actionable insights within it
     - One of these experiments is to build a machine learning model
   - Data Science = Data analysis + Machine learning
+- Section Review
+  - Machine Learning lets computers make decisions about data
+  - Machine Learning lets computers learn from data and they make predictions and decisions
+  - Machine can learn from big data to predict future trends and make business decision
 
 **[⬆ back to top](#table-of-contents)**
 
