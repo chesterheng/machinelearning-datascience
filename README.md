@@ -224,6 +224,26 @@
     - training split: 70 patient records (70-80%)
     - validation split: 15 patient records (10-15%)
     - test split: 15 patient records (10-15%) 
+- Modelling Part 2 - Choosing
+  - 3 parts to modelling
+    - Choosing and training a model: training data
+    - Tuning a model: validation data
+    - Model comparison: test data
+  - Choosing a model
+    - Problem 1 -> model 1
+    - Problem 2 -> model 2
+    - Structured Data: [CatBoost](https://catboost.ai/), [XGBoost](https://github.com/dmlc/xgboost), [Random Forest](https://towardsdatascience.com/understanding-random-forest-58381e0602d2)
+    - Unstructured Data: Deep Learning, Transfer Learning
+  - Training a model
+    - inputs: X(data) -> model -> predict outputs: y(label)
+    - Goal: minimise time between experiments
+      - Experiment 1: inputs -> model 1 -> outputs -> accurancy (87.5%) -> training time (3 min)
+      - Experiment 2: inputs -> model 2 -> outputs -> accurancy (91.3%) -> training time (92 min) 
+      - Experiment 3: inputs -> model 3 -> outputs -> accurancy (94.7%) -> training time (176 min)
+    - Things to remember
+      - Some models work better than others and different problems
+      - Don't be afraid to try things
+      - Start small and build up (add complexity) as you need.
 - 6 Step Machine Learning Framework summary
   - Problem definition: What kind of problems you face day to day?
   - Data: What kind of data do you use?
