@@ -108,6 +108,22 @@
   - Create a framework
   - Match to data science and machine learning tools
   - Learn by doing
+- [6 Step Machine Learning Framework](https://www.mrdbourke.com/a-6-step-field-guide-for-building-machine-learning-projects/)
+  - Problem definition: What problems are we trying to solve?
+    - Supervised or Unsupervised
+    - Classification or Regression
+  - Data: What kind of data do we have?
+    - Structured or Unstructured
+  - Evaluation: What defines success for us?
+    - Example: House data -> Machine learning model -> House price 
+    - Predicted price vs Actual price
+  - Features: What do we already know about the data?
+    - Example: Heart disease? Feature: body weight
+    - Turn features such as weight into patterns to make predictions whether a patient has heart disease?
+  - Modelling: Based on our problem and data, what model should we use?
+    - Problem 1 -> Model 1
+    - Problem 2 -> Model 2
+  - Experimentation: How could we improve/what can we try next?
 
 **[⬆ back to top](#table-of-contents)**
 
