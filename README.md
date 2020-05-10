@@ -71,6 +71,7 @@
       - Features: What features should we model?
       - Modelling: What kind of model should we use?
       - Experiments: What have we tried / What else can we try?
+- [Machine Learning Playground](https://ml-playground.com)
 
 **[⬆ back to top](#table-of-contents)**
 
