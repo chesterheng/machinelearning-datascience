@@ -292,12 +292,19 @@
     - Data Analysis: Data, Evaluation, Features
     - Machine learning modelling: Model 1
     - Experiments: Try model 2
-- 6 Step Machine Learning Framework summary
+- 6 Step Machine Learning Framework questions
   - Problem definition: What kind of problems you face day to day?
   - Data: What kind of data do you use?
   - Evaluation: What do you measure?
   - Features: What are features of your problems?
   - Modelling: What was the last thing you testing ability on?
+- Tools We Will Use
+  - Data Science: 6 Step Machine Learning Framework
+  - Data Science: [Anaconda](https://www.anaconda.com/), [Jupyter Notebook](https://jupyter.org/)
+  - Data Analysis: Data, Evaluation and Features
+  - Data Analysis:[pandas](https://pandas.pydata.org/), [Matplotlib](https://matplotlib.org/), [NumPy](https://numpy.org/)
+  - Machine Learning: Modelling
+  - Machine Learning: [TensorFlow](https://www.tensorflow.org/), [PyTorch](https://pytorch.org/), [scikit-learn](https://scikit-learn.org/stable/), [XGBoost](https://xgboost.ai/), [CatBoost](https://catboost.ai/)
 
 **[⬆ back to top](#table-of-contents)**
 
