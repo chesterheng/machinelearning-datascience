@@ -27,6 +27,20 @@
 
 ## **Section 2: Machine Learning 101**
 
+- What Is Machine Learning?
+  - Machines can perform tasks really fast
+  - We give them instructions to do tasks and they do it for us
+  - Computers used to mean people who do tasks that compute
+  - Problem: How to get to Danielle's house using Google maps?
+  - Imagine we had ten different routes to Danielle's house
+    - Option 1: I measure each route one by one 
+    - Option 2: I program and tell the computer to calculate these 10 routes and find the shortest one.
+  - Problem: Somebody left a review on Amazon. Is this person angry?
+  - How can I describe to a computer what angry means?
+  - We let machines take care of the easier part of which things we can describe
+  - Things that are hard to just give instructions to, we let human do it
+  - The goal of machine learning is to make machines act more and more like humans because the smarter they
+
 **[⬆ back to top](#table-of-contents)**
 
 ## **Section 3: Machine Learning and Data Science Framework**
