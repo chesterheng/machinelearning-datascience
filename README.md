@@ -151,6 +151,21 @@
     - Supervised Learning: I know my inputs and outputs
     - Unsupervised Learning: I am not sure of the outputs but I have inputs
     - Transfer Learning: I think my problem may be similar to something else
+- Types of Data: What kind of data do we have?
+  - Different types of data
+    - Structured data: all of the samples have similar format
+    - Unstructured data: images and natural language text such as phone calls, videos and audio files
+    - Static: doesn't change over time, example: csv
+      - More data -> Find patterns -> Predict something in the future
+    - Streaming: data which is constantly changed over time
+      - Example: predict how a stock price will change based on news headlines
+      - News headlines are being updated constantly you'll want to see how they change stocks
+  - Start on static data and then if your data analysis and machine learning efforts prove to show some insights you'll move towards streaming data when you go to deployment or in production
+  - A data science workflow 
+    - open csv file in jupyter notebook (a tool to build machine learning project)
+    - perform data analysis with panda (a python library for data analysis)
+    - make visualizations such as graphs and comparing different data points with Matplotlib 
+    - build machine learning model on the data using scikit learn to predict using these patterns 
 
 **[⬆ back to top](#table-of-contents)**
 
