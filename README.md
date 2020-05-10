@@ -311,6 +311,10 @@
 
 ## **Section 4: The 2 Paths**
 
+- The 2 Paths
+  - I know Python: Continue
+  - I don't know Python: Goto Learn Python Section
+
 **[⬆ back to top](#table-of-contents)**
 
 ## **Section 5: Data Science Environment Setup**
