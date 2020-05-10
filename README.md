@@ -166,6 +166,20 @@
     - perform data analysis with panda (a python library for data analysis)
     - make visualizations such as graphs and comparing different data points with Matplotlib 
     - build machine learning model on the data using scikit learn to predict using these patterns 
+- Types of Evaluation: What defines success for us?
+  - Example: if your problem is to use patient medical records to classify whether someone has heart disease or not you might start by saying for this project to be valuable we need a machine learning model with over 99% accuracy
+  - data -> machine learning model -> predict: heart disease? -> accurancy 97.8%
+  - predicting whether or not a patient has heart disease is an important task so you want a highly accurate model
+  - Different types of metrics for different problems
+    - Classification: accurancy, percision, recall
+    - Regression: Mean absolute error (MAE), Mean squared error (MSE), Root mean squared error (RMSE)
+    - Recommendation: Precision at K
+  - Example: Classifying car insurance claims
+    - text from car insurance claims -> machine learning model -> predict who caused the accident (person submitting the claim or the other person involved ?) -> min 95% accuracy who caused the accident (allow to get it wrong 1 out of 20 claims)
+- 6 Step Machine Learning Framework summary
+  - Problem definition: What kind of problems you face day to day?
+  - Data: What kind of data do you use?
+  - Evaluation: What do you measure?
 
 **[⬆ back to top](#table-of-contents)**
 
