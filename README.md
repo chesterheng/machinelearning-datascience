@@ -176,10 +176,32 @@
     - Recommendation: Precision at K
   - Example: Classifying car insurance claims
     - text from car insurance claims -> machine learning model -> predict who caused the accident (person submitting the claim or the other person involved ?) -> min 95% accuracy who caused the accident (allow to get it wrong 1 out of 20 claims)
+- Features In Data: What do we already know about the data?
+  -  Features is another word for different forms of data
+  -  Features refers to the different forms of data within structured or unstructured data
+  -  For example:  predict heart disease problem
+     -  Features of the data: weight, sex, heart rate
+     -  They can also be referred to as feature variables
+     -  We use the feature variables to predict the target variable which is whether a person has heart disease or no.
+  -  Different features of data
+     -  numerical features: a number like body weight
+     -  categorical features: sex or whether a patient is a smoker or not
+     -  derived features: looks at different features of data and creates a new feature / alter existing feature
+        -  Example: look at someone's hospital visit history timestamps and if they've had a visit in the last year you could make a categorical feature called visited in last year. If someone had visited in the last year they would get true.
+        - feature engineering: process of deriving features like this out of data
+  -  unstructured data has features too
+     - a little less obvious if you looked at enough images of dogs you'd start to figure out
+     - legs: most of these creatures have four shapes coming out of their body  
+     - eyes: a couple of circles up the front
+     - machine learning algorithm figure out what features are there on its own
+  - What features should you use?
+    - a machine learning algorithm learns best when all samples have similar information
+    - feature coverage: process of ensuring all samples have similar information
 - 6 Step Machine Learning Framework summary
   - Problem definition: What kind of problems you face day to day?
   - Data: What kind of data do you use?
   - Evaluation: What do you measure?
+  - Features: What are features of your problems?
 
 **[⬆ back to top](#table-of-contents)**
 
