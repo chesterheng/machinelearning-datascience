@@ -51,6 +51,26 @@
   - Deep Learning: one of the techniques for implementing machine learning
   - Data Science: analyzing data and then doing something with a business goal
 - [Teachable Machine](https://teachablemachine.withgoogle.com/)
+- How Did We Get Here?
+  - Goal: Make business decisions
+  - Spreadsheets -> Relational DB -> Big Data (NoSQL) -> Machine Learning
+    - Massive amounts of data
+    - Massive improvements in computation
+  - Steps in a full machine learning project
+    - Data collection (hardest part) -> Data modelling -> Deployment
+    - Data collection
+      - How to clean noisy data?
+      - What can we grab data from?
+      - How do we find data?
+      - How do we clean it so we can actually learn from it?
+      - How to turn data from useless to useful?
+    - Data modelling
+      - Problem definition: What problem are we trying to solve?
+      - Data: What data do we have?
+      - Evaluation: What defines success?
+      - Features: What features should we model?
+      - Modelling: What kind of model should we use?
+      - Experiments: What have we tried / What else can we try?
 
 **[⬆ back to top](#table-of-contents)**
 
