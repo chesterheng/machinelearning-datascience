@@ -124,6 +124,33 @@
     - Problem 1 -> Model 1
     - Problem 2 -> Model 2
   - Experimentation: How could we improve/what can we try next?
+- Types of Machine Learning Problems
+  - When shouldn't you use machine learning?
+    - Will a simple hand-coded instruction based system work?
+  - Main types of machine learning
+    - Supervised Learning: data and label -> make prediction
+      - Classification: Is this example one thing or another?
+        - Binary classification = two options 
+        - Example: heart disease or no heart disease?
+        - Multi-class classification = more than two options
+      - Regression: Predict a number
+        - Example: How much will this house sell for?
+        - Example: How many people will buy this app?
+    - Unsupervised Learning: has data but no labels
+      - Existing Data: Purchase history of all customers
+      - Scenario: Marketing team want to send out promotion for next summer
+      - Question: Do you know who is interested in summer clothes?
+      - Process: Apply labels such as Summer or Winter to data
+      - Solution: Cluster 1 (Summer) and Cluster 2 (Winter)
+    - Transfer Learning: leverages what one machine learning model has learned in another machine learning model
+      - Example: Predict what dog breed appears in a photo
+      - Solution: Find an existing model which is learned to decipher different car types and fine tune it for your task
+    - Reinforcement Learning: a computer program perform some actions within a defined space and rewarding it for doing it well or punishing it for doing poorly
+      - Example: teach a machine learning algorithm to play chess
+  - Matching your problem
+    - Supervised Learning: I know my inputs and outputs
+    - Unsupervised Learning: I am not sure of the outputs but I have inputs
+    - Transfer Learning: I think my problem may be similar to something else
 
 **[⬆ back to top](#table-of-contents)**
 
