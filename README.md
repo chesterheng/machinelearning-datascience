@@ -40,6 +40,16 @@
   - We let machines take care of the easier part of which things we can describe
   - Things that are hard to just give instructions to, we let human do it
   - The goal of machine learning is to make machines act more and more like humans because the smarter they
+- [AI/Machine Learning/Data Science](A Beginner’s Guide To Data Science)
+  - AI: machine that acts like human
+  - Narrow AI: machine that acts like human at a specific task
+  - General AI: machine that acts like human with multiple abilities
+  - Machine Learning: a subset of AI
+  - Machine Learning: an approach to achieve artificial intelligence through systems that can find patterns in a set of data
+  - Machine Learning: the science of getting computers to act without being explicitly programmed
+  - Deep Learning: a subset of Machine Learning
+  - Deep Learning: one of the techniques for implementing machine learning
+  - Data Science: analyzing data and then doing something with a business goal
 
 **[⬆ back to top](#table-of-contents)**
 
