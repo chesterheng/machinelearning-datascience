@@ -101,6 +101,13 @@
 **[⬆ back to top](#table-of-contents)**
 
 ## **Section 3: Machine Learning and Data Science Framework**
+- Introducing Our Framework
+  - Focus on 
+    - Practical solutions
+    - Writing machine learning code
+  - Create a framework
+  - Match to data science and machine learning tools
+  - Learn by doing
 
 **[⬆ back to top](#table-of-contents)**
 
