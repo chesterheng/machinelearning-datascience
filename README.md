@@ -225,6 +225,7 @@
     - validation split: 15 patient records (10-15%)
     - test split: 15 patient records (10-15%) 
 - Modelling Part 2 - Choosing
+  - Based on our problem and data, what model should we use?
   - 3 parts to modelling
     - Choosing and training a model: training data
     - Tuning a model: validation data
@@ -244,12 +245,20 @@
       - Some models work better than others and different problems
       - Don't be afraid to try things
       - Start small and build up (add complexity) as you need.
+- Modelling Part 3 - Tuning
+  - Based on our problem and data, what model should we use?
+  - Example: Random Forest - adjust number of trees: 3, 5
+  - Example: Neural Networks - adjust number of layers: 2, 3
+  - Things to remember
+    - Machine learning models have hyper parameters you can adjust
+    - A model first results are not it's last
+    - Tuning can take place on training or validation data sets
 - 6 Step Machine Learning Framework summary
   - Problem definition: What kind of problems you face day to day?
   - Data: What kind of data do you use?
   - Evaluation: What do you measure?
   - Features: What are features of your problems?
-  - Modelling - Splitting Data: What was the last thing you testing ability on?
+  - Modelling: What was the last thing you testing ability on?
 
 **[⬆ back to top](#table-of-contents)**
 
