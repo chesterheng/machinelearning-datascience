@@ -305,6 +305,7 @@
   - Data Analysis:[pandas](https://pandas.pydata.org/), [Matplotlib](https://matplotlib.org/), [NumPy](https://numpy.org/)
   - Machine Learning: Modelling
   - Machine Learning: [TensorFlow](https://www.tensorflow.org/), [PyTorch](https://pytorch.org/), [scikit-learn](https://scikit-learn.org/stable/), [XGBoost](https://xgboost.ai/), [CatBoost](https://catboost.ai/)
+- [Elements of AI](https://www.elementsofai.com/)
 
 **[⬆ back to top](#table-of-contents)**
 
