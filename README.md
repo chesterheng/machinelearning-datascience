@@ -50,6 +50,7 @@
   - Deep Learning: a subset of Machine Learning
   - Deep Learning: one of the techniques for implementing machine learning
   - Data Science: analyzing data and then doing something with a business goal
+- [Teachable Machine](https://teachablemachine.withgoogle.com/)
 
 **[⬆ back to top](#table-of-contents)**
 
