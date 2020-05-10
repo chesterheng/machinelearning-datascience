@@ -72,6 +72,17 @@
       - Modelling: What kind of model should we use?
       - Experiments: What have we tried / What else can we try?
 - [Machine Learning Playground](https://ml-playground.com)
+- [Types of Machine Learning](http://vas3k.com/blog/machine_learning/): predict results based on incoming data
+  - Supervised: Data are labeled into categories
+    - classification: is this an apple or is this a pear?
+    - regression: based on input to predict stock prices
+  - Unsupervised: Data don't have labels
+    - clustering: machine to create these groups
+    - association rule learning: associate different things to predict what a customer might buy in the future
+  - Reinforcement: teach machines through trial and error 
+  - Reinforcement: teach machines through rewards and punishment
+    - skill acquisition
+    - real time learning
 
 **[⬆ back to top](#table-of-contents)**
 
