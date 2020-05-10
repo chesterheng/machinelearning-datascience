@@ -253,6 +253,39 @@
     - Machine learning models have hyper parameters you can adjust
     - A model first results are not it's last
     - Tuning can take place on training or validation data sets
+- Modelling Part 4 - Comparison
+  - How will our model perform in the real world?
+  - Testing a model
+    - Data Set: Training -> Test
+    - Performance: 98% -> 96%
+  - Underfitting (potential)
+    - Data Set: Training -> Test
+    - Performance: 64% -> 47%
+  - Overfitting (potential)
+    - Data Set: Training -> Test
+    - Performance: 93% -> 99%
+  - Balanced (Goldilocks zone)
+  - Data leakage -> Training Data overlap Test Data -> Overfitting
+  - Data mismatch -> Test Data is different to Training Data -> underfitting
+  - Fixes for underfitting
+    - Try a more advanced model
+    - Increase model hyperparameters
+    - Reduce amount of features
+    - Train longer
+  - Fixes for overfitting
+    - Collect more data
+    - Try a less advanced model
+  - Comparing models
+    - Experiment 1: inputs -> model 1 -> outputs -> accurancy (87.5%) -> training time (3 min) -> prediction time (0.5 sec)
+    - Experiment 2: inputs -> model 2 -> outputs -> accurancy (91.3%) -> training time (92 min) -> prediction time (1 sec)
+    - Experiment 3: inputs -> model 3 -> outputs -> accurancy (94.7%) -> training time (176 min) -> prediction time (4 sec)
+  - Things to remember
+    - Want to avoid overfitting and underfitting (head towards generality)
+    - Keep the test set separate at all costs
+    - Compare apples to apple
+      - Model 1 on dataset 1
+      - Model 2 on dataset 1
+    - One best performance Metric does not equal the best model
 - 6 Step Machine Learning Framework summary
   - Problem definition: What kind of problems you face day to day?
   - Data: What kind of data do you use?
