@@ -286,6 +286,12 @@
       - Model 1 on dataset 1
       - Model 2 on dataset 1
     - One best performance Metric does not equal the best model
+- Experimentation
+  - How could we improve / what can we try next?
+    - Start with a problem
+    - Data Analysis: Data, Evaluation, Features
+    - Machine learning modelling: Model 1
+    - Experiments: Try model 2
 - 6 Step Machine Learning Framework summary
   - Problem definition: What kind of problems you face day to day?
   - Data: What kind of data do you use?
