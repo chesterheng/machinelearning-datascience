@@ -197,11 +197,39 @@
   - What features should you use?
     - a machine learning algorithm learns best when all samples have similar information
     - feature coverage: process of ensuring all samples have similar information
+- Modelling Part 1 - 3 sets
+  - Based on our problem and data, what model should we use?
+  - 3 parts to modelling
+    - Choosing and training a model
+    - Tuning a model
+    - Model comparison
+  - The most important concept in machine learning (the training, validation and test sets or 3 sets)
+    - Your data is split into 3 sets
+      - training set: train your model on this
+      - validation set: tune your model on this
+      - test set: test and compare on this
+    - at university 
+      - training set: study course materials
+      - validation set: practice exam
+      - test set: final exam
+    - generalisation: the ability for a machine learning model to perform well on data it has not seen before
+  - When things go wrong
+    - if your professor accidentally sent out the final exam for everyone to practice on when it came time to the actual exam
+    - Everyone would have already seen it now
+    - Since people know what they should be expecting they go through the exam
+    - They answer all the questions with ease and everyone ends up getting top marks
+    - Now top marks might appear good but did the students really learn anything or were they just expert memorization machines 
+  - for your machine learning models to be valuable at predicting something in the future on unseen data you'll want to avoid them becoming memorization machines
+  - split 100 patient records
+    - training split: 70 patient records (70-80%)
+    - validation split: 15 patient records (10-15%)
+    - test split: 15 patient records (10-15%) 
 - 6 Step Machine Learning Framework summary
   - Problem definition: What kind of problems you face day to day?
   - Data: What kind of data do you use?
   - Evaluation: What do you measure?
   - Features: What are features of your problems?
+  - Modelling - Splitting Data: What was the last thing you testing ability on?
 
 **[⬆ back to top](#table-of-contents)**
 
