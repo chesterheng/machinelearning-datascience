@@ -83,6 +83,16 @@
   - Reinforcement: teach machines through rewards and punishment
     - skill acquisition
     - real time learning
+- What Is Machine Learning? Round 2
+  - Now: Data -> machine learning algorithm -> pattern
+  - Future: New data -> Same algorithm (model) -> More patterns
+  - Normal algorithm: Starts with inputs and steps -> Makes output
+  - Machine learning algorithm
+    - Starts with inputs and output -> Figures out the steps
+  - Data analysis is looking at a set of data and gain an understanding of it by comparing different examples, different features and making visualizations like graphs
+  - Data science is running experiments on a set of data with the hopes of finding actionable insights within it
+    - One of these experiments is to build a machine learning model
+  - Data Science = Data analysis + Machine learning
 
 **[⬆ back to top](#table-of-contents)**
 
