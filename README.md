@@ -27,6 +27,7 @@
   - [**Section 5: Data Science Environment Setup**](#section-5-data-science-environment-setup)
     - [Introducing Our Tools](#introducing-our-tools)
     - [What is Conda?](#what-is-conda)
+    - [Conda Environments](#conda-environments)
   - [**Section 6: Pandas: Data Analysis**](#section-6-pandas-data-analysis)
   - [**Section 7: NumPy**](#section-7-numpy)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
@@ -437,6 +438,15 @@
   - [Conda Cheatsheet](conda-cheatsheet.pdf)
   - [Getting started with conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html)
   - [Getting your computer ready for machine learning](https://www.mrdbourke.com/get-your-computer-ready-for-machine-learning-using-anaconda-miniconda-and-conda/)
+
+**[⬆ back to top](#table-of-contents)**
+
+### Conda Environments
+
+- New Project: Heart disease?
+- Your computer -> Project folder = Data + Conda Environment
+- Your computer -> share Project folder -> Someone else's computer
+- Someone else's computer -> Project folder = Data + Conda Environment
 
 **[⬆ back to top](#table-of-contents)**
 
