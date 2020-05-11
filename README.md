@@ -28,6 +28,7 @@
     - [Introducing Our Tools](#introducing-our-tools)
     - [What is Conda?](#what-is-conda)
     - [Conda Environments](#conda-environments)
+    - [Mac Environment Setup](#mac-environment-setup)
   - [**Section 6: Pandas: Data Analysis**](#section-6-pandas-data-analysis)
   - [**Section 7: NumPy**](#section-7-numpy)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
@@ -433,7 +434,7 @@
 - Your computer -> Miniconda + Conda -> install other tools
   - Data Analysis:[pandas](https://pandas.pydata.org/), [Matplotlib](https://matplotlib.org/), [NumPy](https://numpy.org/)
   - Machine Learning: [TensorFlow](https://www.tensorflow.org/), [PyTorch](https://pytorch.org/), [scikit-learn](https://scikit-learn.org/stable/), [XGBoost](https://xgboost.ai/), [CatBoost](https://catboost.ai/)
-- Conda -> Project 1: sample_project
+- Conda -> Project 1: sample-project
 - Resources
   - [Conda Cheatsheet](conda-cheatsheet.pdf)
   - [Getting started with conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html)
@@ -447,6 +448,19 @@
 - Your computer -> Project folder = Data + Conda Environment
 - Your computer -> share Project folder -> Someone else's computer
 - Someone else's computer -> Project folder = Data + Conda Environment
+
+**[⬆ back to top](#table-of-contents)**
+
+### Mac Environment Setup
+
+- Resources
+  - [Getting Started Anaconda, Miniconda and Conda](https://whimsical.com/BD751gt65nKjAD5i1CNEXU)
+  - [Miniconda installers](https://docs.conda.io/en/latest/miniconda.html) - Choose latest pkg version
+- Create conda environment: goto sample-project folder
+  - `conda create --prefix ./env pandas numpy matplotlib scikit-learn`
+- Activate conda environment: `conda activate /Users/xxx/Desktop/sample-project/env`
+- List Conda environment: `conda env list`
+  - `cd ~/.conda` -> `environments.txt`
 
 **[⬆ back to top](#table-of-contents)**
 
