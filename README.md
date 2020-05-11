@@ -31,6 +31,7 @@
     - [Mac Environment Setup](#mac-environment-setup)
     - [Mac Environment Setup 2](#mac-environment-setup-2)
     - [Sharing your Conda Environment](#sharing-your-conda-environment)
+    - [Jupyter Notebook Walkthrough](#jupyter-notebook-walkthrough)
   - [**Section 6: Pandas: Data Analysis**](#section-6-pandas-data-analysis)
   - [**Section 7: NumPy**](#section-7-numpy)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
@@ -481,6 +482,14 @@
   - [Sharing an environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment)
 - Create an environment called env_from_file from a .yml file: `conda env create --file environment.yml --name env_from_file`
   - [Creating an environment from an environment.yml file](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file)
+
+**[⬆ back to top](#table-of-contents)**
+
+### Jupyter Notebook Walkthrough
+
+- Project Folder
+- Data -> Environment
+- Data -> Jupyter Notebook (Workspace) -> matplotlib, numpy, pandas -> scikit-learn
 
 **[⬆ back to top](#table-of-contents)**
 
