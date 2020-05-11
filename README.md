@@ -1,8 +1,8 @@
-# The Complete Junior to Senior Web Developer Roadmap (2020)
+# Complete Machine Learning and Data Science: Zero to Mastery (2020)
 
 ## Table of Contents
 
-- [The Complete Junior to Senior Web Developer Roadmap (2020)](#the-complete-junior-to-senior-web-developer-roadmap-2020)
+- [Complete Machine Learning and Data Science: Zero to Mastery (2020)](#complete-machine-learning-and-data-science-zero-to-mastery-2020)
   - [Table of Contents](#table-of-contents)
   - [**Section 2: Machine Learning 101**](#section-2-machine-learning-101)
     - [What Is Machine Learning?](#what-is-machine-learning)
@@ -25,6 +25,7 @@
     - [Tools We Will Use](#tools-we-will-use)
   - [**Section 4: The 2 Paths**](#section-4-the-2-paths)
   - [**Section 5: Data Science Environment Setup**](#section-5-data-science-environment-setup)
+    - [Introducing Our Tools](#introducing-our-tools)
   - [**Section 6: Pandas: Data Analysis**](#section-6-pandas-data-analysis)
   - [**Section 7: NumPy**](#section-7-numpy)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
@@ -45,6 +46,7 @@
 ## **Section 2: Machine Learning 101**
 
 ### What Is Machine Learning?
+
 - Machines can perform tasks really fast
 - We give them instructions to do tasks and they do it for us
 - Computers used to mean people who do tasks that compute
@@ -61,6 +63,7 @@
 **[⬆ back to top](#table-of-contents)**
 
 ### [AI/Machine Learning/Data Science](A Beginner’s Guide To Data Science)
+
 - AI: machine that acts like human
 - Narrow AI: machine that acts like human at a specific task
 - General AI: machine that acts like human with multiple abilities
@@ -75,6 +78,7 @@
 **[⬆ back to top](#table-of-contents)**
 
 ### How Did We Get Here?
+
 - Goal: Make business decisions
 - Spreadsheets -> Relational DB -> Big Data (NoSQL) -> Machine Learning
   - Massive amounts of data
@@ -99,6 +103,7 @@
 **[⬆ back to top](#table-of-contents)**
 
 ### [Types of Machine Learning](http://vas3k.com/blog/machine_learning/)
+
 - Predict results based on incoming data
 - Supervised: Data are labeled into categories
   - classification: is this an apple or is this a pear?
@@ -114,6 +119,7 @@
 **[⬆ back to top](#table-of-contents)**
 
 ### What Is Machine Learning? Round 2
+
 - Now: Data -> machine learning algorithm -> pattern
 - Future: New data -> Same algorithm (model) -> More patterns
 - Normal algorithm: Starts with inputs and steps -> Makes output
@@ -133,14 +139,17 @@
 ## **Section 3: Machine Learning and Data Science Framework**
 
 ### Introducing Our Framework
+
 - Focus on practical solutions and writing machine learning code
-- Create a framework
-- Match to data science and machine learning tools
-- Learn by doing
+- Steps to learn machine learning
+  - Create a framework
+  - Match to data science and machine learning tools
+  - Learn by doing
 
 **[⬆ back to top](#table-of-contents)**
 
 ### [6 Step Machine Learning Framework](https://www.mrdbourke.com/a-6-step-field-guide-for-building-machine-learning-projects/)
+
 - Problem definition: What problems are we trying to solve?
   - Supervised or Unsupervised
   - Classification or Regression
@@ -160,6 +169,7 @@
 **[⬆ back to top](#table-of-contents)**
 
 ### Types of Machine Learning Problems
+
 - When shouldn't you use machine learning?
   - When a simple hand-coded instruction based system will work
 - Main types of machine learning
@@ -194,6 +204,7 @@
 **[⬆ back to top](#table-of-contents)**
 
 ### Types of Data: What kind of data do we have?
+
 - Different types of data
   - Structured data: all of the samples have similar format
   - Unstructured data: images and natural language text such as phone calls, videos and audio files
@@ -212,6 +223,7 @@
 **[⬆ back to top](#table-of-contents)**
 
 ### Types of Evaluation: What defines success for us?
+
 - Example: if your problem is to use patient medical records to classify whether someone has heart disease or not you might start by saying for this project to be valuable we need a machine learning model with over 99% accuracy
 - data -> machine learning model -> predict: heart disease? -> accurancy 97.8%
 - predicting whether or not a patient has heart disease is an important task so you want a highly accurate model
@@ -225,6 +237,7 @@
 **[⬆ back to top](#table-of-contents)**
 
 ### Features In Data: What do we already know about the data?
+
 - Features is another word for different forms of data
 - Features refers to the different forms of data within structured or unstructured data
 - For example: predict heart disease problem
@@ -249,6 +262,7 @@
 **[⬆ back to top](#table-of-contents)**
 
 ### Modelling Part 1 - 3 sets
+
 - Based on our problem and data, what model should we use?
 - 3 parts to modelling
   - Choosing and training a model
@@ -265,7 +279,7 @@
     - test set: final exam
   - generalisation: the ability for a machine learning model to perform well on data it has not seen before
 - When things go wrong
-  - Your professor accidentally sent out the final exam for everyone to practice on 
+  - Your professor accidentally sent out the final exam for everyone to practice on
   - when it came time to the actual exam, everyone would have already seen it now
   - Since people know what they should be expecting they go through the exam
   - They answer all the questions with ease and everyone ends up getting top marks
@@ -279,6 +293,7 @@
 **[⬆ back to top](#table-of-contents)**
 
 ### Modelling Part 2 - Choosing
+
 - Based on our problem and data, what model should we use?
 - 3 parts to modelling
   - Choosing and training a model: training data
@@ -303,6 +318,7 @@
 **[⬆ back to top](#table-of-contents)**
 
 ### Modelling Part 3 - Tuning
+
 - Based on our problem and data, what model should we use?
 - Example: Random Forest - adjust number of trees: 3, 5
 - Example: Neural Networks - adjust number of layers: 2, 3
@@ -314,6 +330,7 @@
 **[⬆ back to top](#table-of-contents)**
 
 ### Modelling Part 4 - Comparison
+
 - How will our model perform in the real world?
 - Testing a model
   - Data Set: Training -> Test
@@ -350,6 +367,7 @@
 **[⬆ back to top](#table-of-contents)**
 
 ### Experimentation
+
 - How could we improve / what can we try next?
   - Start with a problem
   - Data Analysis: Data, Evaluation, Features
@@ -365,6 +383,7 @@
 **[⬆ back to top](#table-of-contents)**
 
 ### Tools We Will Use
+
 - Data Science: 6 Step Machine Learning Framework
 - Data Science: [Anaconda](https://www.anaconda.com/), [Jupyter Notebook](https://jupyter.org/)
 - Data Analysis: Data, Evaluation and Features
@@ -385,6 +404,21 @@
 **[⬆ back to top](#table-of-contents)**
 
 ## **Section 5: Data Science Environment Setup**
+
+### Introducing Our Tools
+
+- Steps to learn machine learning [Recall]
+  - Create a framework [Done] Refer to Section 3
+  - Match to data science and machine learning tools
+  - Learn by doing
+- Your computer -> Setup Miniconda + Conda for Data Science
+  - [Anaconda](https://www.anaconda.com/): Hardware Store = 3GB
+  - [Miniconda](https://docs.conda.io/en/latest/miniconda.html): Workbench = 200 MB
+  - [Anaconda vs. miniconda](https://stackoverflow.com/questions/45421163/anaconda-vs-miniconda)
+  - [Conda](https://docs.conda.io/en/latest/): Personal Assistant
+- Conda -> setup the rest of tools
+  - Data Analysis:[pandas](https://pandas.pydata.org/), [Matplotlib](https://matplotlib.org/), [NumPy](https://numpy.org/)
+  - Machine Learning: [TensorFlow](https://www.tensorflow.org/), [PyTorch](https://pytorch.org/), [scikit-learn](https://scikit-learn.org/stable/), [XGBoost](https://xgboost.ai/), [CatBoost](https://catboost.ai/)
 
 **[⬆ back to top](#table-of-contents)**
 
