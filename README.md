@@ -29,6 +29,7 @@
     - [What is Conda?](#what-is-conda)
     - [Conda Environments](#conda-environments)
     - [Mac Environment Setup](#mac-environment-setup)
+    - [Mac Environment Setup 2](#mac-environment-setup-2)
   - [**Section 6: Pandas: Data Analysis**](#section-6-pandas-data-analysis)
   - [**Section 7: NumPy**](#section-7-numpy)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
@@ -456,11 +457,20 @@
 - Resources
   - [Getting Started Anaconda, Miniconda and Conda](https://whimsical.com/BD751gt65nKjAD5i1CNEXU)
   - [Miniconda installers](https://docs.conda.io/en/latest/miniconda.html) - Choose latest pkg version
-- Create conda environment: goto sample-project folder
+- Create conda environment: goto [sample-project](https://github.com/chesterheng/sample-project) folder
   - `conda create --prefix ./env pandas numpy matplotlib scikit-learn`
 - Activate conda environment: `conda activate /Users/xxx/Desktop/sample-project/env`
-- List Conda environment: `conda env list`
+- List Conda environments: `conda env list`
   - `cd ~/.conda` -> `environments.txt`
+- Deactivate conda environment: `conda deactivate`
+
+**[⬆ back to top](#table-of-contents)**
+
+### Mac Environment Setup 2
+
+- Install Jupyter: `conda install jupyter`
+- Run Jupyter Notebook: `jupyter notebook`
+- [sample-project](https://github.com/chesterheng/sample-project)
 
 **[⬆ back to top](#table-of-contents)**
 
