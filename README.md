@@ -30,6 +30,7 @@
     - [Conda Environments](#conda-environments)
     - [Mac Environment Setup](#mac-environment-setup)
     - [Mac Environment Setup 2](#mac-environment-setup-2)
+    - [Sharing your Conda Environment](#sharing-your-conda-environment)
   - [**Section 6: Pandas: Data Analysis**](#section-6-pandas-data-analysis)
   - [**Section 7: NumPy**](#section-7-numpy)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
@@ -457,7 +458,7 @@
 - Resources
   - [Getting Started Anaconda, Miniconda and Conda](https://whimsical.com/BD751gt65nKjAD5i1CNEXU)
   - [Miniconda installers](https://docs.conda.io/en/latest/miniconda.html) - Choose latest pkg version
-- Create conda environment: goto [sample-project](https://github.com/chesterheng/sample-project) folder
+- Create conda environment: goto [sample-project](https://github.com/chesterheng/machine-learning-data-science/tree/master/sample-project) folder
   - `conda create --prefix ./env pandas numpy matplotlib scikit-learn`
 - Activate conda environment: `conda activate /Users/xxx/Desktop/sample-project/env`
 - List Conda environments: `conda env list`
@@ -470,7 +471,16 @@
 
 - Install Jupyter: `conda install jupyter`
 - Run Jupyter Notebook: `jupyter notebook`
-- [sample-project](https://github.com/chesterheng/sample-project)
+- [sample-project](https://github.com/chesterheng/machine-learning-data-science/tree/master/sample-project)
+
+**[⬆ back to top](#table-of-contents)**
+
+### Sharing your Conda Environment
+
+- Share a .yml file of your Conda environment: `conda env export --prefix ./env > environment.yml`
+  - [Sharing an environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment)
+- Create an environment called env_from_file from a .yml file: `conda env create --file environment.yml --name env_from_file`
+  - [Creating an environment from an environment.yml file](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file)
 
 **[⬆ back to top](#table-of-contents)**
 
