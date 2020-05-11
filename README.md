@@ -26,6 +26,7 @@
   - [**Section 4: The 2 Paths**](#section-4-the-2-paths)
   - [**Section 5: Data Science Environment Setup**](#section-5-data-science-environment-setup)
     - [Introducing Our Tools](#introducing-our-tools)
+    - [What is Conda?](#what-is-conda)
   - [**Section 6: Pandas: Data Analysis**](#section-6-pandas-data-analysis)
   - [**Section 7: NumPy**](#section-7-numpy)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
@@ -419,6 +420,23 @@
 - Conda -> setup the rest of tools
   - Data Analysis:[pandas](https://pandas.pydata.org/), [Matplotlib](https://matplotlib.org/), [NumPy](https://numpy.org/)
   - Machine Learning: [TensorFlow](https://www.tensorflow.org/), [PyTorch](https://pytorch.org/), [scikit-learn](https://scikit-learn.org/stable/), [XGBoost](https://xgboost.ai/), [CatBoost](https://catboost.ai/)
+
+**[⬆ back to top](#table-of-contents)**
+
+### What is Conda?
+
+- [Anaconda](https://www.anaconda.com/): Software Distributions
+- [Miniconda](https://docs.conda.io/en/latest/miniconda.html): Software Distributions
+- [Anaconda vs. miniconda](https://stackoverflow.com/questions/45421163/anaconda-vs-miniconda)
+- [Conda](https://docs.conda.io/en/latest/): Package Manager
+- Your computer -> Miniconda + Conda -> install other tools
+  - Data Analysis:[pandas](https://pandas.pydata.org/), [Matplotlib](https://matplotlib.org/), [NumPy](https://numpy.org/)
+  - Machine Learning: [TensorFlow](https://www.tensorflow.org/), [PyTorch](https://pytorch.org/), [scikit-learn](https://scikit-learn.org/stable/), [XGBoost](https://xgboost.ai/), [CatBoost](https://catboost.ai/)
+- Conda -> Project 1: sample_project
+- Resources
+  - [Conda Cheatsheet](conda-cheatsheet.pdf)
+  - [Getting started with conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html)
+  - [Getting your computer ready for machine learning](https://www.mrdbourke.com/get-your-computer-ready-for-machine-learning-using-anaconda-miniconda-and-conda/)
 
 **[⬆ back to top](#table-of-contents)**
 
