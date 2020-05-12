@@ -36,6 +36,7 @@
     - [Pandas Introduction](#pandas-introduction)
     - [Series, Data Frames and CSVs](#series-data-frames-and-csvs)
     - [Data from URLs](#data-from-urls)
+    - [Describing Data with Pandas](#describing-data-with-pandas)
   - [**Section 7: NumPy**](#section-7-numpy)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
@@ -550,6 +551,29 @@
 ```python
 heart_disease = pd.read_csv("data/heart-disease.csv")
 heart_disease = pd.read_csv("https://raw.githubusercontent.com/mrdbourke/zero-to-mastery-ml/master/data/heart-disease.csv")
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Describing Data with Pandas](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-pandas.ipynb)
+
+```python
+# Attribute - information
+car_sales.dtypes
+
+# Function - contain code to execute
+# car_sales.to_csv()
+
+car_sales_columns = car_sales.columns
+car_sales_index = car_sales.index
+car_sales.describe()
+car_sales.info()
+car_sales.mean()
+car_prices = pd.Series([3000, 1500, 111250])
+car_prices.mean()
+car_sales.sum()
+car_sales["Doors"].sum()
+len(car_sales)
 ```
 
 **[⬆ back to top](#table-of-contents)**
