@@ -35,6 +35,7 @@
   - [**Section 6: Pandas: Data Analysis**](#section-6-pandas-data-analysis)
     - [Pandas Introduction](#pandas-introduction)
     - [Series, Data Frames and CSVs](#series-data-frames-and-csvs)
+    - [Data from URLs](#data-from-urls)
   - [**Section 7: NumPy**](#section-7-numpy)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
@@ -541,6 +542,15 @@
 ```
   - `conda install openpyxl xlrd` cannot work -> ModuleNotFoundError
   - `pip3 install openpyxl xlrd` work
+
+**[⬆ back to top](#table-of-contents)**
+
+### Data from URLs
+
+```python
+heart_disease = pd.read_csv("data/heart-disease.csv")
+heart_disease = pd.read_csv("https://raw.githubusercontent.com/mrdbourke/zero-to-mastery-ml/master/data/heart-disease.csv")
+```
 
 **[⬆ back to top](#table-of-contents)**
 
