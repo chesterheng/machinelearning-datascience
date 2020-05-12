@@ -33,6 +33,7 @@
     - [Sharing your Conda Environment](#sharing-your-conda-environment)
     - [Jupyter Notebook Walkthrough](#jupyter-notebook-walkthrough)
   - [**Section 6: Pandas: Data Analysis**](#section-6-pandas-data-analysis)
+    - [Pandas Introduction](#pandas-introduction)
   - [**Section 7: NumPy**](#section-7-numpy)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
@@ -494,6 +495,27 @@
 **[⬆ back to top](#table-of-contents)**
 
 ## **Section 6: Pandas: Data Analysis**
+
+### Pandas Introduction
+
+- Why pandas?
+  - Simple to use
+  - Integrated with many other data science & ML Python Tools
+  - Helps you get your data ready for machine learning
+- [What are we going to cover?](https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html)
+  - Most useful functions
+  - pandas Datatypes
+  - Importing & exporting data
+  - Describing data
+  - Viewing & Selecting data
+  - Manipulating data
+- Where can you get help?
+  - Follow along with the code
+  - Try it for yourself
+  - Search for it - stackoverflow, [pandas documentation](https://pandas.pydata.org/pandas-docs/stable/)
+  - Try again
+  - Ask
+- Let's code
 
 **[⬆ back to top](#table-of-contents)**
 
