@@ -34,6 +34,7 @@
     - [Jupyter Notebook Walkthrough](#jupyter-notebook-walkthrough)
   - [**Section 6: Pandas: Data Analysis**](#section-6-pandas-data-analysis)
     - [Pandas Introduction](#pandas-introduction)
+    - [Series, Data Frames and CSVs](#series-data-frames-and-csvs)
   - [**Section 7: NumPy**](#section-7-numpy)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
@@ -473,7 +474,9 @@
 
 - Install Jupyter: `conda install jupyter`
 - Run Jupyter Notebook: `jupyter notebook`
-- [sample-project](https://github.com/chesterheng/machine-learning-data-science/tree/master/sample-project)
+- Remove packages: `conda remove openpyxl xlrd`
+- List all packages: `conda list`
+- [sample-project](https://github.com/chesterheng/machinelearning-datascience/tree/master/sample-project)
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -486,7 +489,7 @@
 
 **[⬆ back to top](#table-of-contents)**
 
-### Jupyter Notebook Walkthrough
+### [Jupyter Notebook Walkthrough](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/example-notebook.ipynb)
 
 - Project Folder
 - Data -> Environment
@@ -516,6 +519,28 @@
   - Try again
   - Ask
 - Let's code
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Series, Data Frames and CSVs](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-pandas.ipynb)
+
+- 2 main datatypes
+  - series: 1-dimenional data (Column)
+  - DataFrame: 2-dimenional data (Table)
+- Import data and export to csv
+```python
+  car_sales = pd.read_csv("car-sales.csv")
+  car_sales.to_csv("exported-car-sales.csv", index=False)
+  export_car_sales = pd.read_csv("exported-car-sales.csv")
+```
+- Import data and export to excel
+```python
+  car_sales = pd.read_csv("car-sales.csv")
+  car_sales.to_excel("exported-car-sales.xlsx", index=False)
+  export_car_sales = pd.read_excel("exported-car-sales.xlsx")
+```
+  - `conda install openpyxl xlrd` cannot work -> ModuleNotFoundError
+  - `pip3 install openpyxl xlrd` work
 
 **[⬆ back to top](#table-of-contents)**
 
