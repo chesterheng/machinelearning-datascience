@@ -41,6 +41,7 @@
     - [Manipulating Data](#manipulating-data)
     - [Assignment: Pandas Practice](#assignment-pandas-practice)
   - [**Section 7: NumPy**](#section-7-numpy)
+    - [Section Overview](#section-overview)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
@@ -686,10 +687,17 @@ car_sales["Odometer (KM)"] = car_sales["Odometer (KM)"].apply(lambda x: x / 1.6)
 - [pandas documentation](https://pandas.pydata.org/pandas-docs/stable/)
 - [10 minutes to pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html)
 - [top questions and answers on Stack Overflow for pandas](https://stackoverflow.com/questions/tagged/pandas?sort=MostVotes&edited=true)
+- [Google Colab](https://colab.research.google.com)
 
 **[⬆ back to top](#table-of-contents)**
 
 ## **Section 7: NumPy**
+
+### Section Overview
+
+- Why NumPy?
+  - performance advantage as it is written in C under the hood
+  - convert data into 1 or 0 so machine can understand
 
 **[⬆ back to top](#table-of-contents)**
 
