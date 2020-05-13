@@ -39,6 +39,7 @@
     - [Describing Data with Pandas](#describing-data-with-pandas)
     - [Selecting and Viewing Data with Pandas](#selecting-and-viewing-data-with-pandas)
     - [Manipulating Data](#manipulating-data)
+    - [Assignment: Pandas Practice](#assignment-pandas-practice)
   - [**Section 7: NumPy**](#section-7-numpy)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
@@ -677,6 +678,14 @@ car_sales_shuffled.reset_index(drop=True, inplace=True)
 # apply lambda function to Odometer (KM) column
 car_sales["Odometer (KM)"] = car_sales["Odometer (KM)"].apply(lambda x: x / 1.6)
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Assignment: Pandas Practice
+
+- [pandas documentation](https://pandas.pydata.org/pandas-docs/stable/)
+- [10 minutes to pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html)
+- [top questions and answers on Stack Overflow for pandas](https://stackoverflow.com/questions/tagged/pandas?sort=MostVotes&edited=true)
 
 **[⬆ back to top](#table-of-contents)**
 
