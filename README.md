@@ -37,6 +37,7 @@
     - [Series, Data Frames and CSVs](#series-data-frames-and-csvs)
     - [Data from URLs](#data-from-urls)
     - [Describing Data with Pandas](#describing-data-with-pandas)
+    - [Selecting and Viewing Data with Pandas](#selecting-and-viewing-data-with-pandas)
   - [**Section 7: NumPy**](#section-7-numpy)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
@@ -574,6 +575,39 @@ car_prices.mean()
 car_sales.sum()
 car_sales["Doors"].sum()
 len(car_sales)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Selecting and Viewing Data with Pandas](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-pandas.ipynb)
+
+```python
+car_sales.head()
+car_sales.head(7)
+car_sales.tail()
+
+animals = pd.Series(["cat", "dog", "bird", "panda", "snake"], 
+                    index=[0, 3, 9, 8, 3])  
+animals.loc[3]  # loc refers to index
+animals.iloc[3] # iloc refers to position
+car_sales.loc[3]  # car_sales item has same position and index
+car_sales.iloc[3]
+
+animals.iloc[:3]  # 1st to 3rd positions, 4th is excluded
+car_sales.loc[:3] # index 0 to 3 (included)
+
+car_sales["Make"]
+car_sales.Make
+
+car_sales[car_sales["Make"] == "Toyota"]
+car_sales[car_sales["Odometer (KM)"] > 100000]
+pd.crosstab(car_sales["Make"], car_sales["Doors"])
+car_sales.groupby(["Make", "Colour"]).mean()
+
+car_sales["Odometer (KM)"].plot()
+car_sales["Odometer (KM)"].hist()
+car_sales["Price"].dtype
+car_sales["Price"] = car_sales["Price"].str.replace('[\$\,\.]','').astype(int)
 ```
 
 **[⬆ back to top](#table-of-contents)**
