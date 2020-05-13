@@ -38,6 +38,7 @@
     - [Data from URLs](#data-from-urls)
     - [Describing Data with Pandas](#describing-data-with-pandas)
     - [Selecting and Viewing Data with Pandas](#selecting-and-viewing-data-with-pandas)
+    - [Manipulating Data](#manipulating-data)
   - [**Section 7: NumPy**](#section-7-numpy)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
@@ -528,22 +529,33 @@
 ### [Series, Data Frames and CSVs](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-pandas.ipynb)
 
 - 2 main datatypes
-  - series: 1-dimenional data (Column)
-  - DataFrame: 2-dimenional data (Table)
+
+```python
+  # 1-dimenional data (Column)
+  series = pd.Series(["BMW", "Toyota", "Honda"])
+  colours = pd.Series(["Red", "Blue", "White"])
+  # DataFrame: 2-dimenional data (Table)
+  car_data = pd.DataFrame({ "Car make": series, "Colour": colours })
+```
+
 - Import data and export to csv
+
 ```python
   car_sales = pd.read_csv("car-sales.csv")
   car_sales.to_csv("exported-car-sales.csv", index=False)
   export_car_sales = pd.read_csv("exported-car-sales.csv")
 ```
+
 - Import data and export to excel
+
 ```python
   car_sales = pd.read_csv("car-sales.csv")
   car_sales.to_excel("exported-car-sales.xlsx", index=False)
   export_car_sales = pd.read_excel("exported-car-sales.xlsx")
 ```
-  - `conda install openpyxl xlrd` cannot work -> ModuleNotFoundError
-  - `pip3 install openpyxl xlrd` work
+
+- `conda install openpyxl xlrd` cannot work -> ModuleNotFoundError
+- `pip3 install openpyxl xlrd` work
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -565,10 +577,10 @@ car_sales.dtypes
 # Function - contain code to execute
 # car_sales.to_csv()
 
-car_sales_columns = car_sales.columns
-car_sales_index = car_sales.index
-car_sales.describe()
-car_sales.info()
+car_sales_columns = car_sales.columns # get all columns
+car_sales_index = car_sales.index # get index column
+car_sales.describe() # get count, mean, std, min, max, percentile
+car_sales.info() # get details of car_sales
 car_sales.mean()
 car_prices = pd.Series([3000, 1500, 111250])
 car_prices.mean()
@@ -582,12 +594,12 @@ len(car_sales)
 ### [Selecting and Viewing Data with Pandas](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-pandas.ipynb)
 
 ```python
-car_sales.head()
-car_sales.head(7)
-car_sales.tail()
+car_sales.head() # get top 5 rows of car_sales
+car_sales.head(7) # get top 7 rows of car_sales
+car_sales.tail() # get bottom 5 rows of car_sales
 
-animals = pd.Series(["cat", "dog", "bird", "panda", "snake"], 
-                    index=[0, 3, 9, 8, 3])  
+# index [0, 3, 9, 8, 3] => ["cat", "dog", "bird", "panda", "snake"]
+animals = pd.Series(["cat", "dog", "bird", "panda", "snake"], index=[0, 3, 9, 8, 3])
 animals.loc[3]  # loc refers to index
 animals.iloc[3] # iloc refers to position
 car_sales.loc[3]  # car_sales item has same position and index
@@ -596,18 +608,74 @@ car_sales.iloc[3]
 animals.iloc[:3]  # 1st to 3rd positions, 4th is excluded
 car_sales.loc[:3] # index 0 to 3 (included)
 
-car_sales["Make"]
-car_sales.Make
+car_sales["Make"] # get column Make method 1 - column name can be more than 2 words with space
+car_sales.Make  # get column Make method 2 - column name must be 1 word without space
 
-car_sales[car_sales["Make"] == "Toyota"]
-car_sales[car_sales["Odometer (KM)"] > 100000]
-pd.crosstab(car_sales["Make"], car_sales["Doors"])
-car_sales.groupby(["Make", "Colour"]).mean()
+car_sales[car_sales["Make"] == "Toyota"] # select rows with criteria - ["Make"] == "Toyota"
+car_sales[car_sales["Odometer (KM)"] > 100000] # select rows with criteria - ["Odometer (KM)"] > 100000
+pd.crosstab(car_sales["Make"], car_sales["Doors"]) # show the relationshop of "Make" and "Doors"
+car_sales.groupby(["Make", "Colour"]).mean() # group row by "Make", then "Colour"
 
-car_sales["Odometer (KM)"].plot()
-car_sales["Odometer (KM)"].hist()
-car_sales["Price"].dtype
+car_sales["Odometer (KM)"].plot() # plot a line graph
+car_sales["Odometer (KM)"].hist() # plot a histogram
+car_sales["Price"].dtype # check data type of "Price" column
+# convert "Price" column value to integer type
 car_sales["Price"] = car_sales["Price"].str.replace('[\$\,\.]','').astype(int)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Manipulating Data](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-pandas.ipynb)
+
+- [Data Manipulation with Pandas](https://jakevdp.github.io/PythonDataScienceHandbook/03.00-introduction-to-pandas.html)
+
+```python
+car_sales["Make"].str.lower()
+car_sales["Make"] = car_sales["Make"].str.lower()
+
+car_sales_missing = pd.read_csv("car-sales-missing-data.csv")
+odometer-mean = car_sales_missing["Odometer"].mean() # get the mean value of Odometer column
+
+car_sales_missing["Odometer"].fillna(odometer-mean) #   replace NaN with mean value
+# update car_sales_missing method 1 - inplace=True
+car_sales_missing["Odometer"].fillna(odometer-mean, inplace=True)
+# update car_sales_missing method 2 - assign new values to car_sales_missing["Odometer"]
+car_sales_missing["Odometer"] = car_sales_missing["Odometer"].fillna(car_sales_missing["Odometer"].mean())
+
+car_sales_missing.dropna(inplace=True)
+car_sales_missing_dropped = car_sales_missing.dropna()
+car_sales_missing_dropped.to_csv("car-sales-missing-dropped.csv")
+
+# Create a column from series
+seats_column = pd.Series([5, 5, 5, 5, 5])
+car_sales["Seats"] = seats_column
+car_sales["Seats"].fillna(5, inplace=True)
+
+# Create a column from Python list
+# list must have same length as exsiting data frame
+fuel_economy = [7.5, 9.2, 5.0, 9.6, 8.7, 4.7, 7.6, 8.7, 3.0, 4.5]
+car_sales["Fuel per 100KM"] = fuel_economy
+
+# Derived a column
+car_sales["Total fuel used (L)"] = car_sales["Odometer (KM)"] / 100 * car_sales["Fuel per 100KM"]
+car_sales["Total fuel used"] = car_sales["Odometer (KM)"] / 100 * car_sales["Fuel per 100KM"]
+
+# Create a column from a single value
+car_sales["Number of wheels"] = 4
+car_sales["Passed road safety"] = True
+
+# Delete a column
+# axis=1 - refer to column
+car_sales.drop("Total fuel used", axis=1, inplace=True)
+
+# get a sample data set - 20% of data
+car_sales_shuffled = car_sales.sample(frac=0.2)
+
+# reset index column to original value
+car_sales_shuffled.reset_index(drop=True, inplace=True)
+
+# apply lambda function to Odometer (KM) column
+car_sales["Odometer (KM)"] = car_sales["Odometer (KM)"].apply(lambda x: x / 1.6)
 ```
 
 **[⬆ back to top](#table-of-contents)**
