@@ -42,6 +42,7 @@
     - [Assignment: Pandas Practice](#assignment-pandas-practice)
   - [**Section 7: NumPy**](#section-7-numpy)
     - [Section Overview](#section-overview)
+    - [NumPy Introduction](#numpy-introduction)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
@@ -698,6 +699,39 @@ car_sales["Odometer (KM)"] = car_sales["Odometer (KM)"].apply(lambda x: x / 1.6)
 - Why NumPy?
   - performance advantage as it is written in C under the hood
   - convert data into 1 or 0 so machine can understand
+
+**[⬆ back to top](#table-of-contents)**
+
+### NumPy Introduction
+
+- Machine learning start with data. 
+  - Example: data frame
+  - Numpy turn data into a series of numbers
+  - A machine learning algorithm work out the patterns in those numbers
+- Why NumPy?
+  - It's fast
+  - Behind the scenes optimizations written in C
+  - [Vectorization via broadcasting (avoiding loops)](https://simpleprogrammer.com/vectorization-and-broadcasting/)
+    - vector is a 1D array
+    - matrix is a 2D array
+    - vectorization: perform math operations on 2 vectors
+    - broadcasting: extend an array to a shape that will allow it to successfully take part in a vectorized calculation
+  - Backbone of other Python scientific packages
+- What are we going to to cover?
+  - Most useful functaions
+  - NumPy datatypes & attributes (ndarray)
+  - Creating arrays
+  - Viewing arrays & matrices
+  - Manipulating & comparing arrays
+  - Sorting arrays
+  - Use cases
+- Where can you get help?
+  - Follow along with the code
+  - Try it for yourself
+  - Search for it - stackoverflow, [NumPy Documentation](https://numpy.org/doc/)
+  - Try again
+  - Ask
+- Let's code
 
 **[⬆ back to top](#table-of-contents)**
 
