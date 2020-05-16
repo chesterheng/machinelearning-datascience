@@ -51,6 +51,7 @@
     - [Standard Deviation and Variance](#standard-deviation-and-variance)
     - [Reshape and Transpose](#reshape-and-transpose)
     - [Dot Product vs Element Wise](#dot-product-vs-element-wise)
+    - [Exercise: Nut Butter Store Sales](#exercise-nut-butter-store-sales)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
@@ -912,6 +913,32 @@ mat1 * mat2
 
 mat1.shape, mat2.T.shape
 mat3 = np.dot(mat1, mat2.T)
+
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Exercise: Nut Butter Store Sales](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+
+```python
+np.random.seed(0)
+# Number of jars sold
+sales_amounts = np.random.randint(20, size=(5,3))
+# Create weekly_sales DataFrame
+weekly_sales = pd.DataFrame(sales_amounts,
+                            index=["Mon", "Tues", "Wed", "Thurs", "Fri"],
+                            columns=["Almond butter", "Peanut butter", "Cashew butter"])
+
+# Create prices array
+prices = np.array([10, 8, 12])
+# Create butter_prices DataFrame
+butter_prices = pd.DataFrame(prices.reshape(1, 3),
+                             index=["Price"],
+                             columns=["Almond butter", "Peanut butter", "Cashew butter"])
+
+total_sales = prices.dot(sales_amounts.T)
+daily_sales = butter_prices.dot(weekly_sales.T)
+weekly_sales["Total ($)"] = daily_sales.T
 
 ```
 
