@@ -50,6 +50,7 @@
     - [Manipulating Arrays](#manipulating-arrays)
     - [Standard Deviation and Variance](#standard-deviation-and-variance)
     - [Reshape and Transpose](#reshape-and-transpose)
+    - [Dot Product vs Element Wise](#dot-product-vs-element-wise)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
@@ -889,6 +890,28 @@ a2_reshape * a3
 
 a2.T  # Transpose - switches the axis
 a3.T.shape
+
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Dot Product vs Element Wise](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+
+- [Matrix Multiplication](http://matrixmultiplication.xyz/)
+
+```python
+import numpy as np
+
+np.random.seed(0)
+mat1 = np.random.randint(10, size=(5, 3))
+mat2 = np.random.randint(10, size=(5, 3))
+mat1.shape, mat2.shape
+
+# Element-wise multiplication, also known as Hadamard product
+mat1 * mat2
+
+mat1.shape, mat2.T.shape
+mat3 = np.dot(mat1, mat2.T)
 
 ```
 
