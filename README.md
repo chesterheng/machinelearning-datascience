@@ -53,6 +53,7 @@
     - [Dot Product vs Element Wise](#dot-product-vs-element-wise)
     - [Exercise: Nut Butter Store Sales](#exercise-nut-butter-store-sales)
     - [Comparison Operators](#comparison-operators)
+    - [Sorting Arrays](#sorting-arrays)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
@@ -944,7 +945,7 @@ weekly_sales["Total ($)"] = daily_sales.T
 
 **[⬆ back to top](#table-of-contents)**
 
-### Comparison Operators
+### [Comparison Operators](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
 
 ```python
 a1 > a2
@@ -958,6 +959,22 @@ a1 == a2
 ```
 
 **[⬆ back to top](#table-of-contents)**
+
+ ### [Sorting Arrays](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+
+ ```python
+random_array = np.random.randint(10, size=(3, 5))
+np.sort(random_array)
+np.argsort(random_array) # sort and shiw show index
+
+np.argmin(a1)
+np.argmax(a1)
+
+np.argmax(random_array, axis=0) # compare elements in a column
+np.argmax(random_array, axis=1) # compare elements in a row
+```
+
+ **[⬆ back to top](#table-of-contents)**
 
 ## **Section 8: Matplotlib: Plotting and Data Visualization**
 
