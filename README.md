@@ -49,6 +49,7 @@
     - [Viewing Arrays and Matrices](#viewing-arrays-and-matrices)
     - [Manipulating Arrays](#manipulating-arrays)
     - [Standard Deviation and Variance](#standard-deviation-and-variance)
+    - [Reshape and Transpose](#reshape-and-transpose)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
@@ -874,6 +875,21 @@ plt.show()
 
 plt.hist(low_var_array)
 plt.show()
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Reshape and Transpose](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+
+```python
+import numpy as np
+
+a2_reshape = a2.reshape((2, 3, 1))
+a2_reshape * a3
+
+a2.T  # Transpose - switches the axis
+a3.T.shape
+
 ```
 
 **[⬆ back to top](#table-of-contents)**
