@@ -44,6 +44,7 @@
     - [Section Overview](#section-overview)
     - [NumPy Introduction](#numpy-introduction)
     - [NumPy DataTypes and Attributes](#numpy-datatypes-and-attributes)
+    - [Creating NumPy Arrays](#creating-numpy-arrays)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
@@ -737,7 +738,7 @@ car_sales["Odometer (KM)"] = car_sales["Odometer (KM)"].apply(lambda x: x / 1.6)
 
 **[⬆ back to top](#table-of-contents)**
 
-### NumPy DataTypes and Attributes
+### [NumPy DataTypes and Attributes](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
 
 ```python
 import numpy as np
@@ -759,6 +760,22 @@ type(a1), type(a2), type(a3)
 
 import pandas as pd
 df = pd.DataFrame(a2)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Creating NumPy Arrays](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+
+```python
+import numpy as np
+
+sample_array = np.array([1, 2, 3])
+ones = np.ones((2, 3))
+zeros = np.zeros((2, 3))
+range_array = np.arange(0, 10, 2) # array([0, 2, 4, 6, 8])
+random_array = np.random.randint(0, 10, size=(3, 5))
+random_array_2 = np.random.random((5, 3))
+random_array_3 = np.random.rand(5, 3)
 ```
 
 **[⬆ back to top](#table-of-contents)**
