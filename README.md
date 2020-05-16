@@ -52,6 +52,7 @@
     - [Reshape and Transpose](#reshape-and-transpose)
     - [Dot Product vs Element Wise](#dot-product-vs-element-wise)
     - [Exercise: Nut Butter Store Sales](#exercise-nut-butter-store-sales)
+    - [Comparison Operators](#comparison-operators)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
@@ -939,7 +940,21 @@ butter_prices = pd.DataFrame(prices.reshape(1, 3),
 total_sales = prices.dot(sales_amounts.T)
 daily_sales = butter_prices.dot(weekly_sales.T)
 weekly_sales["Total ($)"] = daily_sales.T
+```
 
+**[⬆ back to top](#table-of-contents)**
+
+### Comparison Operators
+
+```python
+a1 > a2
+bool_array = a1 >= a2
+type(bool_array), bool_array.dtype
+
+a1 > 5
+a1 < 5
+a1 == a1
+a1 == a2
 ```
 
 **[⬆ back to top](#table-of-contents)**
