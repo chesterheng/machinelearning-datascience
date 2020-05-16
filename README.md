@@ -48,6 +48,7 @@
     - [NumPy Random Seed](#numpy-random-seed)
     - [Viewing Arrays and Matrices](#viewing-arrays-and-matrices)
     - [Manipulating Arrays](#manipulating-arrays)
+    - [Standard Deviation and Variance](#standard-deviation-and-variance)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
@@ -710,7 +711,7 @@ car_sales["Odometer (KM)"] = car_sales["Odometer (KM)"].apply(lambda x: x / 1.6)
 
 ### NumPy Introduction
 
-- Machine learning start with data. 
+- Machine learning start with data.
   - Example: data frame
   - Numpy turn data into a series of numbers
   - A machine learning algorithm work out the patterns in those numbers
@@ -747,7 +748,7 @@ car_sales["Odometer (KM)"] = car_sales["Odometer (KM)"].apply(lambda x: x / 1.6)
 import numpy as np
 
 a1 = np.array([1, 2, 3])
-a2 = np.array([[1, 2, 3.3], 
+a2 = np.array([[1, 2, 3.3],
                [4, 5, 6.5]])
 a3 = np.array([[[1, 2, 3],
                 [4, 5, 6],
@@ -839,6 +840,16 @@ massive_array = np.random.random(100000)
 np.mean(a2)
 np.max(a2)
 np.min(a2)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Standard Deviation and Variance](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+
+- [Standard Deviation and Variance](https://www.mathsisfun.com/data/standard-deviation.html)
+
+```python
+import numpy as np
 
 # Standard deviation
 # a measure of how spread out a group of numbers is from the mean
@@ -849,6 +860,20 @@ np.std(a2)
 # Lower variance = lower range of numbers
 np.var(a2)
 np.sqrt(np.var(a2)) # Standard deviation = squareroot of variance
+
+high_var_array = np.array([1, 100, 200, 300, 4000, 5000])
+low_var_array = np.array([2, 4, 6, 8, 10])
+np.var(high_var_array), np.var(low_var_array)
+np.std(high_var_array), np.std(low_var_array)
+np.mean(high_var_array), np.mean(low_var_array)
+
+%matplotlib inline
+import matplotlib.pyplot as plt
+plt.hist(high_var_array)
+plt.show()
+
+plt.hist(low_var_array)
+plt.show()
 ```
 
 **[⬆ back to top](#table-of-contents)**
