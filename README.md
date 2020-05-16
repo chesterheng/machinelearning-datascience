@@ -47,6 +47,7 @@
     - [Creating NumPy Arrays](#creating-numpy-arrays)
     - [NumPy Random Seed](#numpy-random-seed)
     - [Viewing Arrays and Matrices](#viewing-arrays-and-matrices)
+    - [Manipulating Arrays](#manipulating-arrays)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
@@ -807,6 +808,47 @@ a3[:2, :2, :2]
 
 a4 = np.random.randint(10, size=(2, 3, 4, 5))
 a4[:, :, :, :4] # Get the first 4 numbers of the inner most arrays
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Manipulating Arrays](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+
+```python
+import numpy as np
+
+# Arithmetic
+ones = np.ones(3)
+a1 + ones
+a1 - ones
+a1 * ones
+a1 / ones
+a2 // a1  # Floor division removes the decimals (rounds down)
+a2 ** 2
+np.square(a2)
+np.add(a1, ones)
+a1 % 2
+np.exp(a1)
+np.log(a1)
+
+# Aggregation
+massive_array = np.random.random(100000)
+%timeit sum(massive_array) # Measure Python's sum () execution time
+%timeit np.sum(massive_array) # Measure NumPy's sum () execution time
+
+np.mean(a2)
+np.max(a2)
+np.min(a2)
+
+# Standard deviation
+# a measure of how spread out a group of numbers is from the mean
+np.std(a2)
+
+# measure of the average degree to which each number is different
+# Higher variance = wider range of numbers
+# Lower variance = lower range of numbers
+np.var(a2)
+np.sqrt(np.var(a2)) # Standard deviation = squareroot of variance
 ```
 
 **[⬆ back to top](#table-of-contents)**
