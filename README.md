@@ -55,6 +55,7 @@
     - [Comparison Operators](#comparison-operators)
     - [Sorting Arrays](#sorting-arrays)
     - [Turn Images Into NumPy Arrays](#turn-images-into-numpy-arrays)
+    - [Optional: Extra NumPy resources](#optional-extra-numpy-resources)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
@@ -985,6 +986,13 @@ panda = imread("numpy-panda.png")
 panda.size, panda.shape, panda.ndim
 panda[:5]
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Optional: Extra NumPy resources
+- [The Basics of NumPy Arrays](https://jakevdp.github.io/PythonDataScienceHandbook/02.02-the-basics-of-numpy-arrays.html)
+- [A Visual Intro to NumPy and Data Representation](http://jalammar.github.io/visual-numpy/)
+- [NumPy Quickstart tutorial](https://numpy.org/doc/1.17/user/quickstart.html)
 
 **[⬆ back to top](#table-of-contents)**
 
