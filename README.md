@@ -45,6 +45,7 @@
     - [NumPy Introduction](#numpy-introduction)
     - [NumPy DataTypes and Attributes](#numpy-datatypes-and-attributes)
     - [Creating NumPy Arrays](#creating-numpy-arrays)
+    - [NumPy Random Seed](#numpy-random-seed)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
@@ -776,6 +777,19 @@ range_array = np.arange(0, 10, 2) # array([0, 2, 4, 6, 8])
 random_array = np.random.randint(0, 10, size=(3, 5))
 random_array_2 = np.random.random((5, 3))
 random_array_3 = np.random.rand(5, 3)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [NumPy Random Seed](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+
+```python
+import numpy as np
+np.random.seed(seed=0) # define a seed for random number
+random_array_4 = np.random.randint(10, size=(5, 3))
+
+np.random.seed(7)
+random_array_5 = np.random.random((5, 3))
 ```
 
 **[⬆ back to top](#table-of-contents)**
