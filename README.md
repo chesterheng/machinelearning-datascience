@@ -57,6 +57,7 @@
     - [Turn Images Into NumPy Arrays](#turn-images-into-numpy-arrays)
     - [Optional: Extra NumPy resources](#optional-extra-numpy-resources)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
+    - [Matplotlib Introduction](#matplotlib-introduction)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
@@ -962,7 +963,7 @@ a1 == a2
 
 **[⬆ back to top](#table-of-contents)**
 
- ### [Sorting Arrays](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+### [Sorting Arrays](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
 
 ```python
 random_array = np.random.randint(10, size=(3, 5))
@@ -990,6 +991,7 @@ panda[:5]
 **[⬆ back to top](#table-of-contents)**
 
 ### Optional: Extra NumPy resources
+
 - [The Basics of NumPy Arrays](https://jakevdp.github.io/PythonDataScienceHandbook/02.02-the-basics-of-numpy-arrays.html)
 - [A Visual Intro to NumPy and Data Representation](http://jalammar.github.io/visual-numpy/)
 - [NumPy Quickstart tutorial](https://numpy.org/doc/1.17/user/quickstart.html)
@@ -997,6 +999,27 @@ panda[:5]
 **[⬆ back to top](#table-of-contents)**
 
 ## **Section 8: Matplotlib: Plotting and Data Visualization**
+
+### [Matplotlib](https://matplotlib.org/3.1.1/contents.html) Introduction
+
+- What is Matplotlib
+  - Python ploting library
+  - Turn date into visualisation
+- Why Matplotlib?
+  - BUilt on NumPy arrays (and Python)
+  - Integrates directly with pandas
+  - Can create basic or advanced plots
+  - Simple to use interface (once you get the foundations)
+- What are we going to cover?
+  - A Matplotlib workflow
+    - Create data
+    - Create plot (figure)
+    - Plot data (axes on figure)
+    - Customise plot
+    - Save/share plot
+  - Importing Matplotlib and the 2 ways of plotting Plotting data - from NumPy arrays
+  - Plotting data from pandas DataFrames Customizing plots
+  - Saving and sharing plots
 
 **[⬆ back to top](#table-of-contents)**
 
