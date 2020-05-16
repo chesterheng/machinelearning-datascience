@@ -54,6 +54,7 @@
     - [Exercise: Nut Butter Store Sales](#exercise-nut-butter-store-sales)
     - [Comparison Operators](#comparison-operators)
     - [Sorting Arrays](#sorting-arrays)
+    - [Turn Images Into NumPy Arrays](#turn-images-into-numpy-arrays)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
@@ -962,7 +963,7 @@ a1 == a2
 
  ### [Sorting Arrays](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
 
- ```python
+```python
 random_array = np.random.randint(10, size=(3, 5))
 np.sort(random_array)
 np.argsort(random_array) # sort and shiw show index
@@ -974,7 +975,18 @@ np.argmax(random_array, axis=0) # compare elements in a column
 np.argmax(random_array, axis=1) # compare elements in a row
 ```
 
- **[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#table-of-contents)**
+
+### [Turn Images Into NumPy Arrays](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+
+```python
+from matplotlib.image import imread
+panda = imread("numpy-panda.png")
+panda.size, panda.shape, panda.ndim
+panda[:5]
+```
+
+**[⬆ back to top](#table-of-contents)**
 
 ## **Section 8: Matplotlib: Plotting and Data Visualization**
 
