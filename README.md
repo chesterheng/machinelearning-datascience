@@ -43,6 +43,7 @@
   - [**Section 7: NumPy**](#section-7-numpy)
     - [Section Overview](#section-overview)
     - [NumPy Introduction](#numpy-introduction)
+    - [NumPy DataTypes and Attributes](#numpy-datatypes-and-attributes)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
@@ -699,6 +700,7 @@ car_sales["Odometer (KM)"] = car_sales["Odometer (KM)"].apply(lambda x: x / 1.6)
 - Why NumPy?
   - performance advantage as it is written in C under the hood
   - convert data into 1 or 0 so machine can understand
+- [What is the difference between NumPy and Pandas?](https://www.quora.com/What-is-the-difference-between-NumPy-and-Pandas)
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -732,6 +734,32 @@ car_sales["Odometer (KM)"] = car_sales["Odometer (KM)"].apply(lambda x: x / 1.6)
   - Try again
   - Ask
 - Let's code
+
+**[⬆ back to top](#table-of-contents)**
+
+### NumPy DataTypes and Attributes
+
+```python
+import numpy as np
+
+a1 = np.array([1, 2, 3])
+a2 = np.array([[1, 2, 3.3], 
+               [4, 5, 6.5]])
+a3 = np.array([[[1, 2, 3],
+                [4, 5, 6],
+                [7, 8, 9]],
+                [[10, 11, 12],
+                 [13, 14, 15],
+                 [16, 17, 18]]])
+a1.shape, a2.shape, a3.shape
+a1.ndim, a2.ndim, a3.ndim
+a1.dtype, a2.dtype, a3.dtype
+a1.size, a2.size, a3.size
+type(a1), type(a2), type(a3)
+
+import pandas as pd
+df = pd.DataFrame(a2)
+```
 
 **[⬆ back to top](#table-of-contents)**
 
