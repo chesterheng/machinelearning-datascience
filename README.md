@@ -80,6 +80,7 @@
     - [Choosing The Right Model For Your Data](#choosing-the-right-model-for-your-data)
     - [Choosing The Right Model For Your Data 2 (Regression)](#choosing-the-right-model-for-your-data-2-regression)
     - [Choosing The Right Model For Your Data 3 (Classification)](#choosing-the-right-model-for-your-data-3-classification)
+    - [Fitting A Model To The Data](#fitting-a-model-to-the-data)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -1493,6 +1494,8 @@ fig.suptitle('Heart Disease Analysis', fontsize=16, fontweight='bold');
 - An end-to-end Scikit-Learn workflow
   - Getting the data ready -> `heart-disease.csv`
   - Choose the right estimator/algorithm for our problems -> [Random Forest Classifier](https://www.youtube.com/watch?v=eM4uJ6XGnSM)
+    - [Random Forests in Python](http://blog.yhat.com/posts/random-forests-in-python.html)
+    - [An Implementation and Explanation of the Random Forest in Python](https://towardsdatascience.com/an-implementation-and-explanation-of-the-random-forest-in-python-77bf308a9b76)
   - Fit the model/algorithm and use it to make predictions on our data
   - Evaluating a model
     - [Understanding a Classification Report For Your Machine Learning Model](https://medium.com/@kohlishivam5522/understanding-a-classification-report-for-your-machine-learning-model-88815e2ce397)
@@ -1593,6 +1596,8 @@ sklearn.show_versions()
 Three main things we have to do:
 
 - Split the data into features and labels (usually X & y)
+  - Different names for X = features, features variables, data
+  - Different names for y = labels, targets, target variables
 - Converting non-numerical values to numerical values (also called feature encoding)
   - or one hot encoding
 - Filling (also called imputing) or disregarding missing values
@@ -1896,6 +1901,34 @@ clf = RandomForestClassifier(n_estimators=100)
 clf.fit(X_train, y_train)
 
 # Evaluate the Random Forest Classifier
+clf.score(X_test, y_test)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Fitting A Model To The Data](sample-project/introduction-to-matplotlib.ipynb)
+
+```python
+# Import the RandomForestClassifier estimator class
+from sklearn.ensemble import RandomForestClassifier
+
+# Setup random seed
+np.random.seed(42)
+
+# Make the data
+X = heart_disease.drop("target", axis=1)
+y = heart_disease["target"]
+
+# Split the data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Instantiate Random Forest Classifier
+clf = RandomForestClassifier(n_estimators=100)
+
+# Fit the model to the data (training the machine learning model)
+clf.fit(X_train, y_train)
+
+# Evaluate the Random Forest Classifier (use the patterns the model has learned)
 clf.score(X_test, y_test)
 ```
 
