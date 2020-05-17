@@ -67,6 +67,7 @@
     - [Plotting From Pandas DataFrames](#plotting-from-pandas-dataframes)
     - [Customizing Your Plots](#customizing-your-plots)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
+    - [Scikit-learn Introduction](#scikit-learn-introduction)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -1433,6 +1434,34 @@ fig.suptitle('Heart Disease Analysis', fontsize=16, fontweight='bold');
 **[⬆ back to top](#table-of-contents)**
 
 ## **Section 9: Scikit-learn: Creating Machine Learning Models**
+
+### [Scikit-learn](https://scikit-learn.org/stable/user_guide.html) Introduction
+
+- What is Scikit-Learn (sklearn)?
+  - Scikit-Learn is a python machine learning library
+  - Data -> Scikit-Learn -> machine learning model
+  - machine learning model learn patterns in the data
+  - machine learning model make prediction
+- Why Scikit-Learn?
+  - Built on NumPy and Matplotlib (and Python)
+  - Has many in-built machine learning models
+  - Methods to evaluate your machine learning models
+  - Very well-designed API
+- What are we going to cover? An end-to-end Scikit-Learn workflow
+  - Get data ready (to be used with machine learning models) 
+  - Pick a machine learning model(to suit your problem)
+  - Fit a model to the data (learning patterns)
+  - Make predictions with a model (using patterns)
+  - Evaluate the model predictions
+  - Improving model predictions through experimentation
+  - Saving and loading models
+- Where can you get help?
+  - Follow along with the code
+  - Try it for yourself
+  - Press SHIFT + TAB to read the docstring
+  - Search for it
+  - Try again
+  - Ask
 
 **[⬆ back to top](#table-of-contents)**
 
