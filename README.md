@@ -75,6 +75,7 @@
     - [Quick Tip: Clean, Transform, Reduce](#quick-tip-clean-transform-reduce)
     - [Getting Your Data Ready: Convert Data To Numbers](#getting-your-data-ready-convert-data-to-numbers)
     - [Getting Your Data Ready: Handling Missing Values With Pandas](#getting-your-data-ready-handling-missing-values-with-pandas)
+    - [Extension: Feature Scaling](#extension-feature-scaling)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -1687,6 +1688,25 @@ car_sales_missing.dropna(inplace=True)
 car_sales_missing.isna().sum()
 len(car_sales_missing)
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Extension: Feature Scaling
+
+- [Feature Scaling- Why it is required?](https://medium.com/@rahul77349/feature-scaling-why-it-is-required-8a93df1af310)
+- [Feature Scaling with scikit-learn](https://benalexkeen.com/feature-scaling-with-scikit-learn/)
+- [Feature Scaling for Machine Learning: Understanding the Difference Between Normalization vs. Standardization](https://www.analyticsvidhya.com/blog/2020/04/feature-scaling-machine-learning-normalization-standardization/)
+- Make sure all of your numerical data is on the same scale
+- Normalization: rescales all the numerical values to between 0 and 1
+  - [MinMaxScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)
+- Standardization: z = (x - u) / s
+  - z: standard score of a sample x
+  - x: sample x
+  - u: mean of the training samples
+  - s: standard deviation of the training samples
+  - [StandardScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)
+  - Feature scaling usually isn't required for your target variable
+  - Feature scaling is usually not required with tree-based models (e.g. Random Forest) since they can handle varying features
 
 **[⬆ back to top](#table-of-contents)**
 
