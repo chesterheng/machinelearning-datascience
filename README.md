@@ -74,6 +74,7 @@
     - [Getting Your Data Ready: Splitting Your Data](#getting-your-data-ready-splitting-your-data)
     - [Quick Tip: Clean, Transform, Reduce](#quick-tip-clean-transform-reduce)
     - [Getting Your Data Ready: Convert Data To Numbers](#getting-your-data-ready-convert-data-to-numbers)
+    - [Getting Your Data Ready: Handling Missing Values With Pandas](#getting-your-data-ready-handling-missing-values-with-pandas)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -1623,7 +1624,7 @@ Cannot assume all data you have is automatically going to be perfect
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Getting Your Data Ready: Convert Data To Numbers](sample-project/introduction-to-matplotlib.ipynb)
+### Getting Your Data Ready: [Convert Data To Numbers](sample-project/introduction-to-matplotlib.ipynb)
 
 ```python
 car_sales = pd.read_csv("data/car-sales-extended.csv")
@@ -1651,18 +1652,40 @@ one_hot = OneHotEncoder()
 # Applies transformers to columns of an array or pandas DataFrame
 transformer = ColumnTransformer([("one_hot", one_hot, categorical_features)], remainder="passthrough")
 transformed_X = transformer.fit_transform(X)
+pd.DataFrame(transformed_X)
+```
 
-# Let's try to refit the model
-np.random.seed(42)
+**[⬆ back to top](#table-of-contents)**
 
-# Split into training and test
-X_train, X_test, y_train, y_test = train_test_split(transformed_X, y, test_size=0.2)
+### Getting Your Data Ready: [Handling Missing Values With Pandas](sample-project/introduction-to-matplotlib.ipynb)
 
-# Build machine learning model
-from sklearn.ensemble import RandomForestRegressor
-model = RandomForestRegressor(n_estimators=100)
-model.fit(X_train, y_train)
-model.score(X_test, y_test)
+```python
+car_sales_missing = pd.read_csv("data/car-sales-extended-missing-data.csv")
+car_sales_missing.head()
+
+# show number of column with missing value
+car_sales_missing.isna().sum()
+
+car_sales_missing["Doors"].value_counts()
+
+# Fill the "Make" column
+car_sales_missing["Make"].fillna("missing", inplace=True)
+
+# Fill the "Colour" column
+car_sales_missing["Colour"].fillna("missing", inplace=True)
+
+# Fill the "Odometer (KM)" column. Filled with mean values
+car_sales_missing["Odometer (KM)"].fillna(car_sales_missing["Odometer (KM)"].mean(), inplace=True)
+
+# Fill the "Doors" column. Most cars have 4 doors
+car_sales_missing["Doors"].fillna(4, inplace=True)
+
+# Remove rows with missing Price value
+car_sales_missing.dropna(inplace=True)
+
+# show number of column with missing value
+car_sales_missing.isna().sum()
+len(car_sales_missing)
 ```
 
 **[⬆ back to top](#table-of-contents)**
