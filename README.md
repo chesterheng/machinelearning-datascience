@@ -83,6 +83,7 @@
     - [Fitting A Model To The Data](#fitting-a-model-to-the-data)
     - [Making Predictions With Our Model](#making-predictions-with-our-model)
     - [predict() vs predict_proba()](#predict-vs-predictproba)
+    - [Making Predictions With Our Model (Regression)](#making-predictions-with-our-model-regression)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -1954,10 +1955,43 @@ accuracy_score(y_test, y_preds)
 ### [predict() vs predict_proba()](sample-project/introduction-to-matplotlib.ipynb)
 
 ```python
-# predict_proba() returns probabilities of a classification label 
+# predict_proba() returns probabilities of a classification label
 clf.predict_proba(X_test[:5]) # [% for 0, % for 1]
 
 heart_disease["target"].value_counts()
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Making Predictions With Our Model (Regression)](sample-project/introduction-to-matplotlib.ipynb)
+
+- predict() can also be used for regression models
+
+```python
+np.random.seed(42)
+
+# Create the data
+X = boston_df.drop("target", axis=1)
+y = boston_df["target"]
+
+# Split into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Instantiate and fit model
+model = RandomForestRegressor(n_estimators=100).fit(X_train, y_train)
+
+# Make predictions
+y_preds = model.predict(X_test)
+
+y_preds[:10]
+np.array(y_test[:10])
+# Compare the predictions to the truth
+from sklearn.metrics import mean_absolute_error
+mean_absolute_error(y_test, y_preds)
+
+# y_preds = y_test +/- mean_absolute_error
+# y_preds = 24 +/- 2.12
+# y_preds = 22 to 26
 ```
 
 **[⬆ back to top](#table-of-contents)**
