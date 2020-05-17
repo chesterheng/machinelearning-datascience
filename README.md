@@ -65,6 +65,7 @@
     - [Histograms](#histograms)
     - [Subplots](#subplots)
     - [Plotting From Pandas DataFrames](#plotting-from-pandas-dataframes)
+    - [Customizing Your Plots](#customizing-your-plots)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
@@ -1038,6 +1039,24 @@ panda[:5]
   - Plotting data from pandas DataFrames Customizing plots
   - Saving and sharing plots
 
+```python
+# Potential function
+def plotting_workflow(data):
+
+  # 1. Manipulate data
+
+  # 2. Create plot
+
+  # 3. Plot data
+
+  # 4. Customize plot
+
+  # 5. Save plot
+
+  # 6. Return plot
+  return plot
+```
+
 **[⬆ back to top](#table-of-contents)**
 
 ### [Importing And Using Matplotlib](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-matplotlib.ipynb)
@@ -1322,6 +1341,88 @@ ax1.legend(*scatter.legend_elements(), title="Target")
 # Setup a mean line
 ax1.axhline(y=over_50["thalach"].mean(), 
             color='b', 
+            linestyle='--', 
+            label="Average")
+
+# Title the figure
+fig.suptitle('Heart Disease Analysis', fontsize=16, fontweight='bold');
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Customizing Your Plots](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-matplotlib.ipynb)
+
+[Choosing Colormaps in Matplotlib](https://matplotlib.org/3.1.1/tutorials/colors/colormaps.html#sphx-glr-tutorials-colors-colormaps-py)
+
+```python
+plt.style.available
+plt.style.use('seaborn-whitegrid')
+
+# Create the plot
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Plot the data
+scatter = ax.scatter(over_50["age"], 
+                     over_50["chol"], 
+                     c=over_50["target"],
+                     cmap="winter") # this changes the color scheme
+
+# Customize the plot
+ax.set(title="Heart Disease and Cholesterol Levels",
+       xlabel="Age",
+       ylabel="Cholesterol");
+
+# Add a legend
+ax.legend(*scatter.legend_elements(), title="Target");
+
+# Add a horizontal line
+ax.axhline(over_50["chol"].mean(), linestyle="--");
+```
+
+```python
+# Customizing the y and x axis limitations
+
+# Setup plot (2 rows, 1 column)
+fig, (ax0, ax1) = plt.subplots(nrows=2, # 2 rows
+                               ncols=1, 
+                               sharex=True, 
+                               figsize=(10, 8))
+
+# Add data for ax0
+scatter = ax0.scatter(x=over_50["age"], 
+                      y=over_50["chol"], 
+                      c=over_50["target"],
+                      cmap="winter") # this changes the color scheme
+# Customize ax0
+ax0.set(title="Heart Disease and Cholesterol Levels",
+#         xlabel="Age",
+        ylabel="Cholesterol")
+ax0.set_xlim([50, 80])  # change the x axis limit
+ax0.legend(*scatter.legend_elements(), title="Target")
+
+# Setup a mean line
+ax0.axhline(y=over_50["chol"].mean(), 
+            color='r', 
+            linestyle='--', 
+            label="Average")
+
+# Add data for ax1
+scatter = ax1.scatter(over_50["age"], 
+                      over_50["thalach"], 
+                      c=over_50["target"],
+                      cmap="winter") # this changes the color scheme
+
+# Customize ax1
+ax1.set(title="Heart Disease and Max Heart Rate Levels",
+        xlabel="Age",
+        ylabel="Max Heart Rate")
+ax1.set_xlim([50, 80])  # change the x axis limit
+ax1.set_ylim([60, 200]) # change the y axis limit
+ax1.legend(*scatter.legend_elements(), title="Target")
+
+# Setup a mean line
+ax1.axhline(y=over_50["thalach"].mean(), 
+            color='r', 
             linestyle='--', 
             label="Average")
 
