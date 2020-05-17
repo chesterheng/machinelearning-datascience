@@ -59,6 +59,7 @@
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
     - [Matplotlib Introduction](#matplotlib-introduction)
     - [Importing And Using Matplotlib](#importing-and-using-matplotlib)
+    - [Anatomy Of A Matplotlib Figure](#anatomy-of-a-matplotlib-figure)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
@@ -1029,7 +1030,6 @@ panda[:5]
 - [Effectively Using Matplotlib](https://pbpython.com/effective-matplotlib.html)
 - [Pyplot tutorial](https://matplotlib.org/3.2.1/tutorials/introductory/pyplot.html)
 - [The Lifecycle of a Plot](https://matplotlib.org/3.2.1/tutorials/introductory/lifecycle.html)
-- [Anatomy of a figure](https://matplotlib.org/examples/showcase/anatomy.html)
 
 ```python
 %matplotlib inline
@@ -1066,6 +1066,34 @@ plt.show()
 # 3rd method (recommended)
 fig, ax = plt.subplots()
 ax.plot(x, y); # add some data
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Anatomy Of A Matplotlib Figure](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-matplotlib.ipynb)
+
+- [Anatomy of a figure](https://matplotlib.org/examples/showcase/anatomy.html)
+
+```python
+# 0. import matplotlib and get it ready for plotting in Jupyter
+%matplotlib inline
+import matplotlib.pyplot as plt
+
+# 1. Prepare data
+x = [1, 2, 3, 4]
+y = [11, 22, 33, 44]
+
+# 2. Setup plot
+fig, ax = plt.subplots(figsize=(10,10))
+
+# 3. Plot data
+ax.plot(x, y)
+
+# 4. Customize plot
+ax.set(title="Sample Simple Plot", xlabel="x-axis", ylabel="y-axis")
+
+# 5. Save & show
+fig.savefig("images/simple-plot.png")
 ```
 
 **[⬆ back to top](#table-of-contents)**
