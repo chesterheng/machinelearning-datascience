@@ -82,6 +82,7 @@
     - [Choosing The Right Model For Your Data 3 (Classification)](#choosing-the-right-model-for-your-data-3-classification)
     - [Fitting A Model To The Data](#fitting-a-model-to-the-data)
     - [Making Predictions With Our Model](#making-predictions-with-our-model)
+    - [predict() vs predict_proba()](#predict-vs-predictproba)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -1946,6 +1947,17 @@ clf.score(X_test, y_test)
 
 from sklearn.metrics import accuracy_score
 accuracy_score(y_test, y_preds)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [predict() vs predict_proba()](sample-project/introduction-to-matplotlib.ipynb)
+
+```python
+# predict_proba() returns probabilities of a classification label 
+clf.predict_proba(X_test[:5]) # [% for 0, % for 1]
+
+heart_disease["target"].value_counts()
 ```
 
 **[⬆ back to top](#table-of-contents)**
