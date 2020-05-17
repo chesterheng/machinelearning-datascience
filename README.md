@@ -81,6 +81,7 @@
     - [Choosing The Right Model For Your Data 2 (Regression)](#choosing-the-right-model-for-your-data-2-regression)
     - [Choosing The Right Model For Your Data 3 (Classification)](#choosing-the-right-model-for-your-data-3-classification)
     - [Fitting A Model To The Data](#fitting-a-model-to-the-data)
+    - [Making Predictions With Our Model](#making-predictions-with-our-model)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -1930,6 +1931,21 @@ clf.fit(X_train, y_train)
 
 # Evaluate the Random Forest Classifier (use the patterns the model has learned)
 clf.score(X_test, y_test)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Making Predictions With Our Model](sample-project/introduction-to-matplotlib.ipynb)
+
+```python
+# Compare predictions to truth labels to evaluate the model
+y_preds = clf.predict(X_test)
+np.mean(y_preds == y_test)
+
+clf.score(X_test, y_test)
+
+from sklearn.metrics import accuracy_score
+accuracy_score(y_test, y_preds)
 ```
 
 **[⬆ back to top](#table-of-contents)**
