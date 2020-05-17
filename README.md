@@ -69,6 +69,7 @@
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
     - [Scikit-learn Introduction](#scikit-learn-introduction)
     - [Refresher: What Is Machine Learning?](#refresher-what-is-machine-learning)
+    - [Typical scikit-learn Workflow](#typical-scikit-learn-workflow)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -492,7 +493,7 @@
 - Resources
   - [Getting Started Anaconda, Miniconda and Conda](https://whimsical.com/BD751gt65nKjAD5i1CNEXU)
   - [Miniconda installers](https://docs.conda.io/en/latest/miniconda.html) - Choose latest pkg version
-- Create conda environment: goto [sample-project](https://github.com/chesterheng/machine-learning-data-science/tree/master/sample-project) folder
+- Create conda environment: goto [sample-project](https://github.com/chesterheng/machine-learning-data-science/tree/sample-project) folder
   - `conda create --prefix ./env pandas numpy matplotlib scikit-learn`
 - Activate conda environment: `conda activate /Users/xxx/Desktop/sample-project/env`
 - List Conda environments: `conda env list`
@@ -507,7 +508,7 @@
 - Run Jupyter Notebook: `jupyter notebook`
 - Remove packages: `conda remove openpyxl xlrd`
 - List all packages: `conda list`
-- [sample-project](https://github.com/chesterheng/machinelearning-datascience/tree/master/sample-project)
+- [sample-project](https://github.com/chesterheng/machinelearning-datascience/tree/sample-project)
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -520,7 +521,7 @@
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Jupyter Notebook Walkthrough](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/example-notebook.ipynb)
+### [Jupyter Notebook Walkthrough](sample-project/example-notebook.ipynb)
 
 - Project Folder
 - Data -> Environment
@@ -553,7 +554,7 @@
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Series, Data Frames and CSVs](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-pandas.ipynb)
+### [Series, Data Frames and CSVs](sample-project/introduction-to-pandas.ipynb)
 
 - 2 main datatypes
 
@@ -590,12 +591,12 @@
 
 ```python
 heart_disease = pd.read_csv("data/heart-disease.csv")
-heart_disease = pd.read_csv("https://raw.githubusercontent.com/mrdbourke/zero-to-mastery-ml/master/data/heart-disease.csv")
+heart_disease = pd.read_csv("https://raw.githubusercontent.com/mrdbourke/zero-to-mastery-ml/data/heart-disease.csv")
 ```
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Describing Data with Pandas](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-pandas.ipynb)
+### [Describing Data with Pandas](sample-project/introduction-to-pandas.ipynb)
 
 ```python
 # Attribute - information
@@ -618,7 +619,7 @@ len(car_sales)
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Selecting and Viewing Data with Pandas](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-pandas.ipynb)
+### [Selecting and Viewing Data with Pandas](sample-project/introduction-to-pandas.ipynb)
 
 ```python
 car_sales.head() # get top 5 rows of car_sales
@@ -652,7 +653,7 @@ car_sales["Price"] = car_sales["Price"].str.replace('[\$\,\.]','').astype(int)
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Manipulating Data](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-pandas.ipynb)
+### [Manipulating Data](sample-project/introduction-to-pandas.ipynb)
 
 - [Data Manipulation with Pandas](https://jakevdp.github.io/PythonDataScienceHandbook/03.00-introduction-to-pandas.html)
 
@@ -760,7 +761,7 @@ car_sales["Odometer (KM)"] = car_sales["Odometer (KM)"].apply(lambda x: x / 1.6)
 
 **[⬆ back to top](#table-of-contents)**
 
-### [NumPy DataTypes and Attributes](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+### [NumPy DataTypes and Attributes](sample-project/introduction-to-numpy.ipynb)
 
 ```python
 import numpy as np
@@ -786,7 +787,7 @@ df = pd.DataFrame(a2)
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Creating NumPy Arrays](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+### [Creating NumPy Arrays](sample-project/introduction-to-numpy.ipynb)
 
 ```python
 import numpy as np
@@ -802,7 +803,7 @@ random_array_3 = np.random.rand(5, 3)
 
 **[⬆ back to top](#table-of-contents)**
 
-### [NumPy Random Seed](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+### [NumPy Random Seed](sample-project/introduction-to-numpy.ipynb)
 
 ```python
 import numpy as np
@@ -816,7 +817,7 @@ random_array_5 = np.random.random((5, 3))
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Viewing Arrays and Matrices](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+### [Viewing Arrays and Matrices](sample-project/introduction-to-numpy.ipynb)
 
 ```python
 import numpy as np
@@ -831,7 +832,7 @@ a4[:, :, :, :4] # Get the first 4 numbers of the inner most arrays
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Manipulating Arrays](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+### [Manipulating Arrays](sample-project/introduction-to-numpy.ipynb)
 
 ```python
 import numpy as np
@@ -862,7 +863,7 @@ np.min(a2)
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Standard Deviation and Variance](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+### [Standard Deviation and Variance](sample-project/introduction-to-numpy.ipynb)
 
 - [Standard Deviation and Variance](https://www.mathsisfun.com/data/standard-deviation.html)
 - [Outlier Detection Methods](https://docs.oracle.com/cd/E17236_01/epm.1112/cb_statistical/frameset.htm?ch07s02s10s01.html)
@@ -899,7 +900,7 @@ plt.show()
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Reshape and Transpose](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+### [Reshape and Transpose](sample-project/introduction-to-numpy.ipynb)
 
 ```python
 import numpy as np
@@ -914,7 +915,7 @@ a3.T.shape
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Dot Product vs Element Wise](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+### [Dot Product vs Element Wise](sample-project/introduction-to-numpy.ipynb)
 
 - [Matrix Multiplication](http://matrixmultiplication.xyz/)
 
@@ -936,7 +937,7 @@ mat3 = np.dot(mat1, mat2.T)
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Exercise: Nut Butter Store Sales](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+### [Exercise: Nut Butter Store Sales](sample-project/introduction-to-numpy.ipynb)
 
 ```python
 np.random.seed(0)
@@ -961,7 +962,7 @@ weekly_sales["Total ($)"] = daily_sales.T
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Comparison Operators](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+### [Comparison Operators](sample-project/introduction-to-numpy.ipynb)
 
 ```python
 a1 > a2
@@ -976,7 +977,7 @@ a1 == a2
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Sorting Arrays](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+### [Sorting Arrays](sample-project/introduction-to-numpy.ipynb)
 
 ```python
 random_array = np.random.randint(10, size=(3, 5))
@@ -992,7 +993,7 @@ np.argmax(random_array, axis=1) # compare elements in a row
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Turn Images Into NumPy Arrays](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
+### [Turn Images Into NumPy Arrays](sample-project/introduction-to-numpy.ipynb)
 
 ```python
 from matplotlib.image import imread
@@ -1061,7 +1062,7 @@ def plotting_workflow(data):
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Importing And Using Matplotlib](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-matplotlib.ipynb)
+### [Importing And Using Matplotlib](sample-project/introduction-to-matplotlib.ipynb)
 
 - Which one should you use? (pyplpt vs matplotlib OO method?)
   - When plotting something quickly, okay to use pyplot method
@@ -1109,7 +1110,7 @@ ax.plot(x, y); # add some data
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Anatomy Of A Matplotlib Figure](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-matplotlib.ipynb)
+### [Anatomy Of A Matplotlib Figure](sample-project/introduction-to-matplotlib.ipynb)
 
 - [Anatomy of a figure](https://matplotlib.org/examples/showcase/anatomy.html)
 
@@ -1137,7 +1138,7 @@ fig.savefig("images/simple-plot.png")
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Scatter Plot And Bar Plot](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-matplotlib.ipynb)
+### [Scatter Plot And Bar Plot](sample-project/introduction-to-matplotlib.ipynb)
 
 - [A quick review of Numpy and Matplotlib](https://towardsdatascience.com/a-quick-review-of-numpy-and-matplotlib-48f455db383)
 
@@ -1168,7 +1169,7 @@ ax.barh(list(nut_butter_prices.keys()), list(nut_butter_prices.values()));
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Histograms](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-matplotlib.ipynb)
+### [Histograms](sample-project/introduction-to-matplotlib.ipynb)
 
 ```python
 # Make a Histogram plot
@@ -1183,7 +1184,7 @@ ax.hist(x);
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Subplots](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-matplotlib.ipynb)
+### [Subplots](sample-project/introduction-to-matplotlib.ipynb)
 
 ```python
 # Subplots Option 1: Create multiple subplots
@@ -1207,7 +1208,7 @@ ax[1, 1].hist(np.random.randn(1000));
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Plotting From Pandas DataFrames](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-matplotlib.ipynb)
+### [Plotting From Pandas DataFrames](sample-project/introduction-to-matplotlib.ipynb)
 
 - Which one should you use? (pyplpt vs matplotlib OO method?)
   - When plotting something quickly, okay to use pyplot method
@@ -1352,7 +1353,7 @@ fig.suptitle('Heart Disease Analysis', fontsize=16, fontweight='bold');
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Customizing Your Plots](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-matplotlib.ipynb)
+### [Customizing Your Plots](sample-project/introduction-to-matplotlib.ipynb)
 
 [Choosing Colormaps in Matplotlib](https://matplotlib.org/3.1.1/tutorials/colors/colormaps.html#sphx-glr-tutorials-colors-colormaps-py)
 
@@ -1448,7 +1449,7 @@ fig.suptitle('Heart Disease Analysis', fontsize=16, fontweight='bold');
   - Has many in-built machine learning models
   - Methods to evaluate your machine learning models
   - Very well-designed API
-- [What are we going to cover?](https://github.com/mrdbourke/zero-to-mastery-ml/blob/master/section-2-data-science-and-ml-tools/scikit-learn-what-were-covering.ipynb) An end-to-end Scikit-Learn workflow
+- [What are we going to cover?](https://github.com/mrdbourke/zero-to-mastery-ml/blob/section-2-data-science-and-ml-tools/scikit-learn-what-were-covering.ipynb) An end-to-end Scikit-Learn workflow
   - Get data ready (to be used with machine learning models) 
   - [Pick a machine learning model](https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html) (to suit your problem)
   - Fit a model to the data (learning patterns)
@@ -1474,6 +1475,86 @@ fig.suptitle('Heart Disease Analysis', fontsize=16, fontweight='bold');
   - a computer writing his own function
   - also know as model, alogrithm, bot
   - machine is the brain
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Typical scikit-learn Workflow](sample-project/introduction-to-matplotlib.ipynb)
+
+- An end-to-end Scikit-Learn workflow
+  - Getting the data ready -> `heart-disease.csv`
+  - Choose the right estimator/algorithm for our problems -> [Random Forest Classifier](https://www.youtube.com/watch?v=eM4uJ6XGnSM)
+  - Fit the model/algorithm and use it to make predictions on our data
+  - Evaluating a model
+    - [Understanding a Classification Report For Your Machine Learning Model](https://medium.com/@kohlishivam5522/understanding-a-classification-report-for-your-machine-learning-model-88815e2ce397)
+  - Improve a model
+  - Save and load a trained model
+  - Putting it all together!
+
+```python
+import numpy as np
+
+# 1. Get the data ready
+import pandas as pd
+heart_disease = pd.read_csv("data/heart-disease.csv")
+
+# Create X (features matrix) choose from age to thal
+X = heart_disease.drop("target", axis=1)
+
+# Create y (labels)
+y = heart_disease["target"] # 0: no heart disease, 1: got heart disease
+
+# 2. Choose the right model and hyperparameters
+from sklearn.ensemble import RandomForestClassifier
+clf = RandomForestClassifier(n_estimators=100)
+
+# We'll keep the default hyperparameters
+clf.get_params()
+
+# 3. Fit the model to the training data
+from sklearn.model_selection import train_test_split
+
+# test_size=0.2, 80% of data for training and 20% for testing
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Build a forest of trees from the training set (X, y)
+clf.fit(X_train, y_train);
+
+# make a prediction
+y_preds = clf.predict(np.array(X_test))
+
+# 4. Evaluate the model on the training data and test data
+
+# Returns the mean accuracy on the given test data and labels
+clf.score(X_train, y_train)
+clf.score(X_test, y_test)
+
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+
+print(classification_report(y_test, y_preds))
+
+# Compute confusion matrix to evaluate the accuracy of a classification
+confusion_matrix(y_test, y_preds)
+
+# Accuracy classification score
+accuracy_score(y_test, y_preds)
+
+# 5. Improve a model
+# Try different amount of n_estimators
+np.random.seed(42)
+for i in range(10, 100, 10):
+    print(f"Trying model with {i} estimators...")
+    clf = RandomForestClassifier(n_estimators=i).fit(X_train, y_train)
+    print(f"Model accuracy on test set: {clf.score(X_test, y_test) * 100:.2f}%")
+    print("")
+
+# 6. Save a model and load it
+import pickle # Python object serialization
+
+pickle.dump(clf, open("random_forst_model_1.pkl", "wb")) # write binary
+
+loaded_model = pickle.load(open("random_forst_model_1.pkl", "rb")) # read binary
+loaded_model.score(X_test, y_test)
+```
 
 **[⬆ back to top](#table-of-contents)**
 
