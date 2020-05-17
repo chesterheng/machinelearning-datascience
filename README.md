@@ -84,6 +84,7 @@
     - [Making Predictions With Our Model](#making-predictions-with-our-model)
     - [predict() vs predict_proba()](#predict-vs-predictproba)
     - [Making Predictions With Our Model (Regression)](#making-predictions-with-our-model-regression)
+    - [Evaluating A Machine Learning Model (Score)](#evaluating-a-machine-learning-model-score)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -1992,6 +1993,19 @@ mean_absolute_error(y_test, y_preds)
 # y_preds = y_test +/- mean_absolute_error
 # y_preds = 24 +/- 2.12
 # y_preds = 22 to 26
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Evaluating A Machine Learning Model (Score)](sample-project/introduction-to-matplotlib.ipynb)
+
+Three ways to evaluate Scikit-Learn models/esitmators:
+- Estimator score method
+- The scoring parameter
+- Problem-specific metric functions.
+
+```python
+model.score(X_test, y_test)
 ```
 
 **[⬆ back to top](#table-of-contents)**
