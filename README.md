@@ -73,6 +73,7 @@
     - [Optional: Debugging Warnings In Jupyter](#optional-debugging-warnings-in-jupyter)
     - [Getting Your Data Ready: Splitting Your Data](#getting-your-data-ready-splitting-your-data)
     - [Quick Tip: Clean, Transform, Reduce](#quick-tip-clean-transform-reduce)
+    - [Getting Your Data Ready: Convert Data To Numbers](#getting-your-data-ready-convert-data-to-numbers)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -1585,8 +1586,9 @@ sklearn.show_versions()
 
 Three main things we have to do:
 - Split the data into features and labels (usually X & y)
-- Filling (also called imputing) or disregarding missing values
 - Converting non-numerical values to numerical values (also called feature encoding)
+  - or one hot encoding
+- Filling (also called imputing) or disregarding missing values
 
 ```python
 # Split the data into features and labels (usually X & y)
@@ -1618,6 +1620,50 @@ Cannot assume all data you have is automatically going to be perfect
 - Reduce Data: Same result on less data
 - Reduce Data: Dimensionality reduction or column reduction
 - Reduce Data: Remove irrelevant columns
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Getting Your Data Ready: Convert Data To Numbers](sample-project/introduction-to-matplotlib.ipynb)
+
+```python
+car_sales = pd.read_csv("data/car-sales-extended.csv")
+car_sales.head()
+# treat Doors as categorical
+car_sales["Doors"].value_counts()
+len(car_sales)
+car_sales.dtypes
+
+# Split into X/y
+X = car_sales.drop("Price", axis=1)
+y = car_sales["Price"]
+
+# show one hot encoding
+dummies = pd.get_dummies(car_sales[["Make", "Colour", "Doors"]])
+
+# Turn the categories into numbers with one hot encoding
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import ColumnTransformer
+
+# Encode categorical integer features as a one-hot numeric array
+categorical_features = ["Make", "Colour", "Doors"]
+one_hot = OneHotEncoder()
+
+# Applies transformers to columns of an array or pandas DataFrame
+transformer = ColumnTransformer([("one_hot", one_hot, categorical_features)], remainder="passthrough")
+transformed_X = transformer.fit_transform(X)
+
+# Let's try to refit the model
+np.random.seed(42)
+
+# Split into training and test
+X_train, X_test, y_train, y_test = train_test_split(transformed_X, y, test_size=0.2)
+
+# Build machine learning model
+from sklearn.ensemble import RandomForestRegressor
+model = RandomForestRegressor(n_estimators=100)
+model.fit(X_train, y_train)
+model.score(X_test, y_test)
+```
 
 **[⬆ back to top](#table-of-contents)**
 
