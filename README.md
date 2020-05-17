@@ -79,6 +79,7 @@
     - [Getting Your Data Ready: Handling Missing Values With Scikit-learn](#getting-your-data-ready-handling-missing-values-with-scikit-learn)
     - [Choosing The Right Model For Your Data](#choosing-the-right-model-for-your-data)
     - [Choosing The Right Model For Your Data 2 (Regression)](#choosing-the-right-model-for-your-data-2-regression)
+    - [Choosing The Right Model For Your Data 3 (Classification)](#choosing-the-right-model-for-your-data-3-classification)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -1775,10 +1776,10 @@ car_sales_filled_test = pd.DataFrame(filled_X_test,
 ### [Choosing The Right Model For Your Data](sample-project/introduction-to-matplotlib.ipynb)
 
 Scikit-Learn uses estimator as another term for machine learning model or algorithm
+
 - [Choosing the right estimator](https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html)
 - Regression - predicting a number
 - Classification - predicting whether a sample is one thing or another
-
 
 ```python
 # Import Boston housing dataset
@@ -1840,6 +1841,62 @@ rf.score(X_test, y_test)
 
 # Check the Ridge model again
 model.score(X_test, y_test)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Choosing The Right Model For Your Data 3 (Classification)](sample-project/introduction-to-matplotlib.ipynb)
+
+Tidbit:
+
+- If you have structured data (heart_disease), used ensemble methods
+- If you have unstructured data (image, audio), use deep learning or transfer learning
+
+```python
+heart_disease = pd.read_csv("data/heart-disease.csv")
+len(heart_disease)
+
+# Import the LinearSVC estimator class
+from sklearn.svm import LinearSVC
+
+# Setup random seed
+np.random.seed(42)
+
+# Make the data
+X = heart_disease.drop("target", axis=1)
+y = heart_disease["target"]
+
+# Split the data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Instantiate LinearSVC
+clf = LinearSVC(max_iter=10000)
+clf.fit(X_train, y_train)
+
+# Evaluate the LinearSVC
+clf.score(X_test, y_test)
+
+heart_disease["target"].value_counts()
+
+# Import the RandomForestClassifier estimator class
+from sklearn.ensemble import RandomForestClassifier
+
+# Setup random seed
+np.random.seed(42)
+
+# Make the data
+X = heart_disease.drop("target", axis=1)
+y = heart_disease["target"]
+
+# Split the data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Instantiate Random Forest Classifier
+clf = RandomForestClassifier(n_estimators=100)
+clf.fit(X_train, y_train)
+
+# Evaluate the Random Forest Classifier
+clf.score(X_test, y_test)
 ```
 
 **[⬆ back to top](#table-of-contents)**
