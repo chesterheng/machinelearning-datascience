@@ -77,6 +77,7 @@
     - [Getting Your Data Ready: Handling Missing Values With Pandas](#getting-your-data-ready-handling-missing-values-with-pandas)
     - [Extension: Feature Scaling](#extension-feature-scaling)
     - [Getting Your Data Ready: Handling Missing Values With Scikit-learn](#getting-your-data-ready-handling-missing-values-with-scikit-learn)
+    - [Choosing The Right Model For Your Data](#choosing-the-right-model-for-your-data)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -874,7 +875,7 @@ np.min(a2)
 
 - [Standard Deviation and Variance](https://www.mathsisfun.com/data/standard-deviation.html)
 - [Outlier Detection Methods](https://docs.oracle.com/cd/E17236_01/epm.1112/cb_statistical/frameset.htm?ch07s02s10s01.html)
-  - If a value is a certain number of standard deviations away from the mean, that data point is identified as an outlier. 
+  - If a value is a certain number of standard deviations away from the mean, that data point is identified as an outlier.
   - The specified number of standard deviations is called the threshold. The default value is 3.
 
 ```python
@@ -1096,7 +1097,7 @@ y = [11, 22, 33, 44]
 plt.plot(x, y)
 
 # Object-Oriented (OO) interface
-# utilize an instance of axes.Axes in order to 
+# utilize an instance of axes.Axes in order to
 # render visualizations on an instance of figure.Figure
 
 # 1st method
@@ -1195,8 +1196,8 @@ ax.hist(x);
 
 ```python
 # Subplots Option 1: Create multiple subplots
-fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(nrows=2, 
-                                             ncols=2, 
+fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(nrows=2,
+                                             ncols=2,
                                              figsize=(10, 5))
 # Plot data to each different axis
 ax1.plot(x, x/2);
@@ -1250,7 +1251,7 @@ car_sales["Total Sales"] = car_sales["Price"].astype(int).cumsum()
 car_sales.plot(x="Sale Date", y="Total Sales");
 car_sales["Price"] = car_sales["Price"].astype(int) # Reassign price column to int
 
-# Plot scatter plot with price column as numeric 
+# Plot scatter plot with price column as numeric
 car_sales.plot(x="Odometer (KM)", y="Price", kind="scatter");
 
 # How aboute a bar graph?
@@ -1277,18 +1278,18 @@ heart_disease.plot.hist(figsize=(10, 30), subplots=True);
 over_50 = heart_disease[heart_disease["age"] > 50]
 # Pyplot method
 # c: change colur of plot base on target value [0, 1]
-over_50.plot(kind='scatter', 
-             x='age', 
-             y='chol', 
-             c='target', 
+over_50.plot(kind='scatter',
+             x='age',
+             y='chol',
+             c='target',
              figsize=(10, 6));
 
 # OO method
 fig, ax = plt.subplots(figsize=(10, 6))
-over_50.plot(kind='scatter', 
-             x="age", 
-             y="chol", 
-             c='target', 
+over_50.plot(kind='scatter',
+             x="age",
+             y="chol",
+             c='target',
              ax=ax);
 ax.set_xlim([45, 100]);
 over_50.target.values
@@ -1300,8 +1301,8 @@ over_50.target.unique()
 fig, ax = plt.subplots(figsize=(10, 6))
 
 # Plot the data
-scatter = ax.scatter(over_50["age"], 
-                     over_50["chol"], 
+scatter = ax.scatter(over_50["age"],
+                     over_50["chol"],
                      c=over_50["target"])
 
 # Customize the plot
@@ -1317,13 +1318,13 @@ ax.axhline(over_50["chol"].mean(), linestyle="--");
 
 # Setup plot (2 rows, 1 column)
 fig, (ax0, ax1) = plt.subplots(nrows=2, # 2 rows
-                               ncols=1, 
-                               sharex=True, 
+                               ncols=1,
+                               sharex=True,
                                figsize=(10, 8))
 
 # Add data for ax0
-scatter = ax0.scatter(x=over_50["age"], 
-                      y=over_50["chol"], 
+scatter = ax0.scatter(x=over_50["age"],
+                      y=over_50["chol"],
                       c=over_50["target"])
 # Customize ax0
 ax0.set(title="Heart Disease and Cholesterol Levels",
@@ -1332,14 +1333,14 @@ ax0.set(title="Heart Disease and Cholesterol Levels",
 ax0.legend(*scatter.legend_elements(), title="Target")
 
 # Setup a mean line
-ax0.axhline(y=over_50["chol"].mean(), 
-            color='b', 
-            linestyle='--', 
+ax0.axhline(y=over_50["chol"].mean(),
+            color='b',
+            linestyle='--',
             label="Average")
 
 # Add data for ax1
-scatter = ax1.scatter(over_50["age"], 
-                      over_50["thalach"], 
+scatter = ax1.scatter(over_50["age"],
+                      over_50["thalach"],
                       c=over_50["target"])
 
 # Customize ax1
@@ -1349,9 +1350,9 @@ ax1.set(title="Heart Disease and Max Heart Rate Levels",
 ax1.legend(*scatter.legend_elements(), title="Target")
 
 # Setup a mean line
-ax1.axhline(y=over_50["thalach"].mean(), 
-            color='b', 
-            linestyle='--', 
+ax1.axhline(y=over_50["thalach"].mean(),
+            color='b',
+            linestyle='--',
             label="Average")
 
 # Title the figure
@@ -1372,8 +1373,8 @@ plt.style.use('seaborn-whitegrid')
 fig, ax = plt.subplots(figsize=(10, 6))
 
 # Plot the data
-scatter = ax.scatter(over_50["age"], 
-                     over_50["chol"], 
+scatter = ax.scatter(over_50["age"],
+                     over_50["chol"],
                      c=over_50["target"],
                      cmap="winter") # this changes the color scheme
 
@@ -1394,13 +1395,13 @@ ax.axhline(over_50["chol"].mean(), linestyle="--");
 
 # Setup plot (2 rows, 1 column)
 fig, (ax0, ax1) = plt.subplots(nrows=2, # 2 rows
-                               ncols=1, 
-                               sharex=True, 
+                               ncols=1,
+                               sharex=True,
                                figsize=(10, 8))
 
 # Add data for ax0
-scatter = ax0.scatter(x=over_50["age"], 
-                      y=over_50["chol"], 
+scatter = ax0.scatter(x=over_50["age"],
+                      y=over_50["chol"],
                       c=over_50["target"],
                       cmap="winter") # this changes the color scheme
 # Customize ax0
@@ -1411,14 +1412,14 @@ ax0.set_xlim([50, 80])  # change the x axis limit
 ax0.legend(*scatter.legend_elements(), title="Target")
 
 # Setup a mean line
-ax0.axhline(y=over_50["chol"].mean(), 
-            color='r', 
-            linestyle='--', 
+ax0.axhline(y=over_50["chol"].mean(),
+            color='r',
+            linestyle='--',
             label="Average")
 
 # Add data for ax1
-scatter = ax1.scatter(over_50["age"], 
-                      over_50["thalach"], 
+scatter = ax1.scatter(over_50["age"],
+                      over_50["thalach"],
                       c=over_50["target"],
                       cmap="winter") # this changes the color scheme
 
@@ -1431,9 +1432,9 @@ ax1.set_ylim([60, 200]) # change the y axis limit
 ax1.legend(*scatter.legend_elements(), title="Target")
 
 # Setup a mean line
-ax1.axhline(y=over_50["thalach"].mean(), 
-            color='r', 
-            linestyle='--', 
+ax1.axhline(y=over_50["thalach"].mean(),
+            color='r',
+            linestyle='--',
             label="Average")
 
 # Title the figure
@@ -1457,7 +1458,7 @@ fig.suptitle('Heart Disease Analysis', fontsize=16, fontweight='bold');
   - Methods to evaluate your machine learning models
   - Very well-designed API
 - [What are we going to cover?](https://github.com/mrdbourke/zero-to-mastery-ml/blob/section-2-data-science-and-ml-tools/scikit-learn-what-were-covering.ipynb) An end-to-end Scikit-Learn workflow
-  - Get data ready (to be used with machine learning models) 
+  - Get data ready (to be used with machine learning models)
   - [Pick a machine learning model](https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html) (to suit your problem)
   - Fit a model to the data (learning patterns)
   - Make predictions with a model (using patterns)
@@ -1512,10 +1513,10 @@ y = heart_disease["target"] # 0: no heart disease, 1: got heart disease
 
 # 2. Choose the right model and hyperparameters
 from sklearn.ensemble import RandomForestClassifier
-clf = RandomForestClassifier(n_estimators=100)
+model = RandomForestClassifier(n_estimators=100)
 
 # We'll keep the default hyperparameters
-clf.get_params()
+model.get_params()
 
 # 3. Fit the model to the training data
 from sklearn.model_selection import train_test_split
@@ -1524,16 +1525,16 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
 # Build a forest of trees from the training set (X, y)
-clf.fit(X_train, y_train);
+model.fit(X_train, y_train);
 
 # make a prediction
-y_preds = clf.predict(np.array(X_test))
+y_preds = model.predict(np.array(X_test))
 
 # 4. Evaluate the model on the training data and test data
 
 # Returns the mean accuracy on the given test data and labels
-clf.score(X_train, y_train)
-clf.score(X_test, y_test)
+model.score(X_train, y_train)
+model.score(X_test, y_test)
 
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 
@@ -1588,6 +1589,7 @@ sklearn.show_versions()
 ### [Getting Your Data Ready: Splitting Your Data](sample-project/introduction-to-matplotlib.ipynb)
 
 Three main things we have to do:
+
 - Split the data into features and labels (usually X & y)
 - Converting non-numerical values to numerical values (also called feature encoding)
   - or one hot encoding
@@ -1608,8 +1610,9 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 ### Quick Tip: Clean, Transform, Reduce
 
 Cannot assume all data you have is automatically going to be perfect
+
 - Clean Data -> Transform data -> Reduce Data
-- Clean Data: Remove a row or a column that's empty or has missing fields 
+- Clean Data: Remove a row or a column that's empty or has missing fields
 - Clean Data: Calculate average to fill an empty cell
 - Clean Data: Remove outliers in your data
 - Transform data: Convert some of our information into numbers
@@ -1714,6 +1717,7 @@ len(car_sales_missing)
 ### Getting Your Data Ready: [Handling Missing Values With Scikit-learn](sample-project/introduction-to-matplotlib.ipynb)
 
 The main takeaways:
+
 - Split your data first (into train/test)
 - Fill/transform the training set and test sets separately
 
@@ -1759,10 +1763,53 @@ filled_X_train = imputer.fit_transform(X_train)
 filled_X_test = imputer.transform(X_test)
 
 # Get our transformed data array's back into DataFrame's
-car_sales_filled_train = pd.DataFrame(filled_X_train, 
+car_sales_filled_train = pd.DataFrame(filled_X_train,
                                       columns=["Make", "Colour", "Doors", "Odometer (KM)"])
-car_sales_filled_test = pd.DataFrame(filled_X_test, 
+car_sales_filled_test = pd.DataFrame(filled_X_test,
                                      columns=["Make", "Colour", "Doors", "Odometer (KM)"])
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Choosing The Right Model For Your Data
+
+Scikit-Learn uses estimator as another term for machine learning model or algorithm.
+
+- Classification - predicting whether a sample is one thing or another
+- Regression - predicting a number
+- [Choosing the right estimator](https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html)
+
+```python
+# Import Boston housing dataset
+from sklearn.datasets import load_boston
+boston = load_boston()
+
+# convert dataset into pandas dataframe
+boston_df = pd.DataFrame(boston["data"], columns=boston["feature_names"])
+boston_df["target"] = pd.Series(boston["target"])
+
+# How many samples?
+len(boston_df)
+
+# Let's try the Ridge Regression model
+from sklearn.linear_model import Ridge
+
+# Setup random seed
+np.random.seed(42)
+
+# Create the data
+X = boston_df.drop("target", axis=1)
+y = boston_df["target"]
+
+# Split into train and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Instantiate Ridge model
+model = Ridge()
+model.fit(X_train, y_train)
+
+# Check the score of the Ridge model on test data
+model.score(X_test, y_test)
 ```
 
 **[⬆ back to top](#table-of-contents)**
