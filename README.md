@@ -72,6 +72,7 @@
     - [Typical scikit-learn Workflow](#typical-scikit-learn-workflow)
     - [Optional: Debugging Warnings In Jupyter](#optional-debugging-warnings-in-jupyter)
     - [Getting Your Data Ready: Splitting Your Data](#getting-your-data-ready-splitting-your-data)
+    - [Quick Tip: Clean, Transform, Reduce](#quick-tip-clean-transform-reduce)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -1573,16 +1574,14 @@ import sklearn
 sklearn.show_versions()
 ```
 
-`conda list scikit-learn`
-`conda list python`
-`conda remove package`
-`conda install scikit-learn=0.22`
+- `conda list scikit-learn`
+- `conda list python`
+- `conda remove package`
+- `conda install scikit-learn=0.22`
 
 **[⬆ back to top](#table-of-contents)**
 
-### Getting Your Data Ready: Splitting Your Data
-
-- Getting our data ready to be used with machine learning
+### [Getting Your Data Ready: Splitting Your Data](sample-project/introduction-to-matplotlib.ipynb)
 
 Three main things we have to do:
 - Split the data into features and labels (usually X & y)
@@ -1598,6 +1597,27 @@ y = heart_disease["target"]
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Quick Tip: Clean, Transform, Reduce
+
+Cannot assume all data you have is automatically going to be perfect
+- Clean Data -> Transform data -> Reduce Data
+- Clean Data: Remove a row or a column that's empty or has missing fields 
+- Clean Data: Calculate average to fill an empty cell
+- Clean Data: Remove outliers in your data
+- Transform data: Convert some of our information into numbers
+- Transform data: Convert color into numbers
+- Transform data is between zeros and ones
+  - 0: No heart disease
+  - 1: Heart disease
+- Transform data: Data across the board uses the same units
+- Reduce Data: More data more CPU
+- Reduce Data: More energy it takes for us to run our computation
+- Reduce Data: Same result on less data
+- Reduce Data: Dimensionality reduction or column reduction
+- Reduce Data: Remove irrelevant columns
 
 **[⬆ back to top](#table-of-contents)**
 
