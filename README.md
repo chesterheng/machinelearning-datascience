@@ -70,6 +70,7 @@
     - [Scikit-learn Introduction](#scikit-learn-introduction)
     - [Refresher: What Is Machine Learning?](#refresher-what-is-machine-learning)
     - [Typical scikit-learn Workflow](#typical-scikit-learn-workflow)
+    - [Optional: Debugging Warnings In Jupyter](#optional-debugging-warnings-in-jupyter)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -1555,6 +1556,26 @@ pickle.dump(clf, open("random_forst_model_1.pkl", "wb")) # write binary
 loaded_model = pickle.load(open("random_forst_model_1.pkl", "rb")) # read binary
 loaded_model.score(X_test, y_test)
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Optional: Debugging Warnings In Jupyter
+
+- [Updating packages](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-pkgs.html#updating-packages)
+
+```python
+import warnings
+warnings.filterwarnings("default")
+warnings.filterwarnings("ignore")
+
+import sklearn
+sklearn.show_versions()
+```
+
+`conda list scikit-learn`
+`conda list python`
+`conda remove package`
+`conda install scikit-learn=0.22`
 
 **[⬆ back to top](#table-of-contents)**
 
