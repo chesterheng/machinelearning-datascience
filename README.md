@@ -58,6 +58,7 @@
     - [Optional: Extra NumPy resources](#optional-extra-numpy-resources)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
     - [Matplotlib Introduction](#matplotlib-introduction)
+    - [Importing And Using Matplotlib](#importing-and-using-matplotlib)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
@@ -1020,6 +1021,52 @@ panda[:5]
   - Importing Matplotlib and the 2 ways of plotting Plotting data - from NumPy arrays
   - Plotting data from pandas DataFrames Customizing plots
   - Saving and sharing plots
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Importing And Using Matplotlib](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-matplotlib.ipynb)
+
+- [Effectively Using Matplotlib](https://pbpython.com/effective-matplotlib.html)
+- [Pyplot tutorial](https://matplotlib.org/3.2.1/tutorials/introductory/pyplot.html)
+- [The Lifecycle of a Plot](https://matplotlib.org/3.2.1/tutorials/introductory/lifecycle.html)
+- [Anatomy of a figure](https://matplotlib.org/examples/showcase/anatomy.html)
+
+```python
+%matplotlib inline
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+
+# Pyplot interface
+# based on MATLAB and uses a state-based interface
+plt.plot()
+plt.plot(); #add ; to remove []
+plt.plot()
+plt.show()
+plt.plot([1, 2, 3, 4]) # assume x = [0, 1, 2, 3]
+x = [1, 2, 3, 4]
+y = [11, 22, 33, 44]
+plt.plot(x, y)
+
+# Object-Oriented (OO) interface
+# utilize an instance of axes.Axes in order to 
+# render visualizations on an instance of figure.Figure
+
+# 1st method
+fig = plt.figure() # creates a figure
+ax = fig.add_subplot() # adds some axes
+plt.show()
+
+# 2nd method
+fig = plt.figure() # creates a figure
+ax = fig.add_axes([1, 1, 1, 1])
+ax.plot(x, y) # add some data
+plt.show()
+
+# 3rd method (recommended)
+fig, ax = plt.subplots()
+ax.plot(x, y); # add some data
+```
 
 **[⬆ back to top](#table-of-contents)**
 
