@@ -71,6 +71,7 @@
     - [Refresher: What Is Machine Learning?](#refresher-what-is-machine-learning)
     - [Typical scikit-learn Workflow](#typical-scikit-learn-workflow)
     - [Optional: Debugging Warnings In Jupyter](#optional-debugging-warnings-in-jupyter)
+    - [Getting Your Data Ready: Splitting Your Data](#getting-your-data-ready-splitting-your-data)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -1576,6 +1577,27 @@ sklearn.show_versions()
 `conda list python`
 `conda remove package`
 `conda install scikit-learn=0.22`
+
+**[⬆ back to top](#table-of-contents)**
+
+### Getting Your Data Ready: Splitting Your Data
+
+- Getting our data ready to be used with machine learning
+
+Three main things we have to do:
+- Split the data into features and labels (usually X & y)
+- Filling (also called imputing) or disregarding missing values
+- Converting non-numerical values to numerical values (also called feature encoding)
+
+```python
+# Split the data into features and labels (usually X & y)
+X = heart_disease.drop("target", axis=1)
+y = heart_disease["target"]
+
+# Split the data into training and test sets
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+```
 
 **[⬆ back to top](#table-of-contents)**
 
