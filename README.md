@@ -76,6 +76,7 @@
     - [Getting Your Data Ready: Convert Data To Numbers](#getting-your-data-ready-convert-data-to-numbers)
     - [Getting Your Data Ready: Handling Missing Values With Pandas](#getting-your-data-ready-handling-missing-values-with-pandas)
     - [Extension: Feature Scaling](#extension-feature-scaling)
+    - [Getting Your Data Ready: Handling Missing Values With Scikit-learn](#getting-your-data-ready-handling-missing-values-with-scikit-learn)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -1707,6 +1708,62 @@ len(car_sales_missing)
   - [StandardScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)
   - Feature scaling usually isn't required for your target variable
   - Feature scaling is usually not required with tree-based models (e.g. Random Forest) since they can handle varying features
+
+**[⬆ back to top](#table-of-contents)**
+
+### Getting Your Data Ready: [Handling Missing Values With Scikit-learn](sample-project/introduction-to-matplotlib.ipynb)
+
+The main takeaways:
+- Split your data first (into train/test)
+- Fill/transform the training set and test sets separately
+
+```python
+car_sales_missing = pd.read_csv("data/car-sales-extended-missing-data.csv")
+car_sales_missing.head()
+car_sales_missing.isna().sum()
+
+# Drop the rows with no labels
+car_sales_missing.dropna(subset=["Price"], inplace=True)
+
+# Split into X & y
+X = car_sales_missing.drop("Price", axis=1)
+y = car_sales_missing["Price"]
+
+# Split data into train and test
+np.random.seed(42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Fill missing values with Scikit-Learn
+from sklearn.impute import SimpleImputer
+from sklearn.compose import ColumnTransformer
+
+# Fill categorical values with 'missing' & numerical values with mean
+cat_imputer = SimpleImputer(strategy="constant", fill_value="missing")
+door_imputer = SimpleImputer(strategy="constant", fill_value=4)
+num_imputer = SimpleImputer(strategy="mean")
+
+# Define columns
+cat_features = ["Make", "Colour"]
+door_feature = ["Doors"]
+num_features = ["Odometer (KM)"]
+
+# Create an imputer (something that fills missing data)
+imputer = ColumnTransformer([
+    ("cat_imputer", cat_imputer, cat_features),
+    ("door_imputer", door_imputer, door_feature),
+    ("num_imputer", num_imputer, num_features)
+])
+
+# Fill train and test values separately
+filled_X_train = imputer.fit_transform(X_train)
+filled_X_test = imputer.transform(X_test)
+
+# Get our transformed data array's back into DataFrame's
+car_sales_filled_train = pd.DataFrame(filled_X_train, 
+                                      columns=["Make", "Colour", "Doors", "Odometer (KM)"])
+car_sales_filled_test = pd.DataFrame(filled_X_test, 
+                                     columns=["Make", "Colour", "Doors", "Odometer (KM)"])
+```
 
 **[⬆ back to top](#table-of-contents)**
 
