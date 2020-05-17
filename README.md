@@ -57,6 +57,7 @@
     - [Turn Images Into NumPy Arrays](#turn-images-into-numpy-arrays)
     - [Optional: Extra NumPy resources](#optional-extra-numpy-resources)
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
+    - [Data Visualizations](#data-visualizations)
     - [Matplotlib Introduction](#matplotlib-introduction)
     - [Importing And Using Matplotlib](#importing-and-using-matplotlib)
     - [Anatomy Of A Matplotlib Figure](#anatomy-of-a-matplotlib-figure)
@@ -1009,6 +1010,13 @@ panda[:5]
 
 ## **Section 8: Matplotlib: Plotting and Data Visualization**
 
+### Data Visualizations
+
+- [5 Essential Tips for Creative Storytelling Through Data Visualization](https://boostlabs.com/storytelling-through-data-visualization/)
+- [Storytelling with Data: A Data Visualization Guide for Business Professionals](https://towardsdatascience.com/storytelling-with-data-a-data-visualization-guide-for-business-professionals-97d50512b407)
+
+**[⬆ back to top](#table-of-contents)**
+
 ### [Matplotlib](https://matplotlib.org/3.1.1/contents.html) Introduction
 
 - What is Matplotlib
@@ -1036,7 +1044,7 @@ panda[:5]
 
 - Which one should you use? (pyplpt vs matplotlib OO method?)
   - When plotting something quickly, okay to use pyplot method
-  - When plotting something more advanced, use the OO method
+  - When plotting something more customized and advanced, use the OO method
 - [Effectively Using Matplotlib](https://pbpython.com/effective-matplotlib.html)
 - [Pyplot tutorial](https://matplotlib.org/3.2.1/tutorials/introductory/pyplot.html)
 - [The Lifecycle of a Plot](https://matplotlib.org/3.2.1/tutorials/introductory/lifecycle.html)
@@ -1094,7 +1102,7 @@ x = [1, 2, 3, 4]
 y = [11, 22, 33, 44]
 
 # 2. Setup plot
-fig, ax = plt.subplots(figsize=(10,10))
+fig, ax = plt.subplots(figsize=(10,10)) # figsize dimension is inches
 
 # 3. Plot data
 ax.plot(x, y)
