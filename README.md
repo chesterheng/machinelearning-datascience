@@ -63,6 +63,7 @@
     - [Scatter Plot And Bar Plot](#scatter-plot-and-bar-plot)
     - [Histograms](#histograms)
     - [Subplots](#subplots)
+    - [Plotting From Pandas DataFrames](#plotting-from-pandas-dataframes)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
@@ -860,6 +861,9 @@ np.min(a2)
 ### [Standard Deviation and Variance](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-numpy.ipynb)
 
 - [Standard Deviation and Variance](https://www.mathsisfun.com/data/standard-deviation.html)
+- [Outlier Detection Methods](https://docs.oracle.com/cd/E17236_01/epm.1112/cb_statistical/frameset.htm?ch07s02s10s01.html)
+  - If a value is a certain number of standard deviations away from the mean, that data point is identified as an outlier. 
+  - The specified number of standard deviations is called the threshold. The default value is 3.
 
 ```python
 import numpy as np
@@ -1030,6 +1034,9 @@ panda[:5]
 
 ### [Importing And Using Matplotlib](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-matplotlib.ipynb)
 
+- Which one should you use? (pyplpt vs matplotlib OO method?)
+  - When plotting something quickly, okay to use pyplot method
+  - When plotting something more advanced, use the OO method
 - [Effectively Using Matplotlib](https://pbpython.com/effective-matplotlib.html)
 - [Pyplot tutorial](https://matplotlib.org/3.2.1/tutorials/introductory/pyplot.html)
 - [The Lifecycle of a Plot](https://matplotlib.org/3.2.1/tutorials/introductory/lifecycle.html)
@@ -1167,6 +1174,151 @@ ax[0, 0].plot(x, x/2);
 ax[0, 1].scatter(np.random.random(10), np.random.random(10));
 ax[1, 0].bar(nut_butter_prices.keys(), nut_butter_prices.values());
 ax[1, 1].hist(np.random.randn(1000));
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Plotting From Pandas DataFrames](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-matplotlib.ipynb)
+
+- Which one should you use? (pyplpt vs matplotlib OO method?)
+  - When plotting something quickly, okay to use pyplot method
+  - When plotting something more advanced, use the OO method
+- [Regular Expressions](https://regexone.com/)
+- [Visualization](https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html)
+
+```python
+import pandas as pd
+
+ts = pd.Series(np.random.randn(1000),
+               index=pd.date_range('1/1/2020', periods=1000))
+ts = ts.cumsum() # Return cumulative sum over a DataFrame or Series
+ts.plot();
+
+# Make a dataframe
+car_sales = pd.read_csv("data/car-sales.csv")
+
+# Remove price column symbols
+car_sales["Price"] = car_sales["Price"].str.replace('[\$\,\.]', '')
+type(car_sales["Price"][0])
+# Remove last two zeros from price
+#  4    0   0   0   0   0
+# [-6][-5][-4][-3][-2][-1]
+car_sales["Price"] = car_sales["Price"].str[:-2]
+
+car_sales["Sale Date"] = pd.date_range("1/1/2020", periods=len(car_sales))
+type(car_sales["Price"][0])
+
+car_sales["Total Sales"] = car_sales["Price"].astype(int).cumsum()
+
+car_sales.plot(x="Sale Date", y="Total Sales");
+car_sales["Price"] = car_sales["Price"].astype(int) # Reassign price column to int
+
+# Plot scatter plot with price column as numeric 
+car_sales.plot(x="Odometer (KM)", y="Price", kind="scatter");
+
+# How aboute a bar graph?
+x = np.random.rand(10, 4)
+df = pd.DataFrame(x, columns=['a', 'b', 'c', 'd'])
+df.plot.bar();
+df.plot(kind='bar');  # Can do the same thing with 'kind' keyword
+
+car_sales.plot(x='Make', y='Odometer (KM)', kind='bar');
+
+# How about Histograms?
+car_sales["Odometer (KM)"].plot.hist();
+# bins=10 default , bin width = 25,car_sales["Price"].plot.hist(bins=10);000
+car_sales["Odometer (KM)"].plot(kind="hist");
+# Default number of bins is 10, bin width = 12,500
+car_sales["Odometer (KM)"].plot.hist(bins=20);
+
+# Let's try with another dataset
+heart_disease = pd.read_csv("data/heart-disease.csv")
+# Create a histogram of age
+heart_disease["age"].plot.hist(bins=50);
+heart_disease.plot.hist(figsize=(10, 30), subplots=True);
+
+over_50 = heart_disease[heart_disease["age"] > 50]
+# Pyplot method
+# c: change colur of plot base on target value [0, 1]
+over_50.plot(kind='scatter', 
+             x='age', 
+             y='chol', 
+             c='target', 
+             figsize=(10, 6));
+
+# OO method
+fig, ax = plt.subplots(figsize=(10, 6))
+over_50.plot(kind='scatter', 
+             x="age", 
+             y="chol", 
+             c='target', 
+             ax=ax);
+ax.set_xlim([45, 100]);
+over_50.target.values
+over_50.target.unique()
+
+# Make a bit more of a complicated plot
+
+# Create the plot
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Plot the data
+scatter = ax.scatter(over_50["age"], 
+                     over_50["chol"], 
+                     c=over_50["target"])
+
+# Customize the plot
+ax.set(title="Heart Disease and Cholesterol Levels",
+       xlabel="Age",
+       ylabel="Cholesterol");
+
+# Add a legend
+ax.legend(*scatter.legend_elements(), title="Target");
+
+# Add a horizontal line
+ax.axhline(over_50["chol"].mean(), linestyle="--");
+
+# Setup plot (2 rows, 1 column)
+fig, (ax0, ax1) = plt.subplots(nrows=2, # 2 rows
+                               ncols=1, 
+                               sharex=True, 
+                               figsize=(10, 8))
+
+# Add data for ax0
+scatter = ax0.scatter(x=over_50["age"], 
+                      y=over_50["chol"], 
+                      c=over_50["target"])
+# Customize ax0
+ax0.set(title="Heart Disease and Cholesterol Levels",
+#         xlabel="Age",
+        ylabel="Cholesterol")
+ax0.legend(*scatter.legend_elements(), title="Target")
+
+# Setup a mean line
+ax0.axhline(y=over_50["chol"].mean(), 
+            color='b', 
+            linestyle='--', 
+            label="Average")
+
+# Add data for ax1
+scatter = ax1.scatter(over_50["age"], 
+                      over_50["thalach"], 
+                      c=over_50["target"])
+
+# Customize ax1
+ax1.set(title="Heart Disease and Max Heart Rate Levels",
+        xlabel="Age",
+        ylabel="Max Heart Rate")
+ax1.legend(*scatter.legend_elements(), title="Target")
+
+# Setup a mean line
+ax1.axhline(y=over_50["thalach"].mean(), 
+            color='b', 
+            linestyle='--', 
+            label="Average")
+
+# Title the figure
+fig.suptitle('Heart Disease Analysis', fontsize=16, fontweight='bold');
 ```
 
 **[⬆ back to top](#table-of-contents)**
