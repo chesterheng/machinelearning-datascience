@@ -61,6 +61,7 @@
     - [Importing And Using Matplotlib](#importing-and-using-matplotlib)
     - [Anatomy Of A Matplotlib Figure](#anatomy-of-a-matplotlib-figure)
     - [Scatter Plot And Bar Plot](#scatter-plot-and-bar-plot)
+    - [Histograms And Subplots](#histograms-and-subplots)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
@@ -1113,13 +1114,41 @@ ax.plot(x, x**2);
 fig, ax = plt.subplots()
 ax.scatter(x, np.exp(x));
 
-# Make a plot from dictionary
+# # Make a Bar plot from dictionary
 nut_butter_prices = {"Almond butter": 10,
                      "Peanut butter": 8,
                      "Cashew butter": 12}
 fig, ax = plt.subplots()
 ax.bar(nut_butter_prices.keys(), nut_butter_prices.values())
 ax.set(title="Dan's Nut Butter Store", ylabel="Price ($)");
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Histograms And Subplots](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-matplotlib.ipynb)
+
+```python
+# Make a horizontal bar plot
+fig, ax = plt.subplots()
+ax.barh(list(nut_butter_prices.keys()), list(nut_butter_prices.values()));
+
+# Make a Histogram plot
+x = np.random.randn(1000) # Make some data from a normal distribution
+fig, ax = plt.subplots()
+ax.hist(x);
+
+x = np.random.random(1000) # random data from random distribution
+fig, ax = plt.subplots()
+ax.hist(x);
+
+# Subplot Option 1: Create multiple subplots
+fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(nrows=2, 
+                                             ncols=2, 
+                                             figsize=(10, 5))
+ax1.plot(x, x/2);
+ax2.scatter(np.random.random(10), np.random.random(10));
+ax3.bar(nut_butter_prices.keys(), nut_butter_prices.values());
+ax4.hist(np.random.randn(1000));
 ```
 
 **[⬆ back to top](#table-of-contents)**
