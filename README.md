@@ -60,6 +60,7 @@
     - [Matplotlib Introduction](#matplotlib-introduction)
     - [Importing And Using Matplotlib](#importing-and-using-matplotlib)
     - [Anatomy Of A Matplotlib Figure](#anatomy-of-a-matplotlib-figure)
+    - [Scatter Plot And Bar Plot](#scatter-plot-and-bar-plot)
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
@@ -1094,6 +1095,31 @@ ax.set(title="Sample Simple Plot", xlabel="x-axis", ylabel="y-axis")
 
 # 5. Save & show
 fig.savefig("images/simple-plot.png")
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Scatter Plot And Bar Plot](https://github.com/chesterheng/machinelearning-datascience/blob/master/sample-project/introduction-to-matplotlib.ipynb)
+
+```python
+import numpy as np
+x = np.linspace(0, 10, 100)
+
+# Plot the data and create a line plot
+fig, ax = plt.subplots()
+ax.plot(x, x**2);
+
+# Use same data to make a scatter
+fig, ax = plt.subplots()
+ax.scatter(x, np.exp(x));
+
+# Make a plot from dictionary
+nut_butter_prices = {"Almond butter": 10,
+                     "Peanut butter": 8,
+                     "Cashew butter": 12}
+fig, ax = plt.subplots()
+ax.bar(nut_butter_prices.keys(), nut_butter_prices.values())
+ax.set(title="Dan's Nut Butter Store", ylabel="Price ($)");
 ```
 
 **[⬆ back to top](#table-of-contents)**
