@@ -86,6 +86,7 @@
     - [Making Predictions With Our Model (Regression)](#making-predictions-with-our-model-regression)
     - [Evaluating A Machine Learning Model (Score)](#evaluating-a-machine-learning-model-score)
     - [Evaluating A Machine Learning Model 2 (Cross Validation)](#evaluating-a-machine-learning-model-2-cross-validation)
+    - [Evaluating A Classification Model 1 (Accuracy)](#evaluating-a-classification-model-1-accuracy)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -1959,6 +1960,7 @@ accuracy_score(y_test, y_preds)
 ```python
 # predict_proba() returns probabilities of a classification label
 clf.predict_proba(X_test[:5]) # [% for 0, % for 1]
+model.score(X_test, y_test) # 0 or 1
 
 heart_disease["target"].value_counts()
 ```
@@ -2000,12 +2002,40 @@ mean_absolute_error(y_test, y_preds)
 
 ### [Evaluating A Machine Learning Model (Score)](sample-project/introduction-to-matplotlib.ipynb)
 
-Three ways to evaluate Scikit-Learn models/esitmators:
+[Three ways to evaluate Scikit-Learn models/esitmators](https://scikit-learn.org/stable/modules/model_evaluation.html)
 - Estimator score method
 - The scoring parameter
 - Problem-specific metric functions.
 
 ```python
+from sklearn.ensemble import RandomForestClassifier
+
+np.random.seed(42)
+X = heart_disease.drop("target", axis=1)
+y = heart_disease["target"]
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+clf = RandomForestClassifier(n_estimators=100)
+clf.fit(X_train, y_train)
+clf.score(X_train, y_train)
+clf.score(X_test, y_test)
+```
+
+```python
+from sklearn.ensemble import RandomForestRegressor
+
+np.random.seed(42)
+
+# Create the data
+X = boston_df.drop("target", axis=1)
+y = boston_df["target"]
+
+# Split into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Instantiate and fit model
+model = RandomForestRegressor(n_estimators=100).fit(X_train, y_train)
+model.score(X_train, y_train)
 model.score(X_test, y_test)
 ```
 
@@ -2014,6 +2044,17 @@ model.score(X_test, y_test)
 ### [Evaluating A Machine Learning Model 2 (Cross Validation)](sample-project/introduction-to-matplotlib.ipynb)
 
 ```python
+from sklearn.model_selection import cross_val_score
+from sklearn.ensemble import RandomForestClassifier
+
+np.random.seed(42)
+X = heart_disease.drop("target", axis=1)
+y = heart_disease["target"]
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+clf = RandomForestClassifier(n_estimators=100)
+clf.fit(X_train, y_train);
+
 # Single training and test split score
 clf_single_score = clf.score(X_test, y_test)
 
@@ -2022,6 +2063,23 @@ clf_cross_val_score = np.mean(cross_val_score(clf, X, y, cv=5))
 
 # Scoring parameter set to None by default
 cross_val_score(clf, X, y, cv=5, scoring=None)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Evaluating A Classification Model 1 (Accuracy)](sample-project/introduction-to-matplotlib.ipynb)
+
+```python
+from sklearn.model_selection import cross_val_score
+from sklearn.ensemble import RandomForestClassifier
+
+np.random.seed(42)
+X = heart_disease.drop("target", axis=1)
+y = heart_disease["target"]
+
+clf = RandomForestClassifier(n_estimators=100)
+cross_val_score = cross_val_score(clf, X, y, cv=5)
+np.mean(cross_val_score)
 ```
 
 **[⬆ back to top](#table-of-contents)**
