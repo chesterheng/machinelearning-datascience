@@ -85,6 +85,7 @@
     - [predict() vs predict_proba()](#predict-vs-predictproba)
     - [Making Predictions With Our Model (Regression)](#making-predictions-with-our-model-regression)
     - [Evaluating A Machine Learning Model (Score)](#evaluating-a-machine-learning-model-score)
+    - [Evaluating A Machine Learning Model 2 (Cross Validation)](#evaluating-a-machine-learning-model-2-cross-validation)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -2006,6 +2007,21 @@ Three ways to evaluate Scikit-Learn models/esitmators:
 
 ```python
 model.score(X_test, y_test)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Evaluating A Machine Learning Model 2 (Cross Validation)](sample-project/introduction-to-matplotlib.ipynb)
+
+```python
+# Single training and test split score
+clf_single_score = clf.score(X_test, y_test)
+
+# Take the mean of 5-fold cross-validation score
+clf_cross_val_score = np.mean(cross_val_score(clf, X, y, cv=5))
+
+# Scoring parameter set to None by default
+cross_val_score(clf, X, y, cv=5, scoring=None)
 ```
 
 **[⬆ back to top](#table-of-contents)**
