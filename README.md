@@ -86,7 +86,8 @@
     - [Making Predictions With Our Model (Regression)](#making-predictions-with-our-model-regression)
     - [Evaluating A Machine Learning Model (Score)](#evaluating-a-machine-learning-model-score)
     - [Evaluating A Machine Learning Model 2 (Cross Validation)](#evaluating-a-machine-learning-model-2-cross-validation)
-    - [Evaluating A Classification Model 1 (Accuracy)](#evaluating-a-classification-model-1-accuracy)
+    - [Evaluating A Classification Model (Accuracy)](#evaluating-a-classification-model-accuracy)
+    - [Evaluating A Classification Model (ROC Curve)](#evaluating-a-classification-model-roc-curve)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -2067,7 +2068,7 @@ cross_val_score(clf, X, y, cv=5, scoring=None)
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Evaluating A Classification Model 1 (Accuracy)](sample-project/introduction-to-matplotlib.ipynb)
+### [Evaluating A Classification Model (Accuracy)](sample-project/introduction-to-matplotlib.ipynb)
 
 ```python
 from sklearn.model_selection import cross_val_score
@@ -2080,6 +2081,72 @@ y = heart_disease["target"]
 clf = RandomForestClassifier(n_estimators=100)
 cross_val_score = cross_val_score(clf, X, y, cv=5)
 np.mean(cross_val_score)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Evaluating A Classification Model (ROC Curve)](sample-project/introduction-to-matplotlib.ipynb)
+
+[Area under the receiver operating characteristic curve (AUC/ROC)](https://www.youtube.com/watch?v=4jRBRDbJemM)
+- Area under curve (AUC)
+- ROC curve
+
+ROC curves are a comparison of a model's true postive rate (tpr) versus a models false positive rate (fpr).
+- True positive = model predicts 1 when truth is 1
+- False positive = model predicts 1 when truth is 0
+- True negative = model predicts 0 when truth is 0
+- False negative = model predicts 0 when truth is 1
+
+```python
+# Create X_test... etc
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+from sklearn.metrics import roc_curve
+
+# Fit the classifier
+clf.fit(X_train, y_train)
+
+# Make predictions with probabilities
+y_probs = clf.predict_proba(X_test)
+y_probs_positive = y_probs[:, 1]
+
+# Calculate fpr, tpr and thresholds
+fpr, tpr, thresholds = roc_curve(y_test, y_probs_positive)
+# Plot ROC curve
+plot_roc_curve(fpr, tpr)
+
+from sklearn.metrics import roc_auc_score
+# area under the curve, max area = 1
+roc_auc_score(y_test, y_probs_positive)
+
+# Plot perfect ROC curve and AUC score
+fpr, tpr, thresholds = roc_curve(y_test, y_test)
+plot_roc_curve(fpr, tpr)
+
+# Perfect AUC score
+roc_auc_score(y_test, y_test)
+```
+
+```python
+# Create a function for plotting ROC curves
+import matplotlib.pyplot as plt
+
+def plot_roc_curve(fpr, tpr):
+    """
+    Plots a ROC curve given the false positive rate (fpr)
+    and true positive rate (tpr) of a model.
+    """
+    # Plot roc curve
+    plt.plot(fpr, tpr, color="orange", label="ROC")
+    # Plot line with no predictive power (baseline)
+    plt.plot([0, 1], [0, 1], color="darkblue", linestyle="--", label="Guessing")
+    
+    # Customize the plot
+    plt.xlabel("False positive rate (fpr)")
+    plt.ylabel("True positive rate (tpr)")
+    plt.title("Receiver Operating Characteristic (ROC) Curve")
+    plt.legend()
+    plt.show()
 ```
 
 **[⬆ back to top](#table-of-contents)**
