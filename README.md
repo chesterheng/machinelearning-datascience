@@ -91,6 +91,7 @@
     - [Evaluating A Classification Model (Confusion Matrix)](#evaluating-a-classification-model-confusion-matrix)
     - [Evaluating A Classification Model 6 (Classification Report)](#evaluating-a-classification-model-6-classification-report)
     - [Evaluating A Regression Model 1 (R2 Score)](#evaluating-a-regression-model-1-r2-score)
+    - [Evaluating A Regression Model 2 (MAE)](#evaluating-a-regression-model-2-mae)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -2288,6 +2289,25 @@ r2_score(y_test, y_test_mean)
 
 # Model predicting perfectly the correct values gets an R^2 score of 1
 r2_score(y_test, y_test)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Evaluating A Regression Model 2 (MAE)](sample-project/introduction-to-scikit-learn.ipynb)
+
+Mean absolue error (MAE)
+- MAE is the average of the aboslute differences between predictions and actual values. It gives you an idea of how wrong your models predictions are.
+
+```python
+# Mean absolute error
+from sklearn.metrics import mean_absolute_error
+
+y_preds = model.predict(X_test)
+mae = mean_absolute_error(y_test, y_preds)
+
+df = pd.DataFrame(data={"actual values": y_test,
+                        "predicted values": y_preds})
+df["differences"] = df["predicted values"] - df["actual values"]
 ```
 
 **[⬆ back to top](#table-of-contents)**
