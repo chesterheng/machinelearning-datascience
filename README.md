@@ -88,6 +88,7 @@
     - [Evaluating A Machine Learning Model 2 (Cross Validation)](#evaluating-a-machine-learning-model-2-cross-validation)
     - [Evaluating A Classification Model (Accuracy)](#evaluating-a-classification-model-accuracy)
     - [Evaluating A Classification Model (ROC Curve)](#evaluating-a-classification-model-roc-curve)
+    - [Evaluating A Classification Model (Confusion Matrix)](#evaluating-a-classification-model-confusion-matrix)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -1496,7 +1497,7 @@ fig.suptitle('Heart Disease Analysis', fontsize=16, fontweight='bold');
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Typical scikit-learn Workflow](sample-project/introduction-to-matplotlib.ipynb)
+### [Typical scikit-learn Workflow](sample-project/introduction-to-scikit-learn.ipynb)
 
 - An end-to-end Scikit-Learn workflow
   - Getting the data ready -> `heart-disease.csv`
@@ -1598,7 +1599,7 @@ sklearn.show_versions()
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Getting Your Data Ready: Splitting Your Data](sample-project/introduction-to-matplotlib.ipynb)
+### [Getting Your Data Ready: Splitting Your Data](sample-project/introduction-to-scikit-learn.ipynb)
 
 Three main things we have to do:
 
@@ -1643,7 +1644,7 @@ Cannot assume all data you have is automatically going to be perfect
 
 **[⬆ back to top](#table-of-contents)**
 
-### Getting Your Data Ready: [Convert Data To Numbers](sample-project/introduction-to-matplotlib.ipynb)
+### Getting Your Data Ready: [Convert Data To Numbers](sample-project/introduction-to-scikit-learn.ipynb)
 
 ```python
 car_sales = pd.read_csv("data/car-sales-extended.csv")
@@ -1676,7 +1677,7 @@ pd.DataFrame(transformed_X)
 
 **[⬆ back to top](#table-of-contents)**
 
-### Getting Your Data Ready: [Handling Missing Values With Pandas](sample-project/introduction-to-matplotlib.ipynb)
+### Getting Your Data Ready: [Handling Missing Values With Pandas](sample-project/introduction-to-scikit-learn.ipynb)
 
 ```python
 car_sales_missing = pd.read_csv("data/car-sales-extended-missing-data.csv")
@@ -1728,7 +1729,7 @@ len(car_sales_missing)
 
 **[⬆ back to top](#table-of-contents)**
 
-### Getting Your Data Ready: [Handling Missing Values With Scikit-learn](sample-project/introduction-to-matplotlib.ipynb)
+### Getting Your Data Ready: [Handling Missing Values With Scikit-learn](sample-project/introduction-to-scikit-learn.ipynb)
 
 The main takeaways:
 
@@ -1785,7 +1786,7 @@ car_sales_filled_test = pd.DataFrame(filled_X_test,
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Choosing The Right Model For Your Data](sample-project/introduction-to-matplotlib.ipynb)
+### [Choosing The Right Model For Your Data](sample-project/introduction-to-scikit-learn.ipynb)
 
 Scikit-Learn uses estimator as another term for machine learning model or algorithm
 
@@ -1828,7 +1829,7 @@ model.score(X_test, y_test)
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Choosing The Right Model For Your Data 2 (Regression)](sample-project/introduction-to-matplotlib.ipynb)
+### [Choosing The Right Model For Your Data 2 (Regression)](sample-project/introduction-to-scikit-learn.ipynb)
 
 ```python
 # Let's try the Random Forst Regressor
@@ -1857,7 +1858,7 @@ model.score(X_test, y_test)
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Choosing The Right Model For Your Data 3 (Classification)](sample-project/introduction-to-matplotlib.ipynb)
+### [Choosing The Right Model For Your Data 3 (Classification)](sample-project/introduction-to-scikit-learn.ipynb)
 
 Tidbit:
 
@@ -1913,7 +1914,7 @@ clf.score(X_test, y_test)
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Fitting A Model To The Data](sample-project/introduction-to-matplotlib.ipynb)
+### [Fitting A Model To The Data](sample-project/introduction-to-scikit-learn.ipynb)
 
 ```python
 # Import the RandomForestClassifier estimator class
@@ -1941,7 +1942,7 @@ clf.score(X_test, y_test)
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Making Predictions With Our Model](sample-project/introduction-to-matplotlib.ipynb)
+### [Making Predictions With Our Model](sample-project/introduction-to-scikit-learn.ipynb)
 
 ```python
 # Compare predictions to truth labels to evaluate the model
@@ -1956,7 +1957,7 @@ accuracy_score(y_test, y_preds)
 
 **[⬆ back to top](#table-of-contents)**
 
-### [predict() vs predict_proba()](sample-project/introduction-to-matplotlib.ipynb)
+### [predict() vs predict_proba()](sample-project/introduction-to-scikit-learn.ipynb)
 
 ```python
 # predict_proba() returns probabilities of a classification label
@@ -1968,7 +1969,7 @@ heart_disease["target"].value_counts()
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Making Predictions With Our Model (Regression)](sample-project/introduction-to-matplotlib.ipynb)
+### [Making Predictions With Our Model (Regression)](sample-project/introduction-to-scikit-learn.ipynb)
 
 - predict() can also be used for regression models
 
@@ -2001,7 +2002,7 @@ mean_absolute_error(y_test, y_preds)
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Evaluating A Machine Learning Model (Score)](sample-project/introduction-to-matplotlib.ipynb)
+### [Evaluating A Machine Learning Model (Score)](sample-project/introduction-to-scikit-learn.ipynb)
 
 [Three ways to evaluate Scikit-Learn models/esitmators](https://scikit-learn.org/stable/modules/model_evaluation.html)
 - Estimator score method
@@ -2042,7 +2043,7 @@ model.score(X_test, y_test)
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Evaluating A Machine Learning Model 2 (Cross Validation)](sample-project/introduction-to-matplotlib.ipynb)
+### [Evaluating A Machine Learning Model 2 (Cross Validation)](sample-project/introduction-to-scikit-learn.ipynb)
 
 ```python
 from sklearn.model_selection import cross_val_score
@@ -2068,7 +2069,7 @@ cross_val_score(clf, X, y, cv=5, scoring=None)
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Evaluating A Classification Model (Accuracy)](sample-project/introduction-to-matplotlib.ipynb)
+### [Evaluating A Classification Model (Accuracy)](sample-project/introduction-to-scikit-learn.ipynb)
 
 ```python
 from sklearn.model_selection import cross_val_score
@@ -2085,7 +2086,7 @@ np.mean(cross_val_score)
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Evaluating A Classification Model (ROC Curve)](sample-project/introduction-to-matplotlib.ipynb)
+### [Evaluating A Classification Model (ROC Curve)](sample-project/introduction-to-scikit-learn.ipynb)
 
 [Area under the receiver operating characteristic curve (AUC/ROC)](https://www.youtube.com/watch?v=4jRBRDbJemM)
 - Area under curve (AUC)
@@ -2147,6 +2148,53 @@ def plot_roc_curve(fpr, tpr):
     plt.title("Receiver Operating Characteristic (ROC) Curve")
     plt.legend()
     plt.show()
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Evaluating A Classification Model (Confusion Matrix)](sample-project/introduction-to-scikit-learn.ipynb)
+
+- A confusion matrix is a quick way to compare the labels a model predicts and the actual labels it was supposed to predict.
+- In essence, giving you an idea of where the model is getting confused.
+
+```python
+from sklearn.metrics import confusion_matrix
+
+y_preds = clf.predict(X_test)
+confusion_matrix(y_test, y_preds)
+
+# Visualize confusion matrix with pd.crosstab()
+pd.crosstab(y_test, y_preds, rownames=["Actual Labels"], colnames=["Predicted Labels"])
+
+# Make our confusion matrix more visual with Seaborn's heatmap()
+import seaborn as sns
+
+# Set the font scale 
+sns.set(font_scale=1.5)
+
+# Create a confusion matrix
+conf_mat = confusion_matrix(y_test, y_preds)
+
+# Plot it using Seaborn
+sns.heatmap(conf_mat);
+
+plot_conf_mat(conf_mat)
+
+from sklearn.metrics import plot_confusion_matrix
+plot_confusion_matrix(clf, X, y);
+```
+
+```python
+def plot_conf_mat(conf_mat):
+  """
+  Plots a confusion matrix using Seaborn's heatmap().
+  """
+  fig, ax = plt.subplots(figsize=(3,3))
+  ax = sns.heatmap(conf_mat,
+                    annot=True, # Annotate the boxes with conf_mat info
+                    cbar=False)
+  plt.xlabel("True label")
+  plt.ylabel("Predicted label")
 ```
 
 **[⬆ back to top](#table-of-contents)**
