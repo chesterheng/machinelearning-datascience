@@ -89,7 +89,8 @@
     - [Evaluating A Classification Model (Accuracy)](#evaluating-a-classification-model-accuracy)
     - [Evaluating A Classification Model (ROC Curve)](#evaluating-a-classification-model-roc-curve)
     - [Evaluating A Classification Model (Confusion Matrix)](#evaluating-a-classification-model-confusion-matrix)
-    - [Evaluating A Classification Model 6 (Classification Report))](#evaluating-a-classification-model-6-classification-report)
+    - [Evaluating A Classification Model 6 (Classification Report)](#evaluating-a-classification-model-6-classification-report)
+    - [Evaluating A Regression Model 1 (R2 Score)](#evaluating-a-regression-model-1-r2-score)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -2200,7 +2201,7 @@ def plot_conf_mat(conf_mat):
 
 **[⬆ back to top](#table-of-contents)**
 
-### [Evaluating A Classification Model 6 (Classification Report)]((sample-project/introduction-to-scikit-learn.ipynb))
+### [Evaluating A Classification Model 6 (Classification Report)](sample-project/introduction-to-scikit-learn.ipynb)
 
 Precision, Recall & F-Measure
 - [Understanding Confusion Matrix](https://towardsdatascience.com/understanding-confusion-matrix-a9ad42dcfd62)
@@ -2247,6 +2248,46 @@ pd.DataFrame(classification_report(disease_true,
                                    disease_preds,
                                    output_dict=True))
 
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Evaluating A Regression Model 1 (R2 Score)](sample-project/introduction-to-scikit-learn.ipynb)
+
+Regression model evaluation metrics
+- R^2 (pronounced r-squared) or coefficient of determination.
+- Mean absolute error (MAE)
+- Mean squared error (MSE)
+
+What R-squared does:
+- Compares your models predictions to the mean of the targets. Values can range from negative infinity (a very poor model) to 1.
+- For example, if all your model does is predict the mean of the targets, it's R^2 value would be 0.
+- And if your model perfectly predicts a range of numbers it's R^2 value would be 1.
+
+```python
+from sklearn.ensemble import RandomForestRegressor
+
+np.random.seed(42)
+
+X = boston_df.drop("target", axis=1)
+y = boston_df["target"]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+model = RandomForestRegressor(n_estimators=100)
+model.fit(X_train, y_train);
+model.score(X_test, y_test)
+
+from sklearn.metrics import r2_score
+
+# Fill an array with y_test mean
+y_test_mean = np.full(len(y_test), y_test.mean())
+
+# Model only predicting the mean gets an R^2 score of 0
+r2_score(y_test, y_test_mean)
+
+# Model predicting perfectly the correct values gets an R^2 score of 1
+r2_score(y_test, y_test)
 ```
 
 **[⬆ back to top](#table-of-contents)**
