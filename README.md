@@ -92,6 +92,7 @@
     - [Evaluating A Classification Model 6 (Classification Report)](#evaluating-a-classification-model-6-classification-report)
     - [Evaluating A Regression Model 1 (R2 Score)](#evaluating-a-regression-model-1-r2-score)
     - [Evaluating A Regression Model 2 (MAE)](#evaluating-a-regression-model-2-mae)
+    - [Evaluating A Regression Model 3 (MSE)](#evaluating-a-regression-model-3-mse)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -2260,6 +2261,13 @@ Regression model evaluation metrics
 - Mean absolute error (MAE)
 - Mean squared error (MSE)
 
+Which regression metric should you use?
+- R2 is similar to accuracy. It gives you a quick indication of how well your model might be doing. Generally, the closer your R2 value is to 1.0, the better the model. But it doesn't really tell exactly how wrong your model is in terms of how far off each prediction is.
+- MAE gives a better indication of how far off each of your model's predictions are on average.
+- As for MAE or MSE, because of the way MSE is calculated, squaring the differences between predicted values and actual values, it amplifies larger differences. Let's say we're predicting the value of houses (which we are).
+  - Pay more attention to MAE: When being $10,000 off is twice as bad as being $5,000 off. 
+  - Pay more attention to MSE: When being $10,000 off is more than twice as bad as being $5,000 off.
+
 What R-squared does:
 - Compares your models predictions to the mean of the targets. Values can range from negative infinity (a very poor model) to 1.
 - For example, if all your model does is predict the mean of the targets, it's R^2 value would be 0.
@@ -2308,6 +2316,25 @@ mae = mean_absolute_error(y_test, y_preds)
 df = pd.DataFrame(data={"actual values": y_test,
                         "predicted values": y_preds})
 df["differences"] = df["predicted values"] - df["actual values"]
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Evaluating A Regression Model 3 (MSE)](sample-project/introduction-to-scikit-learn.ipynb)
+
+Mean squared error (MSE)
+- MSE is the average of the square value of aboslute differences between predictions and actual values.
+
+```python
+# Mean squared error
+from sklearn.metrics import mean_squared_error
+
+y_preds = model.predict(X_test)
+mse = mean_squared_error(y_test, y_preds)
+
+# Calculate MSE by hand
+squared = np.square(df["differences"])
+squared.mean()
 ```
 
 **[⬆ back to top](#table-of-contents)**
