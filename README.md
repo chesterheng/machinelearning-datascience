@@ -89,6 +89,7 @@
     - [Evaluating A Classification Model (Accuracy)](#evaluating-a-classification-model-accuracy)
     - [Evaluating A Classification Model (ROC Curve)](#evaluating-a-classification-model-roc-curve)
     - [Evaluating A Classification Model (Confusion Matrix)](#evaluating-a-classification-model-confusion-matrix)
+    - [Evaluating A Classification Model 6 (Classification Report))](#evaluating-a-classification-model-6-classification-report)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -2195,6 +2196,57 @@ def plot_conf_mat(conf_mat):
                     cbar=False)
   plt.xlabel("True label")
   plt.ylabel("Predicted label")
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Evaluating A Classification Model 6 (Classification Report)]((sample-project/introduction-to-scikit-learn.ipynb))
+
+Precision, Recall & F-Measure
+- [Understanding Confusion Matrix](https://towardsdatascience.com/understanding-confusion-matrix-a9ad42dcfd62)
+- [Precision, Recall & F-Measure](https://www.youtube.com/watch?v=j-EB6RqqjGI)
+- [Performance measure on multiclass classification](https://www.youtube.com/watch?v=HBi-P5j0Kec)
+- Classification: Predict Category
+- Determine if a sample shoe is Nike or not
+- Confusion Matrix
+  - True Positive (TP): Predict Nike shoe as Nike (Correct) Example: 0
+  - False Positive (FP): Predict Non-Nike shoe as Nike (Wrong) Example: 0
+  - False Negative (FN): Predict Nike shoe as Non-Nike (Wrong) Example: 10
+  - True Negative (TN): Predict Non-Nike shoe as Non-Nike (Correct) Example: 9990
+- Accuracy: % of correct prediction? (TP + TN) / total sample
+  - Accuracy]() is a good measure to start with if all classes are balanced (e.g. same amount of samples which are labelled with 0 or 1).
+- Precision and recall focus on TP, do not consider TN
+- Precision: Of the shoes **classified** Nike, How many are **acutally** Nike?
+  - Number of shoes **acutally** Nike = TP
+  - Number of shoes **classified** Nike = TP + FP
+  - Precision = TP / (TP + FP) = % of correct positive classification over total positive classification 
+  - When the model predicts a positive, how often is it correct?
+- Recall: Of the shoes that are **actually** Nike, How many are **classified** as Nike?
+  - Number of shoes **classified** Nike = TP
+  - Number of shoes **acutally** Nike = TP + FN
+  - Recall = TP / (TP + FN) = % of correct positive classification over total positive
+  - When it is actually positive, how often does it predict a positive?
+- Precision and recall become more important when classes are imbalanced.
+  - If cost of false positive predictions are worse than false negatives, aim for higher precision.
+    - For example, in spam detection, a false positive risks the receiver missing an important email due to it being incorrectly labelled as spam. 
+  - If cost of false negative predictions are worse than false positives, aim for higher recall.
+    - For example, in cancer detection and terrorist detection the cost of a false negative prediction is likely to be deadly. Tell a cancer patient you have no cancer.
+- F1-score is a combination of precision and recall.
+  - Use F1 score if data is imbalanced
+
+```python
+from sklearn.metrics import classification_report
+print(classification_report(y_test, y_preds))
+
+# Where precision and recall become valuable
+disease_true = np.zeros(10000)
+disease_true[0] = 1 # only one positive case
+disease_preds = np.zeros(10000) # model predicts every case as 0
+
+pd.DataFrame(classification_report(disease_true,
+                                   disease_preds,
+                                   output_dict=True))
+
 ```
 
 **[⬆ back to top](#table-of-contents)**
