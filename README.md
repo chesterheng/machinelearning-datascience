@@ -99,6 +99,7 @@
     - [Improving A Machine Learning Model](#improving-a-machine-learning-model)
     - [Tuning Hyperparameters by hand](#tuning-hyperparameters-by-hand)
     - [Tuning Hyperparameters with RandomizedSearchCV](#tuning-hyperparameters-with-randomizedsearchcv)
+    - [Tuning Hyperparameters with GridSearchCV](#tuning-hyperparameters-with-gridsearchcv)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -2666,6 +2667,57 @@ rs_y_preds = rs_clf.predict(X_test)
 
 # Evaluate the predictions
 rs_metrics = evaluate_preds(y_test, rs_y_preds)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Tuning Hyperparameters with GridSearchCV](sample-project/introduction-to-scikit-learn.ipynb)
+
+- GridSearchCV goes through ALL combinations of hyperparameters in grid2
+- [Metric Comparison Improvement](https://colab.research.google.com/drive/1ISey96a5Ag6z2CvVZKVqTKNWRwZbZl0m#scrollTo=b18kPvUFoh1z)
+
+```python
+# reduce search space of hyperparameter
+grid_2 = {'n_estimators': [100, 200, 500],
+          'max_depth': [None],
+          'max_features': ['auto', 'sqrt'],
+          'min_samples_split': [6],
+          'min_samples_leaf': [1, 2]}
+
+from sklearn.model_selection import GridSearchCV, train_test_split
+
+np.random.seed(42)
+
+# Split into X & y
+X = heart_disease_shuffled.drop("target", axis=1)
+y = heart_disease_shuffled["target"]
+
+# Split into train and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Instantiate RandomForestClassifier
+clf = RandomForestClassifier(n_jobs=1)
+
+# Setup GridSearchCV
+gs_clf = GridSearchCV(estimator=clf,
+                      param_grid=grid_2, 
+                      cv=5,
+                      verbose=2)
+
+# Fit the GridSearchCV version of clf
+gs_clf.fit(X_train, y_train);
+gs_clf.best_params_
+
+gs_y_preds = gs_clf.predict(X_test)
+
+# evaluate the predictions
+gs_metrics = evaluate_preds(y_test, gs_y_preds)
+
+compare_metrics = pd.DataFrame({"baseline": baseline_metrics,
+                                "clf_2": clf_2_metrics,
+                                "random search": rs_metrics,
+                                "grid search": gs_metrics})
+compare_metrics.plot.bar(figsize=(10, 8));
 ```
 
 **[⬆ back to top](#table-of-contents)**
