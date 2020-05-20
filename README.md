@@ -100,6 +100,7 @@
     - [Tuning Hyperparameters by hand](#tuning-hyperparameters-by-hand)
     - [Tuning Hyperparameters with RandomizedSearchCV](#tuning-hyperparameters-with-randomizedsearchcv)
     - [Tuning Hyperparameters with GridSearchCV](#tuning-hyperparameters-with-gridsearchcv)
+    - [Quick Tip: Correlation Analysis](#quick-tip-correlation-analysis)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -2719,6 +2720,20 @@ compare_metrics = pd.DataFrame({"baseline": baseline_metrics,
                                 "grid search": gs_metrics})
 compare_metrics.plot.bar(figsize=(10, 8));
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Quick Tip: Correlation Analysis
+
+- [Intro to Feature Selection Methods for Data Science](https://towardsdatascience.com/intro-to-feature-selection-methods-for-data-science-4cae2178a00a)
+- Correlation Analysis
+  - a statistical method used to evaluate the strength of relationship between two quantitative variables
+  - A high correlation means that two or more variables have a strong relationship with each other
+  - A weak correlation means that the variables are hardly related
+- Forward Attribute Selection
+  - Forward selection is an iterative method in which we start with having no feature in the model. In each iteration, we keep adding the feature which best improves our model till an addition of a new variable does not improve the performance of the model.
+- Backward Attribute Selection
+  - In backward elimination, we start with all the features and removes the least significant feature at each iteration which improves the performance of the model. We repeat this until no improvement is observed on removal of features.
 
 **[⬆ back to top](#table-of-contents)**
 
