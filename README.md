@@ -98,6 +98,7 @@
     - [Evaluating A Model With Scikit-learn Functions](#evaluating-a-model-with-scikit-learn-functions)
     - [Improving A Machine Learning Model](#improving-a-machine-learning-model)
     - [Tuning Hyperparameters by hand](#tuning-hyperparameters-by-hand)
+    - [Tuning Hyperparameters with RandomizedSearchCV](#tuning-hyperparameters-with-randomizedsearchcv)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -2622,6 +2623,49 @@ def evaluate_preds(y_true, y_preds):
     print(f"F1 score: {f1:.2f}")
     
     return metric_dict
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Tuning Hyperparameters with RandomizedSearchCV](sample-project/introduction-to-scikit-learn.ipynb)
+
+```python
+from sklearn.model_selection import RandomizedSearchCV
+
+grid = {"n_estimators": [10, 100, 200, 500, 1000, 1200],
+        "max_depth": [None, 5, 10, 20, 30],
+        "max_features": ["auto", "sqrt"],
+        "min_samples_split": [2, 4, 6],
+        "min_samples_leaf": [1, 2, 4]}
+
+np.random.seed(42)
+
+# Split into X & y
+X = heart_disease_shuffled.drop("target", axis=1)
+y = heart_disease_shuffled["target"]
+
+# Split into train and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Instantiate RandomForestClassifier
+clf = RandomForestClassifier(n_jobs=1)
+
+# Setup RandomizedSearchCV
+rs_clf = RandomizedSearchCV(estimator=clf,
+                            param_distributions=grid, 
+                            n_iter=10, # number of models to try
+                            cv=5,
+                            verbose=2)
+
+# Fit the RandomizedSearchCV version of clf
+rs_clf.fit(X_train, y_train);
+rs_clf.best_params_
+
+# Make predictions with the best hyperparameters - Final exam
+rs_y_preds = rs_clf.predict(X_test)
+
+# Evaluate the predictions
+rs_metrics = evaluate_preds(y_test, rs_y_preds)
 ```
 
 **[⬆ back to top](#table-of-contents)**
