@@ -94,6 +94,7 @@
     - [Evaluating A Regression Model 2 (MAE)](#evaluating-a-regression-model-2-mae)
     - [Evaluating A Regression Model 3 (MSE)](#evaluating-a-regression-model-3-mse)
     - [Machine Learning Model Evaluation](#machine-learning-model-evaluation)
+    - [Evaluating A Model With Cross Validation and Scoring Parameter](#evaluating-a-model-with-cross-validation-and-scoring-parameter)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -2381,6 +2382,72 @@ For more resources on evaluating a machine learning model, be sure to check out 
 - [Scikit-Learn documentation for metrics and scoring (quantifying the quality of predictions)](https://scikit-learn.org/stable/modules/model_evaluation.html)
 - [Beyond Accuracy: Precision and Recall](https://towardsdatascience.com/beyond-accuracy-precision-and-recall-3da06bea9f6c)
 - [Stack Overflow answer describing MSE (mean squared error) and RSME (root mean squared error)](https://stackoverflow.com/questions/17197492/is-there-a-library-function-for-root-mean-square-error-rmse-in-python/37861832#37861832)
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Evaluating A Model With Cross Validation and Scoring Parameter](sample-project/introduction-to-scikit-learn.ipynb)
+
+- [Metrics and scoring: quantifying the quality of predictions](https://scikit-learn.org/stable/modules/model_evaluation.html)
+- [Cross-validation: evaluating estimator performance](https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation)
+
+```python
+from sklearn.model_selection import cross_val_score
+from sklearn.ensemble import RandomForestClassifier
+
+np.random.seed(42)
+
+X = heart_disease.drop("target", axis=1)
+y = heart_disease["target"]
+
+# By default cross_val_score uses the scoring provided in the given estimator, 
+# which is usually the simplest appropriate scoring method. 
+# E.g. for most classifiers this is accuracy score and for regressors this is r2 score.
+cv_acc = cross_val_score(clf, X, y, cv=5, scoring=None)
+
+# Cross-validated accuracy
+print(f'The cross-validated accuracy is: {np.mean(cv_acc)*100:.2f}%')
+
+np.random.seed(42)
+cv_acc = cross_val_score(clf, X, y, cv=5, scoring="accuracy")
+print(f'The cross-validated accuracy is: {np.mean(cv_acc)*100:.2f}%')
+
+# Precision
+cv_precision = cross_val_score(clf, X, y, cv=5, scoring="precision")
+np.mean(cv_precision)
+
+# Recall
+cv_recall = cross_val_score(clf, X, y, cv=5, scoring="recall")
+np.mean(cv_recall)
+
+cv_f1 = cross_val_score(clf, X, y, cv=5, scoring="f1")
+np.mean(cv_f1)
+```
+
+```python
+# How about our regression model?
+from sklearn.model_selection import cross_val_score
+from sklearn.ensemble import RandomForestRegressor
+
+np.random.seed(42)
+
+X = boston_df.drop("target", axis=1)
+y = boston_df["target"]
+
+model = RandomForestRegressor(n_estimators=100)
+
+np.random.seed(42)
+cv_r2 = cross_val_score(model, X, y, cv=5, scoring=None)
+np.mean(cv_r2)
+
+np.random.seed(42)
+cv_r2 = cross_val_score(model, X, y, cv=5, scoring="r2")
+
+# Mean absolute error
+cv_mae = cross_val_score(model, X, y, cv=5, scoring="neg_mean_absolute_error")
+
+# Mean squared error
+cv_mse = cross_val_score(model, X, y, cv=5, scoring="neg_mean_squared_error")
+```
 
 **[⬆ back to top](#table-of-contents)**
 
