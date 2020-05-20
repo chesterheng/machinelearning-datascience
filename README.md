@@ -97,6 +97,7 @@
     - [Evaluating A Model With Cross Validation and Scoring Parameter](#evaluating-a-model-with-cross-validation-and-scoring-parameter)
     - [Evaluating A Model With Scikit-learn Functions](#evaluating-a-model-with-scikit-learn-functions)
     - [Improving A Machine Learning Model](#improving-a-machine-learning-model)
+    - [Tuning Hyperparameters by hand](#tuning-hyperparameters-by-hand)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -2536,6 +2537,91 @@ from sklearn.ensemble import RandomForestClassifier
 
 clf = RandomForestClassifier(n_estimators=100)
 clf.get_params()
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Tuning Hyperparameters by hand](sample-project/introduction-to-scikit-learn.ipynb)
+
+- Let's make 3 sets, training, validation and test
+- Training set (course materials): 70%
+- Validation set (practice exam): 15%
+- Test set (final exam): 15%
+
+We're going to try and adjust:
+- max_depth
+- max_features
+- min_samples_leaf
+- min_samples_split
+- n_estimators
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+
+np.random.seed(42)
+
+# Shuffle the data
+heart_disease_shuffled = heart_disease.sample(frac=1)
+
+# Split into X & y
+X = heart_disease_shuffled.drop("target", axis=1)
+y = heart_disease_shuffled["target"]
+
+# Split the data into train, validation & test sets
+train_split = round(0.7 * len(heart_disease_shuffled)) # 70% of data
+valid_split = round(train_split + 0.15 * len(heart_disease_shuffled)) # 15% of data
+X_train, y_train = X[:train_split], y[:train_split] # training set
+X_valid, y_valid = X[train_split:valid_split], y[train_split:valid_split] # validation set
+X_test, y_test = X[valid_split:], y[valid_split:] # test set
+
+clf = RandomForestClassifier()
+clf.fit(X_train, y_train)
+
+# Make baseline predictions - Practice exam
+y_preds = clf.predict(X_valid)
+
+# Evaluate the classifier on validation set
+baseline_metrics = evaluate_preds(y_valid, y_preds)
+baseline_metrics
+
+# Make baseline predictions - Final exam
+y_preds = clf.predict(X_test)
+
+# Evaluate the classifier on test set
+baseline_metrics = evaluate_preds(y_test, y_preds)
+baseline_metrics
+
+np.random.seed(42)
+
+# Create a second classifier with different hyperparameters
+clf_2 = RandomForestClassifier(n_estimators=100)
+clf_2.fit(X_train, y_train)
+
+# Make predictions with different hyperparameters
+y_preds_2 = clf_2.predict(X_valid)
+
+# Evalute the 2nd classsifier
+clf_2_metrics = evaluate_preds(y_valid, y_preds_2)
+
+def evaluate_preds(y_true, y_preds):
+    """
+    Performs evaluation comparison on y_true labels vs. y_pred labels
+    on a classification.
+    """
+    accuracy = accuracy_score(y_true, y_preds)
+    precision = precision_score(y_true, y_preds)
+    recall = recall_score(y_true, y_preds)
+    f1 = f1_score(y_true, y_preds)
+    metric_dict = {"accuracy": round(accuracy, 2),
+                   "precision": round(precision, 2),
+                   "recall": round(recall, 2),
+                   "f1": round(f1, 2)}
+    print(f"Acc: {accuracy * 100:.2f}%")
+    print(f"Precision: {precision:.2f}")
+    print(f"Recall: {recall:.2f}")
+    print(f"F1 score: {f1:.2f}")
+    
+    return metric_dict
 ```
 
 **[⬆ back to top](#table-of-contents)**
