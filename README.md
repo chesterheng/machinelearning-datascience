@@ -95,6 +95,7 @@
     - [Evaluating A Regression Model 3 (MSE)](#evaluating-a-regression-model-3-mse)
     - [Machine Learning Model Evaluation](#machine-learning-model-evaluation)
     - [Evaluating A Model With Cross Validation and Scoring Parameter](#evaluating-a-model-with-cross-validation-and-scoring-parameter)
+    - [Evaluating A Model With Scikit-learn Functions](#evaluating-a-model-with-scikit-learn-functions)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -2447,6 +2448,63 @@ cv_mae = cross_val_score(model, X, y, cv=5, scoring="neg_mean_absolute_error")
 
 # Mean squared error
 cv_mse = cross_val_score(model, X, y, cv=5, scoring="neg_mean_squared_error")
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Evaluating A Model With Scikit-learn Functions](sample-project/introduction-to-scikit-learn.ipynb)
+
+```python
+# Classification evaluation functions
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+
+np.random.seed(42)
+
+X = heart_disease.drop("target", axis=1)
+y = heart_disease["target"]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+clf = RandomForestClassifier(n_estimators=100)
+clf.fit(X_train, y_train)
+
+# Make some predictions
+y_preds = clf.predict(X_test)
+
+# Evaluate the classifier
+print("Classifier metrics on the test set")
+print(f"Accuracy: {accuracy_score(y_test, y_preds)*100:.2f}%")
+print(f"Precision: {precision_score(y_test, y_preds)}")
+print(f"Recall: {recall_score(y_test, y_preds)}")
+print(f"F1: {f1_score(y_test, y_preds)}")
+```
+
+```python
+# Regression evaluation functions
+from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
+
+np.random.seed(42)
+
+X = boston_df.drop("target", axis=1)
+y = boston_df["target"]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+model = RandomForestRegressor(n_estimators=100)
+model.fit(X_train, y_train)
+
+# Make predictions using our regression model
+y_preds = model.predict(X_test)
+
+# Evaluate the regression model
+print("Regression model metrics on the test set")
+print(f"R^2: {r2_score(y_test, y_preds)}")
+print(f"MAE: {mean_absolute_error(y_test, y_preds)}")
+print(f"MSE: {mean_squared_error(y_test, y_preds)}")
 ```
 
 **[⬆ back to top](#table-of-contents)**
