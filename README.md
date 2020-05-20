@@ -96,6 +96,7 @@
     - [Machine Learning Model Evaluation](#machine-learning-model-evaluation)
     - [Evaluating A Model With Cross Validation and Scoring Parameter](#evaluating-a-model-with-cross-validation-and-scoring-parameter)
     - [Evaluating A Model With Scikit-learn Functions](#evaluating-a-model-with-scikit-learn-functions)
+    - [Improving A Machine Learning Model](#improving-a-machine-learning-model)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -2505,6 +2506,36 @@ print("Regression model metrics on the test set")
 print(f"R^2: {r2_score(y_test, y_preds)}")
 print(f"MAE: {mean_absolute_error(y_test, y_preds)}")
 print(f"MSE: {mean_squared_error(y_test, y_preds)}")
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Improving A Machine Learning Model](sample-project/introduction-to-scikit-learn.ipynb)
+
+First predictions = baseline predictions. First model = baseline model.
+
+From a data perspective:
+- Could we collect more data? (generally, the more data, the better)
+- Could we improve our data?
+
+From a model perspective:
+- Is there a better model we could use?
+- Could we improve the current model?
+
+Hyperparameters vs. Parameters
+- Parameters = model find these patterns in data
+- Hyperparameters = settings on a model you can adjust to (potentially) improve its ability to find patterns
+
+Three ways to adjust hyperparameters:
+- By hand
+- Randomly with RandomSearchCV
+- Exhaustively with GridSearchCV
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+
+clf = RandomForestClassifier(n_estimators=100)
+clf.get_params()
 ```
 
 **[⬆ back to top](#table-of-contents)**
