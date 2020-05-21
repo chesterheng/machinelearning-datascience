@@ -101,6 +101,7 @@
     - [Tuning Hyperparameters with RandomizedSearchCV](#tuning-hyperparameters-with-randomizedsearchcv)
     - [Tuning Hyperparameters with GridSearchCV](#tuning-hyperparameters-with-gridsearchcv)
     - [Quick Tip: Correlation Analysis](#quick-tip-correlation-analysis)
+    - [Saving And Loading A Model](#saving-and-loading-a-model)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
@@ -2734,6 +2735,42 @@ compare_metrics.plot.bar(figsize=(10, 8));
   - Forward selection is an iterative method in which we start with having no feature in the model. In each iteration, we keep adding the feature which best improves our model till an addition of a new variable does not improve the performance of the model.
 - Backward Attribute Selection
   - In backward elimination, we start with all the features and removes the least significant feature at each iteration which improves the performance of the model. We repeat this until no improvement is observed on removal of features.
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Saving And Loading A Model](sample-project/introduction-to-scikit-learn.ipynb)
+
+Two ways to save and load machine learning models:
+- With Python's [pickle](https://docs.python.org/3/library/pickle.html) module
+- With the [joblib](https://joblib.readthedocs.io/en/latest/) module
+
+[Model persistence](https://scikit-learn.org/stable/modules/model_persistence.html)
+
+```python
+# pickle
+# Save an extisting model to file
+pickle.dump(gs_clf, open("gs_random_random_forest_model_1.pkl", "wb"))
+
+# Load a saved model
+loaded_pickle_model = pickle.load(open("gs_random_random_forest_model_1.pkl", "rb"))
+
+# Make some predictions
+pickle_y_preds = loaded_pickle_model.predict(X_test)
+evaluate_preds(y_test, pickle_y_preds)
+
+# Joblib
+from joblib import dump, load
+
+# Save model to file
+dump(gs_clf, filename="gs_random_forest_model_1.joblib")
+
+# Import a saved joblib model
+loaded_joblib_model = load(filename="gs_random_forest_model_1.joblib")
+
+# Make and evaluate joblib predictions
+joblib_y_preds = loaded_joblib_model.predict(X_test)
+evaluate_preds(y_test, joblib_y_preds)
+```
 
 **[⬆ back to top](#table-of-contents)**
 
