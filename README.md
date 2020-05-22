@@ -109,6 +109,12 @@
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
+    - [Communicating Your Work](#communicating-your-work)
+    - [Communicating With Managers](#communicating-with-managers)
+    - [Communicating With Co-Workers](#communicating-with-co-workers)
+    - [Weekend Project Principle](#weekend-project-principle)
+    - [Communicating With Outside World](#communicating-with-outside-world)
+    - [Storytelling](#storytelling)
   - [**Section 16: Career Advice + Extra Bits**](#section-16-career-advice--extra-bits)
   - [**Section 17: Learn Python**](#section-17-learn-python)
   - [**Section 18: Learn Python Part 2**](#section-18-learn-python-part-2)
@@ -2019,6 +2025,7 @@ mean_absolute_error(y_test, y_preds)
 ### [Evaluating A Machine Learning Model (Score)](sample-project/introduction-to-scikit-learn.ipynb)
 
 [Three ways to evaluate Scikit-Learn models/esitmators](https://scikit-learn.org/stable/modules/model_evaluation.html)
+
 - Estimator score method
 - The scoring parameter
 - Problem-specific metric functions.
@@ -2103,10 +2110,12 @@ np.mean(cross_val_score)
 ### [Evaluating A Classification Model (ROC Curve)](sample-project/introduction-to-scikit-learn.ipynb)
 
 [Area under the receiver operating characteristic curve (AUC/ROC)](https://www.youtube.com/watch?v=4jRBRDbJemM)
+
 - Area under curve (AUC)
 - ROC curve
 
 ROC curves are a comparison of a model's true postive rate (tpr) versus a models false positive rate (fpr).
+
 - True positive = model predicts 1 when truth is 1
 - False positive = model predicts 1 when truth is 0
 - True negative = model predicts 0 when truth is 0
@@ -2155,7 +2164,7 @@ def plot_roc_curve(fpr, tpr):
     plt.plot(fpr, tpr, color="orange", label="ROC")
     # Plot line with no predictive power (baseline)
     plt.plot([0, 1], [0, 1], color="darkblue", linestyle="--", label="Guessing")
-    
+
     # Customize the plot
     plt.xlabel("False positive rate (fpr)")
     plt.ylabel("True positive rate (tpr)")
@@ -2183,7 +2192,7 @@ pd.crosstab(y_test, y_preds, rownames=["Actual Labels"], colnames=["Predicted La
 # Make our confusion matrix more visual with Seaborn's heatmap()
 import seaborn as sns
 
-# Set the font scale 
+# Set the font scale
 sns.set(font_scale=1.5)
 
 # Create a confusion matrix
@@ -2216,6 +2225,7 @@ def plot_conf_mat(conf_mat):
 ### [Evaluating A Classification Model 6 (Classification Report)](sample-project/introduction-to-scikit-learn.ipynb)
 
 Precision, Recall & F-Measure
+
 - [Understanding Confusion Matrix](https://towardsdatascience.com/understanding-confusion-matrix-a9ad42dcfd62)
 - [Precision, Recall & F-Measure](https://www.youtube.com/watch?v=j-EB6RqqjGI)
 - [Performance measure on multiclass classification](https://www.youtube.com/watch?v=HBi-P5j0Kec)
@@ -2232,7 +2242,7 @@ Precision, Recall & F-Measure
 - Precision: Of the shoes **classified** Nike, How many are **acutally** Nike?
   - Number of shoes **acutally** Nike = TP
   - Number of shoes **classified** Nike = TP + FP
-  - Precision = TP / (TP + FP) = % of correct positive classification over total positive classification 
+  - Precision = TP / (TP + FP) = % of correct positive classification over total positive classification
   - When the model predicts a positive, how often is it correct?
 - Recall: Of the shoes that are **actually** Nike, How many are **classified** as Nike?
   - Number of shoes **classified** Nike = TP
@@ -2241,7 +2251,7 @@ Precision, Recall & F-Measure
   - When it is actually positive, how often does it predict a positive?
 - Precision and recall become more important when classes are imbalanced.
   - If cost of false positive predictions are worse than false negatives, aim for higher precision.
-    - For example, in spam detection, a false positive risks the receiver missing an important email due to it being incorrectly labelled as spam. 
+    - For example, in spam detection, a false positive risks the receiver missing an important email due to it being incorrectly labelled as spam.
   - If cost of false negative predictions are worse than false positives, aim for higher recall.
     - For example, in cancer detection and terrorist detection the cost of a false negative prediction is likely to be deadly. Tell a cancer patient you have no cancer.
 - F1-score is a combination of precision and recall.
@@ -2267,18 +2277,21 @@ pd.DataFrame(classification_report(disease_true,
 ### [Evaluating A Regression Model 1 (R2 Score)](sample-project/introduction-to-scikit-learn.ipynb)
 
 Regression model evaluation metrics
+
 - R^2 (pronounced r-squared) or coefficient of determination.
 - Mean absolute error (MAE)
 - Mean squared error (MSE)
 
 Which regression metric should you use?
+
 - R2 is similar to accuracy. It gives you a quick indication of how well your model might be doing. Generally, the closer your R2 value is to 1.0, the better the model. But it doesn't really tell exactly how wrong your model is in terms of how far off each prediction is.
 - MAE gives a better indication of how far off each of your model's predictions are on average.
 - As for MAE or MSE, because of the way MSE is calculated, squaring the differences between predicted values and actual values, it amplifies larger differences. Let's say we're predicting the value of houses (which we are).
-  - Pay more attention to MAE: When being $10,000 off is twice as bad as being $5,000 off. 
+  - Pay more attention to MAE: When being $10,000 off is twice as bad as being $5,000 off.
   - Pay more attention to MSE: When being $10,000 off is more than twice as bad as being $5,000 off.
 
 What R-squared does:
+
 - Compares your models predictions to the mean of the targets. Values can range from negative infinity (a very poor model) to 1.
 - For example, if all your model does is predict the mean of the targets, it's R^2 value would be 0.
 - And if your model perfectly predicts a range of numbers it's R^2 value would be 1.
@@ -2314,6 +2327,7 @@ r2_score(y_test, y_test)
 ### [Evaluating A Regression Model 2 (MAE)](sample-project/introduction-to-scikit-learn.ipynb)
 
 Mean absolue error (MAE)
+
 - MAE is the average of the aboslute differences between predictions and actual values. It gives you an idea of how wrong your models predictions are.
 
 ```python
@@ -2333,6 +2347,7 @@ df["differences"] = df["predicted values"] - df["actual values"]
 ### [Evaluating A Regression Model 3 (MSE)](sample-project/introduction-to-scikit-learn.ipynb)
 
 Mean squared error (MSE)
+
 - MSE is the average of the square value of aboslute differences between predictions and actual values.
 
 ```python
@@ -2356,6 +2371,7 @@ squared.mean()
 - Below are some of the most important evaluation metrics you'll want to look into for classification and regression models.
 
 Classification Model Evaluation Metrics/Techniques
+
 - Accuracy - The accuracy of the model in decimal form. Perfect accuracy is equal to 1.0.
 - [Precision](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score) - Indicates the proportion of positive identifications (model predicted class 1) which were actually correct. A model which produces no false positives has a precision of 1.0.
 - [Recall](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score) - Indicates the proportion of actual positives which were correctly classified. A model which produces no false negatives has a recall of 1.0.
@@ -2367,6 +2383,7 @@ Classification Model Evaluation Metrics/Techniques
 - [Area Under Curve (AUC) Score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) - The area underneath the ROC curve. A perfect model achieves an AUC score of 1.0.
 
 Which classification metric should you use?
+
 - Accuracy is a good measure to start with if all classes are balanced (e.g. same amount of samples which are labelled with 0 or 1).
 - Precision and recall become more important when classes are imbalanced.
   - If false-positive predictions are worse than false-negatives, aim for higher precision.
@@ -2375,11 +2392,13 @@ Which classification metric should you use?
 - A confusion matrix is always a good way to visualize how a classification model is going.
 
 Regression Model Evaluation Metrics/Techniques
+
 - [R^2 (pronounced r-squared)](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html) or the coefficient of determination - Compares your model's predictions to the mean of the targets. Values can range from negative infinity (a very poor model) to 1. For example, if all your model does is predict the mean of the targets, its R^2 value would be 0. And if your model perfectly predicts a range of numbers it's R^2 value would be 1.
 - [Mean absolute error (MAE)](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html) - The average of the absolute differences between predictions and actual values. It gives you an idea of how wrong your predictions were.
 - [Mean squared error (MSE)](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html) - The average squared differences between predictions and actual values. Squaring the errors removes negative errors. It also amplifies outliers (samples which have larger errors).
 
 Which regression metric should you use?
+
 - R2 is similar to accuracy. It gives you a quick indication of how well your model might be doing. Generally, the closer your R2 value is to 1.0, the better the model. But it doesn't really tell exactly how wrong your model is in terms of how far off each prediction is.
 - MAE gives a better indication of how far off each of your model's predictions are on average.
 - As for MAE or MSE, because of the way MSE is calculated, squaring the differences between predicted values and actual values, it amplifies larger differences. Let's say we're predicting the value of houses (which we are).
@@ -2387,6 +2406,7 @@ Which regression metric should you use?
 - Pay more attention to MSE: When being $10,000 off is more than twice as bad as being $5,000 off.
 
 For more resources on evaluating a machine learning model, be sure to check out the following resources:
+
 - [Scikit-Learn documentation for metrics and scoring (quantifying the quality of predictions)](https://scikit-learn.org/stable/modules/model_evaluation.html)
 - [Beyond Accuracy: Precision and Recall](https://towardsdatascience.com/beyond-accuracy-precision-and-recall-3da06bea9f6c)
 - [Stack Overflow answer describing MSE (mean squared error) and RSME (root mean squared error)](https://stackoverflow.com/questions/17197492/is-there-a-library-function-for-root-mean-square-error-rmse-in-python/37861832#37861832)
@@ -2407,8 +2427,8 @@ np.random.seed(42)
 X = heart_disease.drop("target", axis=1)
 y = heart_disease["target"]
 
-# By default cross_val_score uses the scoring provided in the given estimator, 
-# which is usually the simplest appropriate scoring method. 
+# By default cross_val_score uses the scoring provided in the given estimator,
+# which is usually the simplest appropriate scoring method.
 # E.g. for most classifiers this is accuracy score and for regressors this is r2 score.
 cv_acc = cross_val_score(clf, X, y, cv=5, scoring=None)
 
@@ -2521,18 +2541,22 @@ print(f"MSE: {mean_squared_error(y_test, y_preds)}")
 First predictions = baseline predictions. First model = baseline model.
 
 From a data perspective:
+
 - Could we collect more data? (generally, the more data, the better)
 - Could we improve our data?
 
 From a model perspective:
+
 - Is there a better model we could use?
 - Could we improve the current model?
 
 Hyperparameters vs. Parameters
+
 - Parameters = model find these patterns in data
 - Hyperparameters = settings on a model you can adjust to (potentially) improve its ability to find patterns
 
 Three ways to adjust hyperparameters:
+
 - By hand
 - Randomly with RandomSearchCV
 - Exhaustively with GridSearchCV
@@ -2554,6 +2578,7 @@ clf.get_params()
 - Test set (final exam): 15%
 
 We're going to try and adjust:
+
 - max_depth
 - max_features
 - min_samples_leaf
@@ -2625,7 +2650,7 @@ def evaluate_preds(y_true, y_preds):
     print(f"Precision: {precision:.2f}")
     print(f"Recall: {recall:.2f}")
     print(f"F1 score: {f1:.2f}")
-    
+
     return metric_dict
 ```
 
@@ -2656,7 +2681,7 @@ clf = RandomForestClassifier(n_jobs=1)
 
 # Setup RandomizedSearchCV
 rs_clf = RandomizedSearchCV(estimator=clf,
-                            param_distributions=grid, 
+                            param_distributions=grid,
                             n_iter=10, # number of models to try
                             cv=5,
                             verbose=2)
@@ -2703,7 +2728,7 @@ clf = RandomForestClassifier(n_jobs=1)
 
 # Setup GridSearchCV
 gs_clf = GridSearchCV(estimator=clf,
-                      param_grid=grid_2, 
+                      param_grid=grid_2,
                       cv=5,
                       verbose=2)
 
@@ -2742,6 +2767,7 @@ compare_metrics.plot.bar(figsize=(10, 8));
 ### [Saving And Loading A Model](sample-project/introduction-to-scikit-learn.ipynb)
 
 Two ways to save and load machine learning models:
+
 - With Python's [pickle](https://docs.python.org/3/library/pickle.html) module
 - With the [joblib](https://joblib.readthedocs.io/en/latest/) module
 
@@ -2778,6 +2804,7 @@ evaluate_preds(y_test, joblib_y_preds)
 ### Putting It All Together
 
 Things to remember
+
 - All data should be numerical
 - There should be no missing values
 - Manipulate the test set the same as the training set
@@ -2786,10 +2813,12 @@ Things to remember
 - One best performance metric doesn’t mean the best model
 
 [Pipeline](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)
+
 - chain multiple estimators into one
 - chain a fixed sequence of steps in preprocessing and modelling
 
 Steps we want to do (all in one cell):
+
 - Fill missing data
 - Convert data to numbers
 - Build a model on the data
@@ -2863,7 +2892,7 @@ pipe_grid = {
     "model__n_estimators": [100, 1000],
     "model__max_depth": [None, 5],
     "model__max_features": ["auto"],
-    "model__min_samples_split": [2, 4]    
+    "model__min_samples_split": [2, 4]
 }
 
 gs_model = GridSearchCV(model, pipe_grid, cv=5, verbose=2)
@@ -2894,6 +2923,113 @@ gs_model.score(X_test, y_test)
 **[⬆ back to top](#table-of-contents)**
 
 ## **Section 15: Storytelling + Communication: How To Present Your Work**
+
+### Communicating Your Work
+
+- [How to Think About Communicating and Sharing Your Work](https://www.mrdbourke.com/how-to-think-about-communicating-and-sharing-your-work/)
+
+Now you’ve got skills, what do you do next?
+The most important question you can ask
+  - “Who’s it for?”
+  - What questions will they have?
+  - What concerns can you address before they arise?
+- Heard but not understood 
+- Heard and (potentially) understood
+
+“Who’s it for?”
+- People on your team: Boss, Project manager and Teammates
+- People outside your team: Clients, Customers and Fans
+
+**[⬆ back to top](#table-of-contents)**
+
+### Communicating With Managers
+
+“Who’s it for?”
+“What do they need to know?”
+- How the project is going
+- What’s in the way
+- What you’ve done
+- What you’re doing next
+- Why you’re doing something next
+- Who else could help
+- What’s not needed Where you’re stuck
+- What’s not clear What questions do have
+- Are you still working towards the right thing
+- Is there any feedback or advice
+
+Example: The Project Manager, Boss, Senior, Lead
+- What’s holding you back?
+
+**[⬆ back to top](#table-of-contents)**
+
+### Communicating With Co-Workers
+
+The People You’re Working With, Sitting Next to, in the Group Chat
+
+Break it down
+- 6-month project
+- 4-week month
+- 5-day week
+
+What did you work on today?
+- What I worked on today (1-3 points on what you did):
+  - What’s working?
+  - What’s not working?
+  - What could be improved?
+- What I’m working on next:
+  - What’s your next course of action? (based on the above) 
+  - Why?
+  - What’s holding you back?
+
+- Relate back to overall project goal
+- Take note of overlaps
+
+**[⬆ back to top](#table-of-contents)**
+
+### Weekend Project Principle
+
+Start the job before you have it
+The weekend project principle
+- What you work on in your own time
+- Work on your own projects to build specific knowledge
+- Compound knowledge that you learn courses into skill which can't be taught in courses
+
+How?
+- Documented on your blog
+- 6-week project
+
+**[⬆ back to top](#table-of-contents)**
+
+### Communicating With Outside World
+
+People outside your team: Clients, Customers and Fans
+- Obvious to you, amazing to others
+
+**[⬆ back to top](#table-of-contents)**
+
+### Storytelling
+
+What story are you trying to tell?
+Always ask, Who’s it for?
+- “Who’s it for?”
+- “What do they need to know?” = Specific = Courage
+Write it down
+- What did you work on today?
+- What are you working this week?
+Progress, not perfection
+- “Here’s what I’ve done.”
+
+**[⬆ back to top](#table-of-contents)**
+
+Communicating and sharing your work: Further reading
+
+- [How to Think About Communicating and Sharing Your Work](https://www.mrdbourke.com/how-to-think-about-communicating-and-sharing-your-work/)
+- [The Basecamp Guide to Internal Communication](https://basecamp.com/guides/how-we-communicate)
+- [Your own hosted blog](https://www.fast.ai/2020/01/16/fast_template/#you-should-blog)
+- [How to Start Your Own Machine Learning Projects](https://www.mrdbourke.com/how-to-start-your-own-machine-learning-projects/)
+- [Why you (yes, you) should blog](https://medium.com/@racheltho/why-you-yes-you-should-blog-7d2544ac1045)
+- [devblog](https://hashnode.com/devblog)
+- [Devblog: How to Launch Your Own Developer Blog on Your Own Domain in Minutes](https://www.freecodecamp.org/news/devblog-launch-your-developer-blog-own-domain/)
 
 **[⬆ back to top](#table-of-contents)**
 
