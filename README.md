@@ -3035,6 +3035,15 @@ Communicating and sharing your work: Further reading
 
 ## **Section 16: Career Advice + Extra Bits**
 
+What If I Don't Have Enough Experience?
+- Github
+- Website
+  - [Mashup Template](http://www.mashup-template.com/)
+  - [Kevin Kelly](https://kk.org/)
+- 1 ~ 2 Big Projects
+- Blog
+(Do you have experience?)
+
 **[⬆ back to top](#table-of-contents)**
 
 ## **Section 17: Learn Python**
