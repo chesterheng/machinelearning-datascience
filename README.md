@@ -3056,6 +3056,9 @@ What If I Don't Have Enough Experience?
 
 ## **Section 19: Bonus: Learn Advanced Statistics and Mathematics for FREE!**
 
+- [Statistics Course](https://www.youtube.com/watch?v=zouPoc49xbk&list=PL8dPuuaLjXtNM_Y-bUAhblSAdWRnmBUcr)
+- [Mathematics Course](https://www.khanacademy.org/math)
+
 **[⬆ back to top](#table-of-contents)**
 
 ## **Section 20: Where To Go From Here?**
