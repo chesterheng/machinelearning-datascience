@@ -121,6 +121,15 @@
     - [Finding The Most Important Features](#finding-the-most-important-features)
     - [Reviewing The Project](#reviewing-the-project)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
+    - [[Project Environment Setup]](#project-environment-setup-1)
+    - [Step 1~4 Framework Setup](#step-14-framework-setup-1)
+- [🚜 Predicting the Sale Price of Bulldozers using Machine Learning](#-predicting-the-sale-price-of-bulldozers-using-machine-learning)
+  - [1. Problem defition](#1-problem-defition)
+  - [2. Data](#2-data)
+  - [3. Evaluation](#3-evaluation)
+  - [4. Features](#4-features)
+    - [Exploring Our Data](#exploring-our-data-1)
+    - [Feature Engineering](#feature-engineering)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
@@ -3500,7 +3509,139 @@ If you haven't hit your evaluation metric yet... ask yourself...
 
 **[⬆ back to top](#table-of-contents)**
 
-## **Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**
+## [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](bulldozer-price-prediction-project/end-to-end-bluebook-bulldozer-price-regression.ipynb)
+
+### [Project Environment Setup]
+
+- Download & install Miniconda
+- Start new project
+- Create project folder
+- Data
+  - [Blue Book for Bulldozers](https://www.kaggle.com/c/bluebook-for-bulldozers/overview)
+- Create an environment
+  - `conda env list`
+  - `conda activate /Users/chesterheng/...`
+  - `conda env export > environment.yml`
+  - `vim environment.yml`
+  - `esc + Shift + : + q`
+  - `conda deactivate`
+  - `conda create --prefix ./env -f environment.yml`
+  - `conda create --prefix ./env pandas numpy matplotlib jupyter scikit-learn`
+- Jupyter Notebooks
+- Data Analysis & Manipulation
+- Machine Learning
+
+**[⬆ back to top](#table-of-contents)**
+
+### Step 1~4 Framework Setup
+
+# 🚜 Predicting the Sale Price of Bulldozers using Machine Learning
+
+In this notebook, we're going to go through an example machine learning project with the goal of predicting the sale price of bulldozers.
+
+## 1. Problem defition
+
+> How well can we predict the future sale price of a bulldozer, given its characteristics and previous examples of how much similar bulldozers have been sold for?
+
+## 2. Data
+
+The data is downloaded from the Kaggle Bluebook for Bulldozers competition: https://www.kaggle.com/c/bluebook-for-bulldozers/data
+
+There are 3 main datasets:
+
+* Train.csv is the training set, which contains data through the end of 2011.
+* Valid.csv is the validation set, which contains data from January 1, 2012 - April 30, 2012 You make predictions on this set throughout the majority of the competition. Your score on this set is used to create the public leaderboard.
+* Test.csv is the test set, which won't be released until the last week of the competition. It contains data from May 1, 2012 - November 2012. Your score on the test set determines your final rank for the competition.
+
+## 3. Evaluation
+
+The evaluation metric for this competition is the RMSLE (root mean squared log error) between the actual and predicted auction prices.
+
+For more on the evaluation of this project check: https://www.kaggle.com/c/bluebook-for-bulldozers/overview/evaluation
+
+**Note:** The goal for most regression evaluation metrics is to minimize the error. For example, our goal for this project will be to build a machine learning model which minimises RMSLE.
+
+## 4. Features
+
+Kaggle provides a data dictionary detailing all of the features of the dataset. You can view this data dictionary on Google Sheets: https://docs.google.com/spreadsheets/d/18ly-bLR8sbDJLITkWG7ozKm8l3RyieQ2Fpgix-beSYI/edit?usp=sharing
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Exploring Our Data](bulldozer-price-prediction-project/end-to-end-bluebook-bulldozer-price-regression.ipynb)
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import sklearn
+
+# Import training and validation sets
+df = pd.read_csv("data/TrainAndValid.csv",
+                 low_memory=False)
+
+df.info()
+df.isna().sum()
+df.columns
+
+fig, ax = plt.subplots()
+ax.scatter(df["saledate"][:1000], df["SalePrice"][:1000])
+
+df.saledate[:1000]
+df.saledate.dtype
+df.SalePrice.plot.hist()
+```
+
+Parsing dates
+- When we work with time series data, we want to enrich the time & date component as much as possible.
+- We can do that by telling pandas which of our columns has dates in it using the parse_dates parameter.
+
+```python
+# Import data again but this time parse dates
+df = pd.read_csv("data/TrainAndValid.csv",
+                 low_memory=False,
+                 parse_dates=["saledate"])
+
+df.saledate.dtype
+df.saledate[:1000]
+
+fig, ax = plt.subplots()
+ax.scatter(df["saledate"][:1000], df["SalePrice"][:1000])
+
+df.head()
+df.head().T
+df.saledate.head(20)
+
+# Sort DataFrame in date order
+df.sort_values(by=["saledate"], inplace=True, ascending=True)
+df.saledate.head(20)
+
+# Make a copy of the original DataFrame to perform edits on
+df_tmp = df.copy()
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Feature Engineering](bulldozer-price-prediction-project/end-to-end-bluebook-bulldozer-price-regression.ipynb)
+
+[DatetimeIndex](https://pandas.pydata.org/pandas-docs/version/0.23.4/generated/pandas.DatetimeIndex.html)
+
+```python
+# Add datetime parameters for saledate column
+df_tmp["saleMonth"] = df_tmp.saledate.dt.month
+df_tmp["saleDay"] = df_tmp.saledate.dt.day
+df_tmp["saleDayOfWeek"] = df_tmp.saledate.dt.dayofweek
+df_tmp["saleDayOfYear"] = df_tmp.saledate.dt.dayofyear
+
+df_tmp.head().T
+# Now we've enriched our DataFrame with date time features, we can remove 'saledate'
+df_tmp.drop("saledate", axis=1, inplace=True)
+
+# Check the values of different columns
+df_tmp.state.value_counts()
+
+df_tmp.head()
+len(df_tmp)
+```
 
 **[⬆ back to top](#table-of-contents)**
 
