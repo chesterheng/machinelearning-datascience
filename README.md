@@ -138,6 +138,7 @@
     - [Challenge: What's wrong with splitting data after filling it?](#challenge-whats-wrong-with-splitting-data-after-filling-it)
     - [Custom Evaluation Function](#custom-evaluation-function)
     - [Reducing Data](#reducing-data)
+    - [RandomizedSearchCV](#randomizedsearchcv)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
@@ -3903,6 +3904,40 @@ model.fit(X_train, y_train)
 10000 * 100
 
 show_scores(model)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### RandomizedSearchCV
+
+```python
+%%time
+from sklearn.model_selection import RandomizedSearchCV
+
+# Different RandomForestRegressor hyperparameters
+rf_grid = {"n_estimators": np.arange(10, 100, 10),
+           "max_depth": [None, 3, 5, 10],
+           "min_samples_split": np.arange(2, 20, 2),
+           "min_samples_leaf": np.arange(1, 20, 2),
+           "max_features": [0.5, 1, "sqrt", "auto"],
+           "max_samples": [10000]}
+
+# Instantiate RandomizedSearchCV model
+rs_model = RandomizedSearchCV(RandomForestRegressor(n_jobs=-1,
+                                                    random_state=42),
+                              param_distributions=rf_grid,
+                              n_iter=2,
+                              cv=5,
+                              verbose=True)
+
+# Fit the RandomizedSearchCV model
+rs_model.fit(X_train, y_train)
+
+# Find the best model hyperparameters
+rs_model.best_params_
+
+# Evaluate the RandomizedSearch model
+show_scores(rs_model)
 ```
 
 **[⬆ back to top](#table-of-contents)**
