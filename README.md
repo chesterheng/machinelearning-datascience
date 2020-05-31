@@ -130,6 +130,7 @@
   - [4. Features](#4-features)
     - [Exploring Our Data](#exploring-our-data-1)
     - [Feature Engineering](#feature-engineering)
+    - [Turning Data Into Numbers](#turning-data-into-numbers)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
@@ -3641,6 +3642,56 @@ df_tmp.state.value_counts()
 
 df_tmp.head()
 len(df_tmp)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Turning Data Into Numbers
+
+One way we can turn all of our data into numbers is by converting them into pandas catgories.
+
+```python
+df_tmp.info()
+df_tmp["UsageBand"].dtype
+df_tmp.head().T
+pd.api.types.is_string_dtype(df_tmp["UsageBand"])
+
+# Find the columns which contain strings
+for label, content in df_tmp.items():
+    if pd.api.types.is_string_dtype(content):
+        print(label)
+
+# This will turn all of the string value into category values
+for label, content in df_tmp.items():
+    if pd.api.types.is_string_dtype(content):
+        df_tmp[label] = content.astype("category").cat.as_ordered()
+
+df_tmp.info()
+df_tmp.state.cat.categories
+df_tmp.state.cat.codes
+
+# Check missing data
+df_tmp.isnull().sum()/len(df_tmp)
+
+# Export current tmp dataframe
+df_tmp.to_csv("data/train_tmp.csv",
+              index=False)
+
+# Import preprocessed data
+df_tmp = pd.read_csv("data/train_tmp.csv",
+                     low_memory=False)
+df_tmp.head().T
+df_tmp.isna().sum()
+```
+
+```python
+# If you're wondering what df.items() does, here's an example
+random_dict = {"key1": "hello",
+               "key2": "world!"}
+
+for key, value in random_dict.items():
+    print(f"this is a key: {key}",
+          f"this is a value: {value}")
 ```
 
 **[⬆ back to top](#table-of-contents)**
