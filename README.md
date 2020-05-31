@@ -115,6 +115,7 @@
     - [Preparing Our Data For Machine Learning](#preparing-our-data-for-machine-learning)
     - [Choosing The Right Models](#choosing-the-right-models)
     - [Experimenting With Machine Learning Models](#experimenting-with-machine-learning-models)
+    - [Tuning/Improving Our Model](#tuningimproving-our-model)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
@@ -3226,6 +3227,47 @@ model_scores = fit_and_score(models=models,
 model_compare = pd.DataFrame(model_scores, index=["accuracy"])
 model_compare.T.plot.bar();
 ```
+**[⬆ back to top](#table-of-contents)**
+
+### Tuning/Improving Our Model
+
+Hyperparameter tuning (by hand)
+
+```python
+# Let's tune KNN
+
+train_scores = []
+test_scores = []
+
+# Create a list of differnt values for n_neighbors
+neighbors = range(1, 21)
+
+# Setup KNN instance
+knn = KNeighborsClassifier()
+
+# Loop through different n_neighbors
+for i in neighbors:
+    knn.set_params(n_neighbors=i)
+    
+    # Fit the algorithm
+    knn.fit(X_train, y_train)
+    
+    # Update the training scores list
+    train_scores.append(knn.score(X_train, y_train))
+    
+    # Update the test scores list
+    test_scores.append(knn.score(X_test, y_test))
+
+plt.plot(neighbors, train_scores, label="Train score")
+plt.plot(neighbors, test_scores, label="Test score")
+plt.xticks(np.arange(1, 21, 1))
+plt.xlabel("Number of neighbors")
+plt.ylabel("Model score")
+plt.legend()
+
+print(f"Maximum KNN score on the test data: {max(test_scores)*100:.2f}%")
+```
+
 **[⬆ back to top](#table-of-contents)**
 
 ## **Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**
