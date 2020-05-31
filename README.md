@@ -114,6 +114,7 @@
     - [Finding Patterns - Heart Disease Frequency per Chest Pain Type](#finding-patterns---heart-disease-frequency-per-chest-pain-type)
     - [Preparing Our Data For Machine Learning](#preparing-our-data-for-machine-learning)
     - [Choosing The Right Models](#choosing-the-right-models)
+    - [Experimenting With Machine Learning Models](#experimenting-with-machine-learning-models)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
@@ -3209,6 +3210,12 @@ def fit_and_score(models, X_train, X_test, y_train, y_test):
     return model_scores
 ```
 
+**[⬆ back to top](#table-of-contents)**
+
+### Experimenting With Machine Learning Models
+
+Model Comparison
+
 ```python
 model_scores = fit_and_score(models=models,
                              X_train=X_train,
@@ -3216,9 +3223,9 @@ model_scores = fit_and_score(models=models,
                              y_train=y_train,
                              y_test=y_test)
 
-model_scores
+model_compare = pd.DataFrame(model_scores, index=["accuracy"])
+model_compare.T.plot.bar();
 ```
-
 **[⬆ back to top](#table-of-contents)**
 
 ## **Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**
