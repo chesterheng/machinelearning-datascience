@@ -116,6 +116,7 @@
     - [Choosing The Right Models](#choosing-the-right-models)
     - [Experimenting With Machine Learning Models](#experimenting-with-machine-learning-models)
     - [Tuning/Improving Our Model](#tuningimproving-our-model)
+    - [Tuning Hyperparameters](#tuning-hyperparameters)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
@@ -3266,6 +3267,92 @@ plt.ylabel("Model score")
 plt.legend()
 
 print(f"Maximum KNN score on the test data: {max(test_scores)*100:.2f}%")
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Tuning Hyperparameters
+
+Hyperparameter tuning with RandomizedSearchCV
+
+We're going to tune: LogisticRegression()
+
+```python
+# Create a hyperparameter grid for LogisticRegression
+log_reg_grid = {"C": np.logspace(-4, 4, 20),
+                "solver": ["liblinear"]}
+# Tune LogisticRegression
+
+np.random.seed(42)
+
+# Setup random hyperparameter search for LogisticRegression
+rs_log_reg = RandomizedSearchCV(LogisticRegression(),
+                                param_distributions=log_reg_grid,
+                                cv=5,
+                                n_iter=20,
+                                verbose=True)
+
+# Fit random hyperparameter search model for LogisticRegression
+rs_log_reg.fit(X_train, y_train)
+
+rs_log_reg.best_params_
+rs_log_reg.score(X_test, y_test)
+```
+
+Hyperparameter tuning with RandomizedSearchCV
+
+We're going to tune: RandomForestClassifier()
+
+```python
+# Create a hyperparameter grid for RandomForestClassifier
+rf_grid = {"n_estimators": np.arange(10, 1000, 50),
+           "max_depth": [None, 3, 5, 10],
+           "min_samples_split": np.arange(2, 20, 2),
+           "min_samples_leaf": np.arange(1, 20, 2)}
+
+# Setup random seed
+np.random.seed(42)
+
+# Setup random hyperparameter search for RandomForestClassifier
+rs_rf = RandomizedSearchCV(RandomForestClassifier(), 
+                           param_distributions=rf_grid,
+                           cv=5,
+                           n_iter=20,
+                           verbose=True)
+
+# Fit random hyperparameter search model for RandomForestClassifier()
+rs_rf.fit(X_train, y_train)
+
+# Find the best hyperparameters
+rs_rf.best_params_
+
+# Evaluate the randomized search RandomForestClassifier model
+rs_rf.score(X_test, y_test)
+```
+
+Hyperparamter Tuning with GridSearchCV
+
+Since our LogisticRegression model provides the best scores so far, we'll try and improve them again using GridSearchCV...
+
+```python
+# Different hyperparameters for our LogisticRegression model
+log_reg_grid = {"C": np.logspace(-4, 4, 30),
+                "solver": ["liblinear"]}
+
+# Setup grid hyperparameter search for LogisticRegression
+gs_log_reg = GridSearchCV(LogisticRegression(),
+                          param_grid=log_reg_grid,
+                          cv=5,
+                          verbose=True)
+
+# Fit grid hyperparameter search model
+gs_log_reg.fit(X_train, y_train);
+
+# Check the best hyperparmaters
+gs_log_reg.best_params_
+
+# Evaluate the grid search LogisticRegression model
+gs_log_reg.score(X_test, y_test)
 ```
 
 **[⬆ back to top](#table-of-contents)**
