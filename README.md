@@ -134,6 +134,8 @@
     - [Filling Missing Numerical Values](#filling-missing-numerical-values)
     - [Filling Missing Categorical Values](#filling-missing-categorical-values)
     - [Fitting A Machine Learning Model](#fitting-a-machine-learning-model)
+    - [Splitting Data](#splitting-data)
+    - [Challenge: What's wrong with splitting data after filling it?](#challenge-whats-wrong-with-splitting-data-after-filling-it)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
@@ -3785,6 +3787,61 @@ model.fit(df_tmp.drop("SalePrice", axis=1), df_tmp["SalePrice"])
 # Score the model
 model.score(df_tmp.drop("SalePrice", axis=1), df_tmp["SalePrice"])
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Splitting Data
+
+```python
+df_tmp.saleYear
+df_tmp.saleYear.value_counts()
+
+# Split data into training and validation
+df_val = df_tmp[df_tmp.saleYear == 2012]
+df_train = df_tmp[df_tmp.saleYear != 2012]
+
+len(df_val), len(df_train)
+
+# Split data into X & y
+X_train, y_train = df_train.drop("SalePrice", axis=1), df_train.SalePrice
+X_valid, y_valid = df_val.drop("SalePrice", axis=1), df_val.SalePrice
+
+X_train.shape, y_train.shape, X_valid.shape, y_valid.shape
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Challenge: What's wrong with splitting data after filling it?
+
+In the previous few videos we worked on filling the missing data in the training and validation data before splitting it into training and validation sets using the following code:
+
+```python
+# Split data into training and validation
+df_val = df_tmp[df_tmp.saleYear == 2012]
+df_train = df_tmp[df_tmp.saleYear != 2012]
+```
+
+The code worked but how might this interfere with our model?
+
+Remember the goal of machine learning: use the past to predict the future.
+
+So if our validation set is supposed to be representative of the future and we’re filling our training data using information from the validation set, what might this mean for our model?
+
+The challenge here comes in two parts.
+
+- What does it mean if we fill our training data with information from the future (validation set)?
+
+- How might you implement a fix to the current way things are being done in the project?
+
+If you need a hint, remember some takeaways from a previous lecture:
+
+- Split your data first (into train/test), always keep your training & test data separate
+
+- Fill/transform the training set and test sets separately (this goes for filling data with pandas as well)
+
+- Don’t use data from the future (test set) to fill data from the past (training set)
+
+Keep these things in mind when we create a data preprocessing function in a few videos time, they'll help you answer the question which gets raised then too.
 
 **[⬆ back to top](#table-of-contents)**
 
