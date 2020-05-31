@@ -107,6 +107,7 @@
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
     - [Project Environment Setup](#project-environment-setup)
     - [Step 1~4 Framework Setup](#step-14-framework-setup)
+    - [Getting Our Tools Ready](#getting-our-tools-ready)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
@@ -2987,6 +2988,37 @@ This is where you'll get different information about each of the features in you
     * 6: fixed defect: used to be defect but ok now
     * 7: reversable defect: no proper blood movement when excercising
 14. target - have disease or not (1=yes, 0=no) (= the predicted attribute)
+
+**[⬆ back to top](#table-of-contents)**
+
+### Getting Our Tools Ready
+
+We're going to use pandas, Matplotlib and NumPy for data analysis and manipulation.
+
+```python
+# Import all the tools we need
+
+# Regular EDA (exploratory data analysis) and plotting libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# we want our plots to appear inside the notebook
+%matplotlib inline 
+
+# Models from Scikit-Learn
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
+
+# Model Evaluations
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
+from sklearn.metrics import confusion_matrix, classification_report
+from sklearn.metrics import precision_score, recall_score, f1_score
+from sklearn.metrics import plot_roc_curve
+```
 
 **[⬆ back to top](#table-of-contents)**
 
