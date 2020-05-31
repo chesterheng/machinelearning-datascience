@@ -108,6 +108,7 @@
     - [Project Environment Setup](#project-environment-setup)
     - [Step 1~4 Framework Setup](#step-14-framework-setup)
     - [Getting Our Tools Ready](#getting-our-tools-ready)
+    - [Exploring Our Data](#exploring-our-data)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
@@ -3018,6 +3019,38 @@ from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
 from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.metrics import precision_score, recall_score, f1_score
 from sklearn.metrics import plot_roc_curve
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Exploring Our Data
+
+The goal here is to find out more about the data and become a subject matter export on the dataset you're working with.
+
+- What question(s) are you trying to solve?
+- What kind of data do we have and how do we treat different types?
+- What's missing from the data and how do you deal with it?
+- Where are the outliers and why should you care about them?
+- How can you add, change or remove features to get more out of your data?
+
+```python
+df = pd.read_csv("data/heart-disease.csv")
+df.shape # (rows, columns)
+
+df.head()
+df.tail()
+
+# Let's find out how many of each class there
+df["target"].value_counts()
+
+df["target"].value_counts().plot(kind="bar", color=["salmon", "lightblue"]);
+
+df.info()
+
+# Are there any missing values?
+df.isna().sum()
+
+df.describe()
 ```
 
 **[⬆ back to top](#table-of-contents)**
