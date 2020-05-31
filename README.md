@@ -113,6 +113,7 @@
     - [Finding Patterns - Age vs. Max Heart Rate for Heart Disease](#finding-patterns---age-vs-max-heart-rate-for-heart-disease)
     - [Finding Patterns - Heart Disease Frequency per Chest Pain Type](#finding-patterns---heart-disease-frequency-per-chest-pain-type)
     - [Preparing Our Data For Machine Learning](#preparing-our-data-for-machine-learning)
+    - [Choosing The Right Models](#choosing-the-right-models)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
@@ -3061,7 +3062,7 @@ df.describe()
 
 ### Finding Patterns - Heart Disease Frequency according to Sex
 
-```
+```python
 df.sex.value_counts()
 
 # Compare target column with sex column
@@ -3083,7 +3084,7 @@ plt.xticks(rotation=0);
 
 ### Finding Patterns - Age vs. Max Heart Rate for Heart Disease
 
-```
+```python
 # Create another figure
 plt.figure(figsize=(10, 6))
 
@@ -3117,7 +3118,7 @@ cp - chest pain type
 - 2: Non-anginal pain: typically esophageal spasms (non heart related)
 - 3: Asymptomatic: chest pain not showing signs of disease
 
-```
+```python
 pd.crosstab(df.cp, df.target)
 
 # Make the crosstab more visual
@@ -3153,7 +3154,7 @@ ax.set_ylim(bottom + 0.5, top - 0.5)
 
 ### Preparing Our Data For Machine Learning
 
-```
+```python
 df.head()
 
 # Split data into X and y
@@ -3167,6 +3168,55 @@ np.random.seed(42)
 X_train, X_test, y_train, y_test = train_test_split(X,
                                                     y,
                                                     test_size=0.2)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Choosing The Right Models
+
+We're going to try 3 different machine learning models:
+
+- Logistic Regression
+- K-Nearest Neighbours Classifier
+- Random Forest Classifier
+
+```python
+# Put models in a dictionary
+models = {"Logistic Regression": LogisticRegression(),
+          "KNN": KNeighborsClassifier(),
+          "Random Forest": RandomForestClassifier()}
+
+# Create a function to fit and score models
+def fit_and_score(models, X_train, X_test, y_train, y_test):
+    """
+    Fits and evaluates given machine learning models.
+    models : a dict of differetn Scikit-Learn machine learning models
+    X_train : training data (no labels)
+    X_test : testing data (no labels)
+    y_train : training labels
+    y_test : test labels
+    """
+    # Set random seed
+    np.random.seed(42)
+    # Make a dictionary to keep model scores
+    model_scores = {}
+    # Loop through models
+    for name, model in models.items():
+        # Fit the model to the data
+        model.fit(X_train, y_train)
+        # Evaluate the model and append its score to model_scores
+        model_scores[name] = model.score(X_test, y_test)
+    return model_scores
+```
+
+```python
+model_scores = fit_and_score(models=models,
+                             X_train=X_train,
+                             X_test=X_test,
+                             y_train=y_train,
+                             y_test=y_test)
+
+model_scores
 ```
 
 **[⬆ back to top](#table-of-contents)**
