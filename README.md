@@ -109,6 +109,9 @@
     - [Step 1~4 Framework Setup](#step-14-framework-setup)
     - [Getting Our Tools Ready](#getting-our-tools-ready)
     - [Exploring Our Data](#exploring-our-data)
+    - [Finding Patterns - Heart Disease Frequency according to Sex](#finding-patterns---heart-disease-frequency-according-to-sex)
+    - [Finding Patterns - Age vs. Max Heart Rate for Heart Disease](#finding-patterns---age-vs-max-heart-rate-for-heart-disease)
+    - [Finding Patterns - Heart Disease Frequency per Chest Pain Type](#finding-patterns---heart-disease-frequency-per-chest-pain-type)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
@@ -3051,6 +3054,98 @@ df.info()
 df.isna().sum()
 
 df.describe()
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Finding Patterns - Heart Disease Frequency according to Sex
+
+```
+df.sex.value_counts()
+
+# Compare target column with sex column
+pd.crosstab(df.target, df.sex)
+
+# Create a plot of crosstab
+pd.crosstab(df.target, df.sex).plot(kind="bar",
+                                    figsize=(10, 6),
+                                    color=["salmon", "lightblue"])
+
+plt.title("Heart Disease Frequency for Sex")
+plt.xlabel("0 = No Diesease, 1 = Disease")
+plt.ylabel("Amount")
+plt.legend(["Female", "Male"]);
+plt.xticks(rotation=0);
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Finding Patterns - Age vs. Max Heart Rate for Heart Disease
+
+```
+# Create another figure
+plt.figure(figsize=(10, 6))
+
+# Scatter with postivie examples
+plt.scatter(df.age[df.target==1],
+            df.thalach[df.target==1],
+            c="salmon")
+
+# Scatter with negative examples
+plt.scatter(df.age[df.target==0],
+            df.thalach[df.target==0],
+            c="lightblue")
+
+# Add some helpful info
+plt.title("Heart Disease in function of Age and Max Heart Rate")
+plt.xlabel("Age")
+plt.ylabel("Max Heart Rate")
+plt.legend(["Disease", "No Disease"]);
+
+# Check the distribution of the age column with a histogram
+df.age.plot.hist();
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Finding Patterns - Heart Disease Frequency per Chest Pain Type
+
+cp - chest pain type
+- 0: Typical angina: chest pain related decrease blood supply to the heart
+- 1: Atypical angina: chest pain not related to heart
+- 2: Non-anginal pain: typically esophageal spasms (non heart related)
+- 3: Asymptomatic: chest pain not showing signs of disease
+
+```
+pd.crosstab(df.cp, df.target)
+
+# Make the crosstab more visual
+pd.crosstab(df.cp, df.target).plot(kind="bar",
+                                   figsize=(10, 6),
+                                   color=["salmon", "lightblue"])
+
+# Add some communication
+plt.title("Heart Disease Frequency Per Chest Pain Type")
+plt.xlabel("Chest Pain Type")
+plt.ylabel("Amount")
+plt.legend(["No Disease", "Disease"])
+plt.xticks(rotation=0);
+
+df.head()
+
+# Make a correlation matrix
+df.corr()
+
+# Let's make our correlation matrix a little prettier
+corr_matrix = df.corr()
+fig, ax = plt.subplots(figsize=(15, 10))
+ax = sns.heatmap(corr_matrix,
+                 annot=True,
+                 linewidths=0.5,
+                 fmt=".2f",
+                 cmap="YlGnBu");
+bottom, top = ax.get_ylim()
+ax.set_ylim(bottom + 0.5, top - 0.5)
 ```
 
 **[⬆ back to top](#table-of-contents)**
