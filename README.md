@@ -112,6 +112,7 @@
     - [Finding Patterns - Heart Disease Frequency according to Sex](#finding-patterns---heart-disease-frequency-according-to-sex)
     - [Finding Patterns - Age vs. Max Heart Rate for Heart Disease](#finding-patterns---age-vs-max-heart-rate-for-heart-disease)
     - [Finding Patterns - Heart Disease Frequency per Chest Pain Type](#finding-patterns---heart-disease-frequency-per-chest-pain-type)
+    - [Preparing Our Data For Machine Learning](#preparing-our-data-for-machine-learning)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
@@ -3146,6 +3147,26 @@ ax = sns.heatmap(corr_matrix,
                  cmap="YlGnBu");
 bottom, top = ax.get_ylim()
 ax.set_ylim(bottom + 0.5, top - 0.5)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Preparing Our Data For Machine Learning
+
+```
+df.head()
+
+# Split data into X and y
+X = df.drop("target", axis=1)
+y = df["target"]
+
+# Split data into train and test sets
+np.random.seed(42)
+
+# Split into train & test set
+X_train, X_test, y_train, y_test = train_test_split(X,
+                                                    y,
+                                                    test_size=0.2)
 ```
 
 **[⬆ back to top](#table-of-contents)**
