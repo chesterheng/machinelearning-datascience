@@ -82,7 +82,7 @@
     - [Choosing The Right Model For Your Data 3 (Classification)](#choosing-the-right-model-for-your-data-3-classification)
     - [Fitting A Model To The Data](#fitting-a-model-to-the-data)
     - [Making Predictions With Our Model](#making-predictions-with-our-model)
-    - [predict() vs predict_proba()](#predict-vs-predictproba)
+    - [predict() vs predict_proba()](#predict-vs-predict_proba)
     - [Making Predictions With Our Model (Regression)](#making-predictions-with-our-model-regression)
     - [Evaluating A Machine Learning Model (Score)](#evaluating-a-machine-learning-model-score)
     - [Evaluating A Machine Learning Model 2 (Cross Validation)](#evaluating-a-machine-learning-model-2-cross-validation)
@@ -2903,6 +2903,8 @@ gs_model.score(X_test, y_test)
 **[⬆ back to top](#table-of-contents)**
 
 ## **Section 10: Supervised Learning: Classification + Regression**
+
+[Structured Data Projects(https://github.com/mrdbourke/zero-to-mastery-ml/tree/master/section-3-structured-data-projects)
 
 **[⬆ back to top](#table-of-contents)**
 
