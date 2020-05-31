@@ -4,5 +4,6 @@
     "titleBar.activeBackground": "#3A26AB",
     "titleBar.activeForeground": "#FDFCFE"
   },
-  "python.pythonPath": "/Users/chesterheng/opt/miniconda3/bin/python"
+  "python.pythonPath": "/Users/chesterheng/opt/miniconda3/bin/python",
+  "git.ignoreLimitWarning": true
 }

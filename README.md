@@ -105,6 +105,7 @@
     - [Putting It All Together](#putting-it-all-together)
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
+    - [Project Environment Setup](#project-environment-setup)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
@@ -2909,6 +2910,24 @@ gs_model.score(X_test, y_test)
 **[⬆ back to top](#table-of-contents)**
 
 ## **Section 11: Milestone Project 1: Supervised Learning (Classification)**
+
+### Project Environment Setup
+
+- Download & install Miniconda
+- Start new project
+- Create project folder
+- Data
+- Create an environment
+  - `conda env list`
+  - `conda activate /Users/chesterheng/...`
+  - `conda env export > environment.yml`
+  - `vim environment.yml`
+  - `esc + Shift + : + q`
+  - `conda deactivate`
+  - `conda create --prefix ./env -f environment.yml`
+- Jupyter Notebooks
+- Data Analysis & Manipulation
+- Machine Learning
 
 **[⬆ back to top](#table-of-contents)**
 
