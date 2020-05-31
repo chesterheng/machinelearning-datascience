@@ -118,6 +118,7 @@
     - [Tuning/Improving Our Model](#tuningimproving-our-model)
     - [Tuning Hyperparameters](#tuning-hyperparameters)
     - [Evaluating Our Model](#evaluating-our-model)
+    - [Finding The Most Important Features](#finding-the-most-important-features)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
@@ -3450,6 +3451,38 @@ cv_metrics = pd.DataFrame({"Accuracy": cv_acc,
 
 cv_metrics.T.plot.bar(title="Cross-validated classification metrics",
                       legend=False);
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Finding The Most Important Features
+
+Feature importance is another as asking, "which features contributed most to the outcomes of the model and how did they contribute?"
+
+Finding feature importance is different for each machine learning model. One way to find feature importance is to search for "(MODEL NAME) feature importance".
+
+Let's find the feature importance for our LogisticRegression model...
+
+
+```python
+# Fit an instance of LogisticRegression
+clf = LogisticRegression(C=0.20433597178569418,
+                         solver="liblinear")
+
+clf.fit(X_train, y_train);
+
+# Check coef_
+clf.coef_
+
+# Match coef's of features to columns
+feature_dict = dict(zip(df.columns, list(clf.coef_[0])))
+
+# Visualize feature importance
+feature_df = pd.DataFrame(feature_dict, index=[0])
+feature_df.T.plot.bar(title="Feature Importance", legend=False);
+
+pd.crosstab(df["sex"], df["target"])
+pd.crosstab(df["slope"], df["target"])
 ```
 
 **[⬆ back to top](#table-of-contents)**
