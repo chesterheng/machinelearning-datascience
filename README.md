@@ -137,6 +137,7 @@
     - [Splitting Data](#splitting-data)
     - [Challenge: What's wrong with splitting data after filling it?](#challenge-whats-wrong-with-splitting-data-after-filling-it)
     - [Custom Evaluation Function](#custom-evaluation-function)
+    - [Reducing Data](#reducing-data)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
@@ -3870,6 +3871,38 @@ def show_scores(model):
               "Training R^2": r2_score(y_train, train_preds),
               "Valid R^2": r2_score(y_valid, val_preds)}
     return scores
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Reducing Data
+
+```python
+# # This takes far too long... for experimenting
+
+# %%time
+# model = RandomForestRegressor(n_jobs=-1, 
+#                               random_state=42)
+
+# model.fit(X_train, y_train)
+len(X_train)
+
+# Change max_samples value
+model = RandomForestRegressor(n_jobs=-1,
+                              random_state=42,
+                              max_samples=10000)
+
+%%time
+# Cutting down on the max number of samples each estimator can see improves training time
+model.fit(X_train, y_train)
+
+# original dataset size = X_train.shape[0] * 100
+# new dataset size = 10000 * 100
+# 40 times smaller
+(X_train.shape[0] * 100) / 1000000
+10000 * 100
+
+show_scores(model)
 ```
 
 **[⬆ back to top](#table-of-contents)**
