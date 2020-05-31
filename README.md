@@ -133,6 +133,7 @@
     - [Turning Data Into Numbers](#turning-data-into-numbers)
     - [Filling Missing Numerical Values](#filling-missing-numerical-values)
     - [Filling Missing Categorical Values](#filling-missing-categorical-values)
+    - [Fitting A Machine Learning Model](#fitting-a-machine-learning-model)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
@@ -3766,6 +3767,23 @@ df_tmp.head().T
 df_tmp.isna().sum()
 df_tmp.head()
 len(df_tmp)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Fitting A Machine Learning Model
+
+```python
+%%time
+# Instantiate model
+model = RandomForestRegressor(n_jobs=-1,
+                              random_state=42)
+
+# Fit the model
+model.fit(df_tmp.drop("SalePrice", axis=1), df_tmp["SalePrice"])
+
+# Score the model
+model.score(df_tmp.drop("SalePrice", axis=1), df_tmp["SalePrice"])
 ```
 
 **[⬆ back to top](#table-of-contents)**
