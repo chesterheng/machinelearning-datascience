@@ -131,6 +131,7 @@
     - [Exploring Our Data](#exploring-our-data-1)
     - [Feature Engineering](#feature-engineering)
     - [Turning Data Into Numbers](#turning-data-into-numbers)
+    - [Filling Missing Numerical Values](#filling-missing-numerical-values)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
@@ -3692,6 +3693,50 @@ random_dict = {"key1": "hello",
 for key, value in random_dict.items():
     print(f"this is a key: {key}",
           f"this is a value: {value}")
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Filling Missing Numerical Values
+
+```python
+for label, content in df_tmp.items():
+    if pd.api.types.is_numeric_dtype(content):
+        print(label)
+df_tmp.ModelID
+
+# Check for which numeric columns have null values
+for label, content in df_tmp.items():
+    if pd.api.types.is_numeric_dtype(content):
+        if pd.isnull(content).sum():
+            print(label)
+
+# Fill numeric rows with the median
+for label, content in df_tmp.items():
+    if pd.api.types.is_numeric_dtype(content):
+        if pd.isnull(content).sum():
+            # Add a binary column which tells us if the data was missing or not
+            df_tmp[label+"_is_missing"] = pd.isnull(content)
+            # Fill missing numeric values with median
+            df_tmp[label] = content.fillna(content.median())
+
+# Check if there's any null numeric values
+for label, content in df_tmp.items():
+    if pd.api.types.is_numeric_dtype(content):
+        if pd.isnull(content).sum():
+            print(label)
+
+# Check to see how many examples were missing
+df_tmp.auctioneerID_is_missing.value_counts()
+
+df_tmp.isna().sum()
+```
+
+```python
+# Demonstrate how median is more robust than mean
+hundreds = np.full((1000,), 100)
+hundreds_billion = np.append(hundreds, 1000000000)
+np.mean(hundreds), np.mean(hundreds_billion), np.median(hundreds), np.median(hundreds_billion)
 ```
 
 **[⬆ back to top](#table-of-contents)**
