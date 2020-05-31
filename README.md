@@ -136,6 +136,7 @@
     - [Fitting A Machine Learning Model](#fitting-a-machine-learning-model)
     - [Splitting Data](#splitting-data)
     - [Challenge: What's wrong with splitting data after filling it?](#challenge-whats-wrong-with-splitting-data-after-filling-it)
+    - [Custom Evaluation Function](#custom-evaluation-function)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
@@ -3842,6 +3843,34 @@ If you need a hint, remember some takeaways from a previous lecture:
 - Don’t use data from the future (test set) to fill data from the past (training set)
 
 Keep these things in mind when we create a data preprocessing function in a few videos time, they'll help you answer the question which gets raised then too.
+
+**[⬆ back to top](#table-of-contents)**
+
+### Custom Evaluation Function
+
+```python
+# Create evaluation function (the competition uses RMSLE)
+from sklearn.metrics import mean_squared_log_error, mean_absolute_error, r2_score
+
+def rmsle(y_test, y_preds):
+    """
+    Caculates root mean squared log error between predictions and
+    true labels.
+    """
+    return np.sqrt(mean_squared_log_error(y_test, y_preds))
+
+# Create function to evaluate model on a few different levels
+def show_scores(model):
+    train_preds = model.predict(X_train)
+    val_preds = model.predict(X_valid)
+    scores = {"Training MAE": mean_absolute_error(y_train, train_preds),
+              "Valid MAE": mean_absolute_error(y_valid, val_preds),
+              "Training RMSLE": rmsle(y_train, train_preds),
+              "Valid RMSLE": rmsle(y_valid, val_preds),
+              "Training R^2": r2_score(y_train, train_preds),
+              "Valid R^2": r2_score(y_valid, val_preds)}
+    return scores
+```
 
 **[⬆ back to top](#table-of-contents)**
 
