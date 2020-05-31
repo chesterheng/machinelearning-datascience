@@ -132,6 +132,7 @@
     - [Feature Engineering](#feature-engineering)
     - [Turning Data Into Numbers](#turning-data-into-numbers)
     - [Filling Missing Numerical Values](#filling-missing-numerical-values)
+    - [Filling Missing Categorical Values](#filling-missing-categorical-values)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
@@ -3737,6 +3738,34 @@ df_tmp.isna().sum()
 hundreds = np.full((1000,), 100)
 hundreds_billion = np.append(hundreds, 1000000000)
 np.mean(hundreds), np.mean(hundreds_billion), np.median(hundreds), np.median(hundreds_billion)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Filling Missing Categorical Values
+
+```python
+# Check for columns which aren't numeric
+for label, content in df_tmp.items():
+    if not pd.api.types.is_numeric_dtype(content):
+        print(label)
+
+# Turn categorical variables into numbers and fill missing
+for label, content in df_tmp.items():
+    if not pd.api.types.is_numeric_dtype(content):
+        # Add binary column to indicate whether sample had missing value
+        df_tmp[label+"_is_missing"] = pd.isnull(content)
+        # Turn categories into numbers and add +1
+        df_tmp[label] = pd.Categorical(content).codes+1
+
+# + 1 to turn -1 to 0, so we know 0 is missing value
+pd.Categorical(df_tmp["state"]).codes+1
+
+df_tmp.info()
+df_tmp.head().T
+df_tmp.isna().sum()
+df_tmp.head()
+len(df_tmp)
 ```
 
 **[⬆ back to top](#table-of-contents)**
