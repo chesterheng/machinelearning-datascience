@@ -141,6 +141,7 @@
     - [RandomizedSearchCV](#randomizedsearchcv)
     - [Improving Hyperparameters](#improving-hyperparameters)
     - [Preproccessing Our Data](#preproccessing-our-data)
+    - [Making Predictions](#making-predictions)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
@@ -4011,6 +4012,31 @@ def preprocess_data(df):
 # Process the test data 
 df_test = preprocess_data(df_test)
 df_test.head()
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Making Predictions
+
+```python
+# We can find how the columns differ using sets
+set(X_train.columns) - set(df_test.columns)
+
+# Manually adjust df_test to have auctioneerID_is_missing column
+df_test["auctioneerID_is_missing"] = False
+df_test.head()
+
+# Make predictions on the test data
+test_preds = ideal_model.predict(df_test)
+
+# Format predictions into the same format Kaggle is after
+df_preds = pd.DataFrame()
+df_preds["SalesID"] = df_test["SalesID"]
+df_preds["SalesPrice"] = test_preds
+df_preds
+
+# Export prediction data
+df_preds.to_csv("data/test_predictions.csv", index=False)
 ```
 
 **[⬆ back to top](#table-of-contents)**
