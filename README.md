@@ -140,6 +140,7 @@
     - [Reducing Data](#reducing-data)
     - [RandomizedSearchCV](#randomizedsearchcv)
     - [Improving Hyperparameters](#improving-hyperparameters)
+    - [Preproccessing Our Data](#preproccessing-our-data)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
@@ -3969,6 +3970,47 @@ show_scores(ideal_model)
 
 # Scores on rs_model (only trained on ~10,000 examples)
 show_scores(rs_model)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Preproccessing Our Data
+
+Getting the test dataset in the same format as our training dataset
+
+```python
+def preprocess_data(df):
+    """
+    Performs transformations on df and returns transformed df.
+    """
+    df["saleYear"] = df.saledate.dt.year
+    df["saleMonth"] = df.saledate.dt.month
+    df["saleDay"] = df.saledate.dt.day
+    df["saleDayOfWeek"] = df.saledate.dt.dayofweek
+    df["saleDayOfYear"] = df.saledate.dt.dayofyear
+    
+    df.drop("saledate", axis=1, inplace=True)
+    
+    # Fill the numeric rows with median
+    for label, content in df.items():
+        if pd.api.types.is_numeric_dtype(content):
+            if pd.isnull(content).sum():
+                # Add a binary column which tells us if the data was missing or not
+                df[label+"_is_missing"] = pd.isnull(content)
+                # Fill missing numeric values with median
+                df[label] = content.fillna(content.median())
+    
+        # Filled categorical missing data and turn categories into numbers
+        if not pd.api.types.is_numeric_dtype(content):
+            df[label+"_is_missing"] = pd.isnull(content)
+            # We add +1 to the category code because pandas encodes missing categories as -1
+            df[label] = pd.Categorical(content).codes+1
+    
+    return df
+
+# Process the test data 
+df_test = preprocess_data(df_test)
+df_test.head()
 ```
 
 **[⬆ back to top](#table-of-contents)**
