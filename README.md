@@ -119,6 +119,7 @@
     - [Tuning Hyperparameters](#tuning-hyperparameters)
     - [Evaluating Our Model](#evaluating-our-model)
     - [Finding The Most Important Features](#finding-the-most-important-features)
+    - [Reviewing The Project](#reviewing-the-project)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
@@ -2922,7 +2923,7 @@ gs_model.score(X_test, y_test)
 
 **[⬆ back to top](#table-of-contents)**
 
-## **Section 11: Milestone Project 1: Supervised Learning (Classification)**
+## [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](heart-disease-project/end-to-end-heart-disease-classification.ipynb)
 
 ### Project Environment Setup
 
@@ -2930,6 +2931,8 @@ gs_model.score(X_test, y_test)
 - Start new project
 - Create project folder
 - Data
+  - [Heart Disease Data Set](https://archive.ics.uci.edu/ml/datasets/heart+Disease)
+  - [Heart Disease UCI](https://www.kaggle.com/ronitf/heart-disease-uci)
 - Create an environment
   - `conda env list`
   - `conda activate /Users/chesterheng/...`
@@ -3002,7 +3005,7 @@ This is where you'll get different information about each of the features in you
 
 **[⬆ back to top](#table-of-contents)**
 
-### Getting Our Tools Ready
+### [Getting Our Tools Ready](heart-disease-project/end-to-end-heart-disease-classification.ipynb)
 
 We're going to use pandas, Matplotlib and NumPy for data analysis and manipulation.
 
@@ -3033,7 +3036,7 @@ from sklearn.metrics import plot_roc_curve
 
 **[⬆ back to top](#table-of-contents)**
 
-### Exploring Our Data
+### [Exploring Our Data](heart-disease-project/end-to-end-heart-disease-classification.ipynb)
 
 The goal here is to find out more about the data and become a subject matter export on the dataset you're working with.
 
@@ -3065,7 +3068,7 @@ df.describe()
 
 **[⬆ back to top](#table-of-contents)**
 
-### Finding Patterns - Heart Disease Frequency according to Sex
+### [Finding Patterns - Heart Disease Frequency according to Sex](heart-disease-project/end-to-end-heart-disease-classification.ipynb)
 
 ```python
 df.sex.value_counts()
@@ -3087,7 +3090,7 @@ plt.xticks(rotation=0);
 
 **[⬆ back to top](#table-of-contents)**
 
-### Finding Patterns - Age vs. Max Heart Rate for Heart Disease
+### [Finding Patterns - Age vs. Max Heart Rate for Heart Disease](heart-disease-project/end-to-end-heart-disease-classification.ipynb)
 
 ```python
 # Create another figure
@@ -3115,7 +3118,7 @@ df.age.plot.hist();
 
 **[⬆ back to top](#table-of-contents)**
 
-### Finding Patterns - Heart Disease Frequency per Chest Pain Type
+### [Finding Patterns - Heart Disease Frequency per Chest Pain Type](heart-disease-project/end-to-end-heart-disease-classification.ipynb)
 
 cp - chest pain type
 - 0: Typical angina: chest pain related decrease blood supply to the heart
@@ -3157,7 +3160,7 @@ ax.set_ylim(bottom + 0.5, top - 0.5)
 
 **[⬆ back to top](#table-of-contents)**
 
-### Preparing Our Data For Machine Learning
+### [Preparing Our Data For Machine Learning](heart-disease-project/end-to-end-heart-disease-classification.ipynb)
 
 ```python
 df.head()
@@ -3177,7 +3180,7 @@ X_train, X_test, y_train, y_test = train_test_split(X,
 
 **[⬆ back to top](#table-of-contents)**
 
-### Choosing The Right Models
+### [Choosing The Right Models](heart-disease-project/end-to-end-heart-disease-classification.ipynb)
 
 We're going to try 3 different machine learning models:
 
@@ -3216,7 +3219,7 @@ def fit_and_score(models, X_train, X_test, y_train, y_test):
 
 **[⬆ back to top](#table-of-contents)**
 
-### Experimenting With Machine Learning Models
+### [Experimenting With Machine Learning Models](heart-disease-project/end-to-end-heart-disease-classification.ipynb)
 
 Model Comparison
 
@@ -3232,7 +3235,7 @@ model_compare.T.plot.bar();
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Tuning/Improving Our Model
+### [Tuning/Improving Our Model](heart-disease-project/end-to-end-heart-disease-classification.ipynb)
 
 Hyperparameter tuning (by hand)
 
@@ -3273,7 +3276,7 @@ print(f"Maximum KNN score on the test data: {max(test_scores)*100:.2f}%")
 
 **[⬆ back to top](#table-of-contents)**
 
-### Tuning Hyperparameters
+### [Tuning Hyperparameters](heart-disease-project/end-to-end-heart-disease-classification.ipynb)
 
 Hyperparameter tuning with RandomizedSearchCV
 
@@ -3359,7 +3362,7 @@ gs_log_reg.score(X_test, y_test)
 
 **[⬆ back to top](#table-of-contents)**
 
-### Evaluating Our Model
+### [Evaluating Our Model](heart-disease-project/end-to-end-heart-disease-classification.ipynb)
 
 - ROC curve and AUC score
 - Confusion matrix
@@ -3455,7 +3458,7 @@ cv_metrics.T.plot.bar(title="Cross-validated classification metrics",
 
 **[⬆ back to top](#table-of-contents)**
 
-### Finding The Most Important Features
+### [Finding The Most Important Features](heart-disease-project/end-to-end-heart-disease-classification.ipynb)
 
 Feature importance is another as asking, "which features contributed most to the outcomes of the model and how did they contribute?"
 
@@ -3484,6 +3487,16 @@ feature_df.T.plot.bar(title="Feature Importance", legend=False);
 pd.crosstab(df["sex"], df["target"])
 pd.crosstab(df["slope"], df["target"])
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Reviewing The Project](heart-disease-project/end-to-end-heart-disease-classification.ipynb)
+
+If you haven't hit your evaluation metric yet... ask yourself...
+- Could you collect more data?
+- Could you try a better model? Like CatBoost or XGBoost?
+- Could you improve the current models? (beyond what we've done so far)
+- If your model is good enough (you have hit your evaluation metric) how would you export it and share it with others?
 
 **[⬆ back to top](#table-of-contents)**
 
