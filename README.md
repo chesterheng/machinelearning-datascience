@@ -139,6 +139,7 @@
     - [Custom Evaluation Function](#custom-evaluation-function)
     - [Reducing Data](#reducing-data)
     - [RandomizedSearchCV](#randomizedsearchcv)
+    - [Improving Hyperparameters](#improving-hyperparameters)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
@@ -3937,6 +3938,36 @@ rs_model.fit(X_train, y_train)
 rs_model.best_params_
 
 # Evaluate the RandomizedSearch model
+show_scores(rs_model)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Improving Hyperparameters
+
+Train a model with the best hyperparamters
+
+Note: These were found after 100 iterations of RandomizedSearchCV.
+
+```python
+%%time
+
+# Most ideal hyperparamters
+ideal_model = RandomForestRegressor(n_estimators=40,
+                                    min_samples_leaf=1,
+                                    min_samples_split=14,
+                                    max_features=0.5,
+                                    n_jobs=-1,
+                                    max_samples=None,
+                                    random_state=42) # random state so our results are reproducible
+
+# Fit the ideal model
+ideal_model.fit(X_train, y_train)
+
+# Scores for ideal_model (trained on all the data)
+show_scores(ideal_model)
+
+# Scores on rs_model (only trained on ~10,000 examples)
 show_scores(rs_model)
 ```
 
