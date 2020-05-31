@@ -117,6 +117,7 @@
     - [Experimenting With Machine Learning Models](#experimenting-with-machine-learning-models)
     - [Tuning/Improving Our Model](#tuningimproving-our-model)
     - [Tuning Hyperparameters](#tuning-hyperparameters)
+    - [Evaluating Our Model](#evaluating-our-model)
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
@@ -3353,6 +3354,102 @@ gs_log_reg.best_params_
 
 # Evaluate the grid search LogisticRegression model
 gs_log_reg.score(X_test, y_test)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Evaluating Our Model
+
+- ROC curve and AUC score
+- Confusion matrix
+- Classification report
+- Precision
+- Recall
+- F1-score
+
+```python
+# Make predictions with tuned model
+y_preds = gs_log_reg.predict(X_test)
+
+# Plot ROC curve and calculate and calculate AUC metric
+plot_roc_curve(gs_log_reg, X_test, y_test)
+
+# Confusion matrix
+print(confusion_matrix(y_test, y_preds))
+
+sns.set(font_scale=1.5)
+
+def plot_conf_mat(y_test, y_preds):
+    """
+    Plots a nice looking confusion matrix using Seaborn's heatmap()
+    """
+    fig, ax = plt.subplots(figsize=(3, 3))
+    ax = sns.heatmap(confusion_matrix(y_test, y_preds),
+                     annot=True,
+                     cbar=False)
+    plt.xlabel("True label")
+    plt.ylabel("Predicted label")
+    
+    bottom, top = ax.get_ylim()
+#     ax.set_ylim(bottom + 0.5, top - 0.5)
+    
+plot_conf_mat(y_test, y_preds)
+
+print(classification_report(y_test, y_preds))
+```
+
+Calculate evaluation metrics using cross-validation
+
+```python
+# Check best hyperparameters
+gs_log_reg.best_params_
+
+# Create a new classifier with best parameters
+clf = LogisticRegression(C=0.20433597178569418,
+                         solver="liblinear")
+
+# Cross-validated accuracy
+cv_acc = cross_val_score(clf,
+                         X,
+                         y,
+                         cv=5,
+                         scoring="accuracy")
+
+cv_acc = np.mean(cv_acc)
+
+# Cross-validated precision
+cv_precision = cross_val_score(clf,
+                         X,
+                         y,
+                         cv=5,
+                         scoring="precision")
+cv_precision=np.mean(cv_precision)
+
+# Cross-validated recall
+cv_recall = cross_val_score(clf,
+                         X,
+                         y,
+                         cv=5,
+                         scoring="recall")
+cv_recall = np.mean(cv_recall)
+
+# Cross-validated f1-score
+cv_f1 = cross_val_score(clf,
+                         X,
+                         y,
+                         cv=5,
+                         scoring="f1")
+cv_f1 = np.mean(cv_f1)
+
+# Visualize cross-validated metrics
+cv_metrics = pd.DataFrame({"Accuracy": cv_acc,
+                           "Precision": cv_precision,
+                           "Recall": cv_recall,
+                           "F1": cv_f1},
+                          index=[0])
+
+cv_metrics.T.plot.bar(title="Cross-validated classification metrics",
+                      legend=False);
 ```
 
 **[⬆ back to top](#table-of-contents)**
