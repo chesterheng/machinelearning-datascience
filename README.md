@@ -146,6 +146,7 @@
     - [Optional: OLTP Databases](#optional-oltp-databases)
     - [Optional: Learn SQL](#optional-learn-sql)
     - [Hadoop, HDFS and MapReduce](#hadoop-hdfs-and-mapreduce)
+    - [Apache Spark and Apache Flink](#apache-spark-and-apache-flink)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
@@ -4252,6 +4253,16 @@ Hadoop (store a lots of data across multiple machine)
 - MapReduce (batch processing)
 
 Hive - makes your Hadoop cluster feel like it's a relational database
+
+**[⬆ back to top](#table-of-contents)**
+
+### Apache Spark and Apache Flink
+
+Apache Spark
+- run ETL jobs like extract transform load to clean and transform that data
+
+Apache Flink
+- real time processing started to happen things like spark streaming
 
 **[⬆ back to top](#table-of-contents)**
 
