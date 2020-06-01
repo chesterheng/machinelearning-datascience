@@ -139,6 +139,7 @@
     - [Making Predictions](#making-predictions)
     - [Feature Importance](#feature-importance)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
+    - [Data Engineering Introduction](#data-engineering-introduction)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
@@ -4073,6 +4074,20 @@ df["Enclosure"].value_counts()
 **[⬆ back to top](#table-of-contents)**
 
 ## **Section 13: Data Engineering**
+
+### Data Engineering Introduction
+
+Data science is all about using data to make business decisions
+
+Data science is the idea of using data and converting it into something useful for a product or business.
+
+Data analysis is a subset of data science that allows us to analyze the data that we have.
+
+Machine Learning is a technique to allow a computer to learn and figure out the solution to a problem that may be a little too complicated for a human to solve or maybe too tedious and takes too long of a time so we want to automate it.
+
+A company has all these datas are coming from their users from their security cameras from their Web site from IOT devices.
+
+A data engineer takes all this information and then produces it and maintains it in databases or a certain type of computers so that the business has access to this data in an organized fashion.
 
 **[⬆ back to top](#table-of-contents)**
 
