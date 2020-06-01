@@ -147,6 +147,7 @@
     - [Optional: Learn SQL](#optional-learn-sql)
     - [Hadoop, HDFS and MapReduce](#hadoop-hdfs-and-mapreduce)
     - [Apache Spark and Apache Flink](#apache-spark-and-apache-flink)
+    - [Kafka and Stream Processing](#kafka-and-stream-processing)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
@@ -4263,6 +4264,25 @@ Apache Spark
 
 Apache Flink
 - real time processing started to happen things like spark streaming
+
+**[⬆ back to top](#table-of-contents)**
+
+### Kafka and Stream Processing
+
+Batch processing
+- Hadoop
+- Spark
+- AWS S3
+- Common Databases
+
+Real time stream processing
+- Spark Streaming
+- Flink
+- Storm
+- Kineses
+
+Data -> Ingest data through Kafka -> Real time stream processing
+Data -> Ingest data through Kafka -> Batch processing
 
 **[⬆ back to top](#table-of-contents)**
 
