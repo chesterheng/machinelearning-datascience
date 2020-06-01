@@ -144,6 +144,7 @@
     - [What Is A Data Engineer?](#what-is-a-data-engineer)
     - [Types Of Databases](#types-of-databases)
     - [Optional: OLTP Databases](#optional-oltp-databases)
+    - [Optional: Learn SQL](#optional-learn-sql)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
@@ -4134,6 +4135,7 @@ into what we call a data lake a data lake is a collection.
 Well all this data into one location from there we could just leave the lake as it is.
 
 Build the following data pipeline
+
 - Rain -> Data
 - Collected into streams and rivers - data ingestion
   - acquire data from various sources and ingested into a data lake
@@ -4143,23 +4145,28 @@ Build the following data pipeline
 - plumbing and pipes for us to deliver water
 
 Data Ingestion Tool
+
 - Kafka
 
 Data Lake Tools
+
 - hadoop
 - Azure Data lake
 - Amazon S3
 
 Data warehouse Tools
+
 - Amazon Athena
 - Amazon Redshift
 - Google BigQuery
 
 Who use Data Lake?
+
 - Machine Learning
 - Data Scientist
 
 Who use Data Warehouse?
+
 - Business intelligent
 - business analyst
 - data analyst
@@ -4172,7 +4179,8 @@ Next, data scientists use the data lake to extract information and deliver some 
 
 Finally we have data analysts or business intelligence to use something like a data warehouse or structured data to again derive business value.
 
-3 main tasks of data engineer, 
+3 main tasks of data engineer,
+
 - Build ETL pipeline (Extract, Transform and Load into data warehouse)
 - Build analysis tools
 - Maintain data warehouse and data lakes
@@ -4182,24 +4190,29 @@ Finally we have data analysts or business intelligence to use something like a d
 ### Types Of Databases
 
 Relational Database
+
 - use SQL to make transaction
 - [ACID transaction](https://blog.yugabyte.com/a-primer-on-acid-transactions/)
 
-NoSQL - eg. MongoDB, 
+NoSQL - eg. MongoDB,
+
 - distributed database
 - Disorganised
 
 NewSQL - eg. VoltDB, CockroachDB
+
 - distributed
 - ACID transaction
 
 Usage
+
 - Search - eg. ElasticSearch or solr
 - Computation - eg. Apache Spark
 
 [OLTP vs OLAP](https://techdifferences.com/difference-between-oltp-and-olap.html)
 OLTP - SQL database, relational database, transactional
 OLAP - use for analytical purpose
+
 - view a financial report, or budgeting, marketing management, sales report
 
 **[⬆ back to top](#table-of-contents)**
@@ -4207,17 +4220,27 @@ OLAP - use for analytical purpose
 ### Optional: OLTP Databases
 
 What is a database?
+
 - A database is a collection of data.
 
 Many form of data
+
 - numbers
 - dates
 - password hashes
-- user information 
+- user information
 
 2 types of DBMS
+
 - Relational Database
 - NoSQL / Non Relational Database (document oriented)
+
+**[⬆ back to top](#table-of-contents)**
+
+### Optional: Learn SQL
+
+- [Intro to SQL: Querying and managing data](https://www.khanacademy.org/computing/computer-programming/sql#more-advanced-sql-queries)
+- [SQL Tutorial](https://sqlzoo.net/)
 
 **[⬆ back to top](#table-of-contents)**
 
