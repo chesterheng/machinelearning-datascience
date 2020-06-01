@@ -123,11 +123,6 @@
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
     - [[Project Environment Setup]](#project-environment-setup-1)
     - [Step 1~4 Framework Setup](#step-14-framework-setup-1)
-- [🚜 Predicting the Sale Price of Bulldozers using Machine Learning](#-predicting-the-sale-price-of-bulldozers-using-machine-learning)
-  - [1. Problem defition](#1-problem-defition)
-  - [2. Data](#2-data)
-  - [3. Evaluation](#3-evaluation)
-  - [4. Features](#4-features)
     - [Exploring Our Data](#exploring-our-data-1)
     - [Feature Engineering](#feature-engineering)
     - [Turning Data Into Numbers](#turning-data-into-numbers)
@@ -142,6 +137,7 @@
     - [Improving Hyperparameters](#improving-hyperparameters)
     - [Preproccessing Our Data](#preproccessing-our-data)
     - [Making Predictions](#making-predictions)
+    - [Feature Importance](#feature-importance)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
@@ -3547,15 +3543,15 @@ If you haven't hit your evaluation metric yet... ask yourself...
 
 ### Step 1~4 Framework Setup
 
-# 🚜 Predicting the Sale Price of Bulldozers using Machine Learning
+🚜 Predicting the Sale Price of Bulldozers using Machine Learning
 
 In this notebook, we're going to go through an example machine learning project with the goal of predicting the sale price of bulldozers.
 
-## 1. Problem defition
+1. Problem defition
 
 > How well can we predict the future sale price of a bulldozer, given its characteristics and previous examples of how much similar bulldozers have been sold for?
 
-## 2. Data
+2. Data
 
 The data is downloaded from the Kaggle Bluebook for Bulldozers competition: https://www.kaggle.com/c/bluebook-for-bulldozers/data
 
@@ -3565,7 +3561,7 @@ There are 3 main datasets:
 * Valid.csv is the validation set, which contains data from January 1, 2012 - April 30, 2012 You make predictions on this set throughout the majority of the competition. Your score on this set is used to create the public leaderboard.
 * Test.csv is the test set, which won't be released until the last week of the competition. It contains data from May 1, 2012 - November 2012. Your score on the test set determines your final rank for the competition.
 
-## 3. Evaluation
+3. Evaluation
 
 The evaluation metric for this competition is the RMSLE (root mean squared log error) between the actual and predicted auction prices.
 
@@ -3573,7 +3569,7 @@ For more on the evaluation of this project check: https://www.kaggle.com/c/blueb
 
 **Note:** The goal for most regression evaluation metrics is to minimize the error. For example, our goal for this project will be to build a machine learning model which minimises RMSLE.
 
-## 4. Features
+4. Features
 
 Kaggle provides a data dictionary detailing all of the features of the dataset. You can view this data dictionary on Google Sheets: https://docs.google.com/spreadsheets/d/18ly-bLR8sbDJLITkWG7ozKm8l3RyieQ2Fpgix-beSYI/edit?usp=sharing
 
@@ -4038,6 +4034,41 @@ df_preds
 # Export prediction data
 df_preds.to_csv("data/test_predictions.csv", index=False)
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Feature Importance
+
+Feature importance seeks to figure out which different attributes of the data were most importance when it comes to predicting the target variable (SalePrice).
+
+```python
+# Find feature importance of our best model
+ideal_model.feature_importances_
+
+# Helper function for plotting feature importance
+def plot_features(columns, importances, n=20):
+    df = (pd.DataFrame({"features": columns,
+                        "feature_importances": importances})
+          .sort_values("feature_importances", ascending=False)
+          .reset_index(drop=True))
+    
+    # Plot the dataframe
+    fig, ax = plt.subplots()
+    ax.barh(df["features"][:n], df["feature_importances"][:20])
+    ax.set_ylabel("Features")
+    ax.set_xlabel("Feature importance")
+    ax.invert_yaxis()
+
+plot_features(X_train.columns, ideal_model.feature_importances_)
+
+df["Enclosure"].value_counts()
+```
+
+**Question to finish:** Why might knowing the feature importances of a trained machine learning model be helpful?
+
+**Final challenge/extension:** What other machine learning models could you try on our dataset? 
+
+**Hint:** https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html check out the regression section of this map, or try to look at something like CatBoost.ai or XGBooost.ai.
 
 **[⬆ back to top](#table-of-contents)**
 

@@ -39,3 +39,5 @@ conda.tmp/
 *.iml
 *.ipr
 *.iws
+*.csv
+data/
