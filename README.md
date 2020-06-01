@@ -145,6 +145,7 @@
     - [Types Of Databases](#types-of-databases)
     - [Optional: OLTP Databases](#optional-oltp-databases)
     - [Optional: Learn SQL](#optional-learn-sql)
+    - [Hadoop, HDFS and MapReduce](#hadoop-hdfs-and-mapreduce)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
@@ -4241,6 +4242,16 @@ Many form of data
 
 - [Intro to SQL: Querying and managing data](https://www.khanacademy.org/computing/computer-programming/sql#more-advanced-sql-queries)
 - [SQL Tutorial](https://sqlzoo.net/)
+
+**[⬆ back to top](#table-of-contents)**
+
+### Hadoop, HDFS and MapReduce
+
+Hadoop (store a lots of data across multiple machine)
+- HDFS (Hadoop distributed file system)
+- MapReduce (batch processing)
+
+Hive - makes your Hadoop cluster feel like it's a relational database
 
 **[⬆ back to top](#table-of-contents)**
 
