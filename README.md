@@ -143,6 +143,7 @@
     - [What Is Data?](#what-is-data)
     - [What Is A Data Engineer?](#what-is-a-data-engineer)
     - [Types Of Databases](#types-of-databases)
+    - [Optional: OLTP Databases](#optional-oltp-databases)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
@@ -4200,6 +4201,23 @@ Usage
 OLTP - SQL database, relational database, transactional
 OLAP - use for analytical purpose
 - view a financial report, or budgeting, marketing management, sales report
+
+**[⬆ back to top](#table-of-contents)**
+
+### Optional: OLTP Databases
+
+What is a database?
+- A database is a collection of data.
+
+Many form of data
+- numbers
+- dates
+- password hashes
+- user information 
+
+2 types of DBMS
+- Relational Database
+- NoSQL / Non Relational Database (document oriented)
 
 **[⬆ back to top](#table-of-contents)**
 
