@@ -149,6 +149,7 @@
     - [Apache Spark and Apache Flink](#apache-spark-and-apache-flink)
     - [Kafka and Stream Processing](#kafka-and-stream-processing)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
+    - [Deep Learning and Unstructured Data](#deep-learning-and-unstructured-data)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4250,6 +4251,7 @@ Many form of data
 ### Hadoop, HDFS and MapReduce
 
 Hadoop (store a lots of data across multiple machine)
+
 - HDFS (Hadoop distributed file system)
 - MapReduce (batch processing)
 
@@ -4260,9 +4262,11 @@ Hive - makes your Hadoop cluster feel like it's a relational database
 ### Apache Spark and Apache Flink
 
 Apache Spark
+
 - run ETL jobs like extract transform load to clean and transform that data
 
 Apache Flink
+
 - real time processing started to happen things like spark streaming
 
 **[⬆ back to top](#table-of-contents)**
@@ -4270,12 +4274,14 @@ Apache Flink
 ### Kafka and Stream Processing
 
 Batch processing
+
 - Hadoop
 - Spark
 - AWS S3
 - Common Databases
 
 Real time stream processing
+
 - Spark Streaming
 - Flink
 - Storm
@@ -4287,6 +4293,77 @@ Data -> Ingest data through Kafka -> Batch processing
 **[⬆ back to top](#table-of-contents)**
 
 ## **Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**
+
+### Deep Learning and Unstructured Data
+
+[Google Colab](https://colab.research.google.com/notebooks/intro.ipynb#recent=true)
+
+- alternative to jupyter notebook
+
+[TensorFlow](https://www.tensorflow.org/)
+
+- a deep learning or numerical computing library
+- use for unstructured data - Photos, Audio waves, natural language text
+
+Why TensorFlow ?
+
+- Write fast deep learning code in Python (able to run on a GPU)
+- Able to access many pre-built deep learning models
+- Whole stack: preprocess, model, deploy
+- Originally designed and used in-house by Google (now open-source)
+
+Choosing a model (throwback)
+
+- Problem 1 (structured data) -> Choose a Model 
+  - CatBoost, dmlc XGBoost, Random Forest
+- Problem 2 (unstructured data) -> Choose a Model  
+  - Deep Learning use TensorFlow
+  - Transfer Learning use TensorFlow Hub
+
+What is deep learning?
+
+- another form of machine learning
+
+What are neural networks?
+
+- type of machine learning algorithm for deep learning
+
+What kind of deep learning problems are there?
+
+- Classification
+  - multi-classification of dog breed
+  - classification of spam email
+- Sequence to sequence (seq2seq)
+  - audio to text translation
+- Object detection
+
+What is transfer learning? Why use transfer learning?
+
+- Take what you know in one domain and apply it to another.
+- Starting from scratch can be expensive and time consuming.
+- Why not take advantage of what’s already out there?
+
+A TensorFlow workflow
+
+- Get the data ready (turn into Tensors)
+  - An end-to-end multi-class classification workflow with TensorFlow Preprocessing image data (getting it into Tensors)
+- Pick a model from TensorFlow Hub
+  - Choosing a deep learning model
+- Fit the model to the data and make a prediction
+  - Fitting a model to the data (learning patterns)
+  - Making predictions with a model (using patterns)
+- Evaluate the model
+  - Evaluating model predictions
+- Improve through experimentation
+- Save and reload your trained model
+  - Saving and loading models
+- Using a trained model to make predictions on custom data
+
+Which activation? Which loss?
+| |Binary classification| Multi-class classification|
+|-|-|-|
+|Activation| Sigmoid |Softmax|
+| Loss | Binary Crossentropy|Categorical Crossentropy|
 
 **[⬆ back to top](#table-of-contents)**
 
