@@ -150,6 +150,7 @@
     - [Kafka and Stream Processing](#kafka-and-stream-processing)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
     - [Deep Learning and Unstructured Data](#deep-learning-and-unstructured-data)
+    - [Setting Up Google Colab](#setting-up-google-colab)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4364,6 +4365,16 @@ Which activation? Which loss?
 |-|-|-|
 |Activation| Sigmoid |Softmax|
 | Loss | Binary Crossentropy|Categorical Crossentropy|
+
+**[⬆ back to top](#table-of-contents)**
+
+### Setting Up Google Colab
+
+- [Using Transfer Learning and TensorFlow 2.0 to Classify Different Dog Breeds](https://github.com/mrdbourke/zero-to-mastery-ml/blob/wip/section-4-unstructured-data-projects/end-to-end-dog-vision.ipynb)
+- [Dog Breed Identification](https://www.kaggle.com/c/dog-breed-identification/overview)
+- [Kaggle API](https://github.com/Kaggle/kaggle-api)
+- [What is Colaboratory?](https://colab.research.google.com/notebooks/intro.ipynb)
+- [External data: Local Files, Drive, Sheets, and Cloud Storage](https://colab.research.google.com/notebooks/io.ipynb)
 
 **[⬆ back to top](#table-of-contents)**
 
