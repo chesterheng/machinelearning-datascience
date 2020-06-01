@@ -141,6 +141,7 @@
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
     - [Data Engineering Introduction](#data-engineering-introduction)
     - [What Is Data?](#what-is-data)
+    - [What Is A Data Engineer?](#what-is-a-data-engineer)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
@@ -2969,57 +2970,57 @@ gs_model.score(X_test, y_test)
 ### Step 1~4 Framework Setup
 
 1. Problem Definition
-In a statement,
+   In a statement,
 
 Given clinical parameters about a patient, can we predict whether or not they have heart disease?
 
 2. Data
-The original data came from the Cleavland data from the UCI Machine Learning Repository. https://archive.ics.uci.edu/ml/datasets/heart+Disease
+   The original data came from the Cleavland data from the UCI Machine Learning Repository. https://archive.ics.uci.edu/ml/datasets/heart+Disease
 
 There is also a version of it available on Kaggle. https://www.kaggle.com/ronitf/heart-disease-uci
 
 3. Evaluation
-If we can reach 95% accuracy at predicting whether or not a patient has heart disease during the proof of concept, we'll pursue the project.
+   If we can reach 95% accuracy at predicting whether or not a patient has heart disease during the proof of concept, we'll pursue the project.
 
 4. Features
-This is where you'll get different information about each of the features in your data. You can do this via doing your own research (such as looking at the links above) or by talking to a subject matter expert (someone who knows about the dataset).
+   This is where you'll get different information about each of the features in your data. You can do this via doing your own research (such as looking at the links above) or by talking to a subject matter expert (someone who knows about the dataset).
 
 **Create data dictionary**
 
 1. age - age in years
 2. sex - (1 = male; 0 = female)
 3. cp - chest pain type
-   * 0: Typical angina: chest pain related decrease blood supply to the heart
-   * 1: Atypical angina: chest pain not related to heart
-   * 2: Non-anginal pain: typically esophageal spasms (non heart related)
-   * 3: Asymptomatic: chest pain not showing signs of disease
+   - 0: Typical angina: chest pain related decrease blood supply to the heart
+   - 1: Atypical angina: chest pain not related to heart
+   - 2: Non-anginal pain: typically esophageal spasms (non heart related)
+   - 3: Asymptomatic: chest pain not showing signs of disease
 4. trestbps - resting blood pressure (in mm Hg on admission to the hospital) anything above 130-140 is typically cause for concern
 5. chol - serum cholestoral in mg/dl
-    * serum = LDL + HDL + .2 * triglycerides
-    * above 200 is cause for concern
+   - serum = LDL + HDL + .2 \* triglycerides
+   - above 200 is cause for concern
 6. fbs - (fasting blood sugar > 120 mg/dl) (1 = true; 0 = false)
-    * '>126' mg/dL signals diabetes
+   - '>126' mg/dL signals diabetes
 7. restecg - resting electrocardiographic results
-    * 0: Nothing to note
-    * 1: ST-T Wave abnormality
-        * can range from mild symptoms to severe problems
-        * signals non-normal heart beat
-    * 2: Possible or definite left ventricular hypertrophy
-        * Enlarged heart's main pumping chamber
+   - 0: Nothing to note
+   - 1: ST-T Wave abnormality
+     - can range from mild symptoms to severe problems
+     - signals non-normal heart beat
+   - 2: Possible or definite left ventricular hypertrophy
+     - Enlarged heart's main pumping chamber
 8. thalach - maximum heart rate achieved
 9. exang - exercise induced angina (1 = yes; 0 = no)
 10. oldpeak - ST depression induced by exercise relative to rest looks at stress of heart during excercise unhealthy heart will stress more
 11. slope - the slope of the peak exercise ST segment
-    * 0: Upsloping: better heart rate with excercise (uncommon)
-    * 1: Flatsloping: minimal change (typical healthy heart)
-    * 2: Downslopins: signs of unhealthy heart
+    - 0: Upsloping: better heart rate with excercise (uncommon)
+    - 1: Flatsloping: minimal change (typical healthy heart)
+    - 2: Downslopins: signs of unhealthy heart
 12. ca - number of major vessels (0-3) colored by flourosopy
-    * colored vessel means the doctor can see the blood passing through
-    * the more blood movement the better (no clots)
+    - colored vessel means the doctor can see the blood passing through
+    - the more blood movement the better (no clots)
 13. thal - thalium stress result
-    * 1,3: normal
-    * 6: fixed defect: used to be defect but ok now
-    * 7: reversable defect: no proper blood movement when excercising
+    - 1,3: normal
+    - 6: fixed defect: used to be defect but ok now
+    - 7: reversable defect: no proper blood movement when excercising
 14. target - have disease or not (1=yes, 0=no) (= the predicted attribute)
 
 **[⬆ back to top](#table-of-contents)**
@@ -3038,7 +3039,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # we want our plots to appear inside the notebook
-%matplotlib inline 
+%matplotlib inline
 
 # Models from Scikit-Learn
 from sklearn.linear_model import LogisticRegression
@@ -3140,6 +3141,7 @@ df.age.plot.hist();
 ### [Finding Patterns - Heart Disease Frequency per Chest Pain Type](heart-disease-project/end-to-end-heart-disease-classification.ipynb)
 
 cp - chest pain type
+
 - 0: Typical angina: chest pain related decrease blood supply to the heart
 - 1: Atypical angina: chest pain not related to heart
 - 2: Non-anginal pain: typically esophageal spasms (non heart related)
@@ -3252,6 +3254,7 @@ model_scores = fit_and_score(models=models,
 model_compare = pd.DataFrame(model_scores, index=["accuracy"])
 model_compare.T.plot.bar();
 ```
+
 **[⬆ back to top](#table-of-contents)**
 
 ### [Tuning/Improving Our Model](heart-disease-project/end-to-end-heart-disease-classification.ipynb)
@@ -3273,13 +3276,13 @@ knn = KNeighborsClassifier()
 # Loop through different n_neighbors
 for i in neighbors:
     knn.set_params(n_neighbors=i)
-    
+
     # Fit the algorithm
     knn.fit(X_train, y_train)
-    
+
     # Update the training scores list
     train_scores.append(knn.score(X_train, y_train))
-    
+
     # Update the test scores list
     test_scores.append(knn.score(X_test, y_test))
 
@@ -3338,7 +3341,7 @@ rf_grid = {"n_estimators": np.arange(10, 1000, 50),
 np.random.seed(42)
 
 # Setup random hyperparameter search for RandomForestClassifier
-rs_rf = RandomizedSearchCV(RandomForestClassifier(), 
+rs_rf = RandomizedSearchCV(RandomForestClassifier(),
                            param_distributions=rf_grid,
                            cv=5,
                            n_iter=20,
@@ -3412,10 +3415,10 @@ def plot_conf_mat(y_test, y_preds):
                      cbar=False)
     plt.xlabel("True label")
     plt.ylabel("Predicted label")
-    
+
     bottom, top = ax.get_ylim()
 #     ax.set_ylim(bottom + 0.5, top - 0.5)
-    
+
 plot_conf_mat(y_test, y_preds)
 
 print(classification_report(y_test, y_preds))
@@ -3485,7 +3488,6 @@ Finding feature importance is different for each machine learning model. One way
 
 Let's find the feature importance for our LogisticRegression model...
 
-
 ```python
 # Fit an instance of LogisticRegression
 clf = LogisticRegression(C=0.20433597178569418,
@@ -3512,6 +3514,7 @@ pd.crosstab(df["slope"], df["target"])
 ### [Reviewing The Project](heart-disease-project/end-to-end-heart-disease-classification.ipynb)
 
 If you haven't hit your evaluation metric yet... ask yourself...
+
 - Could you collect more data?
 - Could you try a better model? Like CatBoost or XGBoost?
 - Could you improve the current models? (beyond what we've done so far)
@@ -3559,9 +3562,9 @@ The data is downloaded from the Kaggle Bluebook for Bulldozers competition: http
 
 There are 3 main datasets:
 
-* Train.csv is the training set, which contains data through the end of 2011.
-* Valid.csv is the validation set, which contains data from January 1, 2012 - April 30, 2012 You make predictions on this set throughout the majority of the competition. Your score on this set is used to create the public leaderboard.
-* Test.csv is the test set, which won't be released until the last week of the competition. It contains data from May 1, 2012 - November 2012. Your score on the test set determines your final rank for the competition.
+- Train.csv is the training set, which contains data through the end of 2011.
+- Valid.csv is the validation set, which contains data from January 1, 2012 - April 30, 2012 You make predictions on this set throughout the majority of the competition. Your score on this set is used to create the public leaderboard.
+- Test.csv is the test set, which won't be released until the last week of the competition. It contains data from May 1, 2012 - November 2012. Your score on the test set determines your final rank for the competition.
 
 3. Evaluation
 
@@ -3602,6 +3605,7 @@ df.SalePrice.plot.hist()
 ```
 
 Parsing dates
+
 - When we work with time series data, we want to enrich the time & date component as much as possible.
 - We can do that by telling pandas which of our columns has dates in it using the parse_dates parameter.
 
@@ -3883,7 +3887,7 @@ def show_scores(model):
 # # This takes far too long... for experimenting
 
 # %%time
-# model = RandomForestRegressor(n_jobs=-1, 
+# model = RandomForestRegressor(n_jobs=-1,
 #                               random_state=42)
 
 # model.fit(X_train, y_train)
@@ -3987,9 +3991,9 @@ def preprocess_data(df):
     df["saleDay"] = df.saledate.dt.day
     df["saleDayOfWeek"] = df.saledate.dt.dayofweek
     df["saleDayOfYear"] = df.saledate.dt.dayofyear
-    
+
     df.drop("saledate", axis=1, inplace=True)
-    
+
     # Fill the numeric rows with median
     for label, content in df.items():
         if pd.api.types.is_numeric_dtype(content):
@@ -3998,16 +4002,16 @@ def preprocess_data(df):
                 df[label+"_is_missing"] = pd.isnull(content)
                 # Fill missing numeric values with median
                 df[label] = content.fillna(content.median())
-    
+
         # Filled categorical missing data and turn categories into numbers
         if not pd.api.types.is_numeric_dtype(content):
             df[label+"_is_missing"] = pd.isnull(content)
             # We add +1 to the category code because pandas encodes missing categories as -1
             df[label] = pd.Categorical(content).codes+1
-    
+
     return df
 
-# Process the test data 
+# Process the test data
 df_test = preprocess_data(df_test)
 df_test.head()
 ```
@@ -4053,7 +4057,7 @@ def plot_features(columns, importances, n=20):
                         "feature_importances": importances})
           .sort_values("feature_importances", ascending=False)
           .reset_index(drop=True))
-    
+
     # Plot the dataframe
     fig, ax = plt.subplots()
     ax.barh(df["features"][:n], df["feature_importances"][:20])
@@ -4068,7 +4072,7 @@ df["Enclosure"].value_counts()
 
 **Question to finish:** Why might knowing the feature importances of a trained machine learning model be helpful?
 
-**Final challenge/extension:** What other machine learning models could you try on our dataset? 
+**Final challenge/extension:** What other machine learning models could you try on our dataset?
 
 **Hint:** https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html check out the regression section of this map, or try to look at something like CatBoost.ai or XGBooost.ai.
 
@@ -4095,7 +4099,7 @@ A data engineer takes all this information and then produces it and maintains it
 ### What Is Data?
 
 - Part of Product - eg. YouTube recommendation engine
-- Are we doing ok? -  monitor the company's sales
+- Are we doing ok? - monitor the company's sales
 - Can we do better?
 
 Type of data (organised -> unorganised)
@@ -4106,6 +4110,70 @@ Type of data (organised -> unorganised)
 4. Binary Data - audio, image, video
 
 So one of the tasks of a data engineer is to essentially use the fact that there's all these types of data and somehow combine them or organize them in a way that is useful to the business.
+
+**[⬆ back to top](#table-of-contents)**
+
+### What Is A Data Engineer?
+
+Data Mining - pre processing and extracting some knowledge from the data
+
+Big Data - data that's so big that you need to have it running on cloud computing or multiple computers
+
+Data Pipeline - build a pipeline that allows us to flow from that unknown large amount of data to a pipeline that extracts data to a more useful form
+
+A data engineer allows us to do this data collection part. They bring in all this information organize it in a way for us to do our data modelling.
+
+And this is what a data engineer built a data engineer starts off with what we call data ingestion that
+
+is acquiring data from various sources and we acquire all these different sources of data and ingested
+
+into what we call a data lake a data lake is a collection.
+
+Well all this data into one location from there we could just leave the lake as it is.
+
+Build the following data pipeline
+- Rain -> Data
+- Collected into streams and rivers - data ingestion
+  - acquire data from various sources and ingested into a data lake
+- Lakes / Dam - Data lake (pool of raw data)
+- filtration sanitary area - data transformation that is convert data from one format to another
+  - data warehouse is a location for structured filtered data that has been processed and has a specific purpose
+- plumbing and pipes for us to deliver water
+
+Data Ingestion Tool
+- Kafka
+
+Data Lake Tools
+- hadoop
+- Azure Data lake
+- Amazon S3
+
+Data warehouse Tools
+- Amazon Athena
+- Amazon Redshift
+- Google BigQuery
+
+Who use Data Lake?
+- Machine Learning
+- Data Scientist
+
+Who use Data Warehouse?
+- Business intelligent
+- business analyst
+- data analyst
+
+A software engineer, a software developer, app developer and mobile developer build programs and apps that users and customers use.
+
+The app releases data. A data engineer would build this pipeline for us to ingest data and store it in different services like Hadoop like Google big query so that that data can be accessed by the rest of the business.
+
+Next, data scientists use the data lake to extract information and deliver some sort of business value.
+
+Finally we have data analysts or business intelligence to use something like a data warehouse or structured data to again derive business value.
+
+3 main tasks of data engineer, 
+- Build ETL pipeline (Extract, Transform and Load into data warehouse)
+- Build analysis tools
+- Maintain data warehouse and data lakes
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -4121,13 +4189,15 @@ So one of the tasks of a data engineer is to essentially use the fact that there
 
 Now you’ve got skills, what do you do next?
 The most important question you can ask
-  - “Who’s it for?”
-  - What questions will they have?
-  - What concerns can you address before they arise?
-- Heard but not understood 
+
+- “Who’s it for?”
+- What questions will they have?
+- What concerns can you address before they arise?
+- Heard but not understood
 - Heard and (potentially) understood
 
 “Who’s it for?”
+
 - People on your team: Boss, Project manager and Teammates
 - People outside your team: Clients, Customers and Fans
 
@@ -4137,6 +4207,7 @@ The most important question you can ask
 
 “Who’s it for?”
 “What do they need to know?”
+
 - How the project is going
 - What’s in the way
 - What you’ve done
@@ -4149,6 +4220,7 @@ The most important question you can ask
 - Is there any feedback or advice
 
 Example: The Project Manager, Boss, Senior, Lead
+
 - What’s holding you back?
 
 **[⬆ back to top](#table-of-contents)**
@@ -4158,17 +4230,20 @@ Example: The Project Manager, Boss, Senior, Lead
 The People You’re Working With, Sitting Next to, in the Group Chat
 
 Break it down
+
 - 6-month project
 - 4-week month
 - 5-day week
 
 What did you work on today?
+
 - What I worked on today (1-3 points on what you did):
   - What’s working?
   - What’s not working?
   - What could be improved?
 - What I’m working on next:
-  - What’s your next course of action? (based on the above) 
+
+  - What’s your next course of action? (based on the above)
   - Why?
   - What’s holding you back?
 
@@ -4181,11 +4256,13 @@ What did you work on today?
 
 Start the job before you have it
 The weekend project principle
+
 - What you work on in your own time
 - Work on your own projects to build specific knowledge
 - Compound knowledge that you learn courses into skill which can't be taught in courses
 
 How?
+
 - Documented on your blog
 - 6-week project
 
@@ -4194,6 +4271,7 @@ How?
 ### Communicating With Outside World
 
 People outside your team: Clients, Customers and Fans
+
 - Obvious to you, amazing to others
 
 **[⬆ back to top](#table-of-contents)**
@@ -4202,12 +4280,13 @@ People outside your team: Clients, Customers and Fans
 
 What story are you trying to tell?
 Always ask, Who’s it for?
+
 - “Who’s it for?”
 - “What do they need to know?” = Specific = Courage
-Write it down
+  Write it down
 - What did you work on today?
 - What are you working this week?
-Progress, not perfection
+  Progress, not perfection
 - “Here’s what I’ve done.”
 
 **[⬆ back to top](#table-of-contents)**
@@ -4227,13 +4306,14 @@ Communicating and sharing your work: Further reading
 ## **Section 16: Career Advice + Extra Bits**
 
 What If I Don't Have Enough Experience?
+
 - Github
 - Website
   - [Mashup Template](http://www.mashup-template.com/)
   - [Kevin Kelly](https://kk.org/)
 - 1 ~ 2 Big Projects
 - Blog
-(Do you have experience?)
+  (Do you have experience?)
 
 **[⬆ back to top](#table-of-contents)**
 
