@@ -142,6 +142,7 @@
     - [Data Engineering Introduction](#data-engineering-introduction)
     - [What Is Data?](#what-is-data)
     - [What Is A Data Engineer?](#what-is-a-data-engineer)
+    - [Types Of Databases](#types-of-databases)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
@@ -4174,6 +4175,31 @@ Finally we have data analysts or business intelligence to use something like a d
 - Build ETL pipeline (Extract, Transform and Load into data warehouse)
 - Build analysis tools
 - Maintain data warehouse and data lakes
+
+**[⬆ back to top](#table-of-contents)**
+
+### Types Of Databases
+
+Relational Database
+- use SQL to make transaction
+- [ACID transaction](https://blog.yugabyte.com/a-primer-on-acid-transactions/)
+
+NoSQL - eg. MongoDB, 
+- distributed database
+- Disorganised
+
+NewSQL - eg. VoltDB, CockroachDB
+- distributed
+- ACID transaction
+
+Usage
+- Search - eg. ElasticSearch or solr
+- Computation - eg. Apache Spark
+
+[OLTP vs OLAP](https://techdifferences.com/difference-between-oltp-and-olap.html)
+OLTP - SQL database, relational database, transactional
+OLAP - use for analytical purpose
+- view a financial report, or budgeting, marketing management, sales report
 
 **[⬆ back to top](#table-of-contents)**
 
