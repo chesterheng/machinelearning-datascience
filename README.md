@@ -151,6 +151,7 @@
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
     - [Deep Learning and Unstructured Data](#deep-learning-and-unstructured-data)
     - [Setting Up Google Colab](#setting-up-google-colab)
+    - [Google Colab Workspace](#google-colab-workspace)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4375,6 +4376,13 @@ Which activation? Which loss?
 - [Kaggle API](https://github.com/Kaggle/kaggle-api)
 - [What is Colaboratory?](https://colab.research.google.com/notebooks/intro.ipynb)
 - [External data: Local Files, Drive, Sheets, and Cloud Storage](https://colab.research.google.com/notebooks/io.ipynb)
+
+**[⬆ back to top](#table-of-contents)**
+
+### Google Colab Workspace
+
+- [Google Colab](https://colab.research.google.com/notebooks/intro.ipynb#recent=true)
+- [Colaboratory Frequently Asked Questions](https://research.google.com/colaboratory/faq.html)
 
 **[⬆ back to top](#table-of-contents)**
 
