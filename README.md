@@ -140,6 +140,7 @@
     - [Feature Importance](#feature-importance)
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
     - [Data Engineering Introduction](#data-engineering-introduction)
+    - [What Is Data?](#what-is-data)
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
@@ -4088,6 +4089,23 @@ Machine Learning is a technique to allow a computer to learn and figure out the 
 A company has all these datas are coming from their users from their security cameras from their Web site from IOT devices.
 
 A data engineer takes all this information and then produces it and maintains it in databases or a certain type of computers so that the business has access to this data in an organized fashion.
+
+**[⬆ back to top](#table-of-contents)**
+
+### What Is Data?
+
+- Part of Product - eg. YouTube recommendation engine
+- Are we doing ok? -  monitor the company's sales
+- Can we do better?
+
+Type of data (organised -> unorganised)
+
+1. Structured Data - from relational Database
+2. Semi-Structured Data - eg. XML, CSV, JSON
+3. UnStructured Data - eg. pdf, email, document
+4. Binary Data - audio, image, video
+
+So one of the tasks of a data engineer is to essentially use the fact that there's all these types of data and somehow combine them or organize them in a way that is useful to the business.
 
 **[⬆ back to top](#table-of-contents)**
 
