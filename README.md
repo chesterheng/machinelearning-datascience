@@ -161,6 +161,7 @@
     - [Turning Data Labels Into Numbers](#turning-data-labels-into-numbers)
     - [Creating Our Own Validation Set](#creating-our-own-validation-set)
     - [Preprocess Images](#preprocess-images)
+    - [Turning Data Into Batches](#turning-data-into-batches)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4608,6 +4609,73 @@ def process_image(image_path, img_size=IMG_SIZE):
   image = tf.image.resize(image, size=[IMG_SIZE, IMG_SIZE])
 
   return image
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Turning Data Into Batches
+
+[Yann LeCun Batch Size](https://twitter.com/ylecun/status/989610208497360896?s=20)
+
+```python
+# Create a simple function to return a tuple (image, label)
+def get_image_label(image_path, label):
+  """
+  Takes an image file path name and the assosciated label,
+  processes the image and reutrns a typle of (image, label).
+  """
+  image = process_image(image_path)
+  return image, label
+
+# Demo of the above
+(process_image(X[42]), tf.constant(y[42]))
+
+# Define the batch size, 32 is a good start
+BATCH_SIZE = 32
+
+# Create a function to turn data into batches
+def create_data_batches(X, y=None, batch_size=BATCH_SIZE, valid_data=False, test_data=False):
+  """
+  Creates batches of data out of image (X) and label (y) pairs.
+  Shuffles the data if it's training data but doesn't shuffle if it's validation data.
+  Also accepts test data as input (no labels).
+  """
+  # If the data is a test dataset, we probably don't have have labels
+  if test_data:
+    print("Creating test data batches...")
+    data = tf.data.Dataset.from_tensor_slices((tf.constant(X))) # only filepaths (no labels)
+    data_batch = data.map(process_image).batch(BATCH_SIZE)
+    return data_batch
+  
+  # If the data is a valid dataset, we don't need to shuffle it
+  elif valid_data:
+    print("Creating validation data batches...")
+    data = tf.data.Dataset.from_tensor_slices((tf.constant(X), # filepaths
+                                               tf.constant(y))) # labels
+    data_batch = data.map(get_image_label).batch(BATCH_SIZE)
+    return data_batch
+
+  else:
+    print("Creating training data batches...")
+    # Turn filepaths and labels into Tensors
+    data = tf.data.Dataset.from_tensor_slices((tf.constant(X),
+                                               tf.constant(y)))
+    # Shuffling pathnames and labels before mapping image processor function is faster than shuffling images
+    data = data.shuffle(buffer_size=len(X))
+
+    # Create (image, label) tuples (this also turns the iamge path into a preprocessed image)
+    data = data.map(get_image_label)
+
+    # Turn the training data into batches
+    data_batch = data.batch(BATCH_SIZE)
+  return data_batch
+
+# Create training and validation data batches
+train_data = create_data_batches(X_train, y_train)
+val_data = create_data_batches(X_val, y_val, valid_data=True)
+
+# Check out the different attributes of our data batches
+train_data.element_spec, val_data.element_spec
 ```
 
 **[⬆ back to top](#table-of-contents)**
