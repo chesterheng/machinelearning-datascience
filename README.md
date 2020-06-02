@@ -152,6 +152,7 @@
     - [Deep Learning and Unstructured Data](#deep-learning-and-unstructured-data)
     - [Setting Up Google Colab](#setting-up-google-colab)
     - [Google Colab Workspace](#google-colab-workspace)
+    - [Uploading Project Data](#uploading-project-data)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -3668,7 +3669,7 @@ len(df_tmp)
 
 **[⬆ back to top](#table-of-contents)**
 
-### Turning Data Into Numbers
+### [Turning Data Into Numbers](bulldozer-price-prediction-project/end-to-end-bluebook-bulldozer-price-regression.ipynb)
 
 One way we can turn all of our data into numbers is by converting them into pandas catgories.
 
@@ -3718,7 +3719,7 @@ for key, value in random_dict.items():
 
 **[⬆ back to top](#table-of-contents)**
 
-### Filling Missing Numerical Values
+### [Filling Missing Numerical Values](bulldozer-price-prediction-project/end-to-end-bluebook-bulldozer-price-regression.ipynb)
 
 ```python
 for label, content in df_tmp.items():
@@ -3762,7 +3763,7 @@ np.mean(hundreds), np.mean(hundreds_billion), np.median(hundreds), np.median(hun
 
 **[⬆ back to top](#table-of-contents)**
 
-### Filling Missing Categorical Values
+### [Filling Missing Categorical Values](bulldozer-price-prediction-project/end-to-end-bluebook-bulldozer-price-regression.ipynb)
 
 ```python
 # Check for columns which aren't numeric
@@ -3790,7 +3791,7 @@ len(df_tmp)
 
 **[⬆ back to top](#table-of-contents)**
 
-### Fitting A Machine Learning Model
+### [Fitting A Machine Learning Model](bulldozer-price-prediction-project/end-to-end-bluebook-bulldozer-price-regression.ipynb)
 
 ```python
 %%time
@@ -3807,7 +3808,7 @@ model.score(df_tmp.drop("SalePrice", axis=1), df_tmp["SalePrice"])
 
 **[⬆ back to top](#table-of-contents)**
 
-### Splitting Data
+### [Splitting Data](bulldozer-price-prediction-project/end-to-end-bluebook-bulldozer-price-regression.ipynb)
 
 ```python
 df_tmp.saleYear
@@ -3828,7 +3829,7 @@ X_train.shape, y_train.shape, X_valid.shape, y_valid.shape
 
 **[⬆ back to top](#table-of-contents)**
 
-### Challenge: What's wrong with splitting data after filling it?
+### [Challenge: What's wrong with splitting data after filling it?](bulldozer-price-prediction-project/end-to-end-bluebook-bulldozer-price-regression.ipynb)
 
 In the previous few videos we worked on filling the missing data in the training and validation data before splitting it into training and validation sets using the following code:
 
@@ -3862,7 +3863,7 @@ Keep these things in mind when we create a data preprocessing function in a few 
 
 **[⬆ back to top](#table-of-contents)**
 
-### Custom Evaluation Function
+### [Custom Evaluation Function](bulldozer-price-prediction-project/end-to-end-bluebook-bulldozer-price-regression.ipynb)
 
 ```python
 # Create evaluation function (the competition uses RMSLE)
@@ -3890,7 +3891,7 @@ def show_scores(model):
 
 **[⬆ back to top](#table-of-contents)**
 
-### Reducing Data
+### [Reducing Data](bulldozer-price-prediction-project/end-to-end-bluebook-bulldozer-price-regression.ipynb)
 
 ```python
 # # This takes far too long... for experimenting
@@ -3922,7 +3923,7 @@ show_scores(model)
 
 **[⬆ back to top](#table-of-contents)**
 
-### RandomizedSearchCV
+### [RandomizedSearchCV](bulldozer-price-prediction-project/end-to-end-bluebook-bulldozer-price-regression.ipynb)
 
 ```python
 %%time
@@ -3956,7 +3957,7 @@ show_scores(rs_model)
 
 **[⬆ back to top](#table-of-contents)**
 
-### Improving Hyperparameters
+### [Improving Hyperparameters](bulldozer-price-prediction-project/end-to-end-bluebook-bulldozer-price-regression.ipynb)
 
 Train a model with the best hyperparamters
 
@@ -3986,7 +3987,7 @@ show_scores(rs_model)
 
 **[⬆ back to top](#table-of-contents)**
 
-### Preproccessing Our Data
+### [Preproccessing Our Data](bulldozer-price-prediction-project/end-to-end-bluebook-bulldozer-price-regression.ipynb)
 
 Getting the test dataset in the same format as our training dataset
 
@@ -4027,7 +4028,7 @@ df_test.head()
 
 **[⬆ back to top](#table-of-contents)**
 
-### Making Predictions
+### [Making Predictions](bulldozer-price-prediction-project/end-to-end-bluebook-bulldozer-price-regression.ipynb)
 
 ```python
 # We can find how the columns differ using sets
@@ -4052,7 +4053,7 @@ df_preds.to_csv("data/test_predictions.csv", index=False)
 
 **[⬆ back to top](#table-of-contents)**
 
-### Feature Importance
+### [Feature Importance](bulldozer-price-prediction-project/end-to-end-bluebook-bulldozer-price-regression.ipynb)
 
 Feature importance seeks to figure out which different attributes of the data were most importance when it comes to predicting the target variable (SalePrice).
 
@@ -4383,6 +4384,13 @@ Which activation? Which loss?
 
 - [Google Colab](https://colab.research.google.com/notebooks/intro.ipynb#recent=true)
 - [Colaboratory Frequently Asked Questions](https://research.google.com/colaboratory/faq.html)
+
+**[⬆ back to top](#table-of-contents)**
+
+### Uploading Project Data
+
+- File > Mount Drive
+- Upload dog-breed-identification.zip to "drive/My Drive/Dog Vision"
 
 **[⬆ back to top](#table-of-contents)**
 
