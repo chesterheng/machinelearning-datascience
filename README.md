@@ -153,6 +153,7 @@
     - [Setting Up Google Colab](#setting-up-google-colab)
     - [Google Colab Workspace](#google-colab-workspace)
     - [Uploading Project Data](#uploading-project-data)
+    - [Setting Up Our Data](#setting-up-our-data)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4391,6 +4392,14 @@ Which activation? Which loss?
 
 - File > Mount Drive
 - Upload dog-breed-identification.zip to "drive/My Drive/Dog Vision"
+
+**[⬆ back to top](#table-of-contents)**
+
+### Setting Up Our Data
+
+```python
+!unzip "drive/My Drive/Dog Vision/dog-breed-identification.zip" -d "drive/My Drive/Dog Vision/"
+```
 
 **[⬆ back to top](#table-of-contents)**
 
