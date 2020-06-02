@@ -155,6 +155,7 @@
     - [Uploading Project Data](#uploading-project-data)
     - [Setting Up Our Data](#setting-up-our-data)
     - [Importing TensorFlow 2](#importing-tensorflow-2)
+    - [Using A GPU](#using-a-gpu)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4319,9 +4320,9 @@ Why TensorFlow ?
 
 Choosing a model (throwback)
 
-- Problem 1 (structured data) -> Choose a Model 
+- Problem 1 (structured data) -> Choose a Model
   - CatBoost, dmlc XGBoost, Random Forest
-- Problem 2 (unstructured data) -> Choose a Model  
+- Problem 2 (unstructured data) -> Choose a Model
   - Deep Learning use TensorFlow
   - Transfer Learning use TensorFlow Hub
 
@@ -4384,7 +4385,7 @@ Which activation? Which loss?
 
 ### Google Colab Workspace
 
-- [Google Colab](https://colab.research.google.com/notebooks/intro.ipynb#recent=true)
+- [Welcome To Colaboratory](https://colab.research.google.com/notebooks/intro.ipynb)
 - [Colaboratory Frequently Asked Questions](https://research.google.com/colaboratory/faq.html)
 
 **[⬆ back to top](#table-of-contents)**
@@ -4406,18 +4407,31 @@ Which activation? Which loss?
 
 ### Importing TensorFlow 2
 
-[Tensorflow with GPU](https://colab.research.google.com/notebooks/gpu.ipynb)
-
 ```python
 # Import necessary tools
 import tensorflow as tf
-import tensorflow_hub as hub 
+import tensorflow_hub as hub
 print("TF version:", tf.__version__)
 print("TF Hub version:", hub.__version__)
 
 # Check for GPU availability
 print("GPU", "available (YESSSS!!!!!)" if tf.config.list_physical_devices("GPU") else "not available :(")
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Using A GPU
+
+[Tensorflow with GPU](https://colab.research.google.com/notebooks/gpu.ipynb)
+
+But we can fix this going to runtime and then changing the runtime type:
+
+- Go to Runtime.
+- Click "Change runtime type".
+- Where it says "Hardware accelerator", choose "GPU" (don't worry about TPU for now but feel free to research them).
+- Click save.
+- The runtime will be restarted to activate the new hardware, so you'll have to rerun the above cells.
+  - If the steps have worked you should see a print out saying "GPU available".
 
 **[⬆ back to top](#table-of-contents)**
 
