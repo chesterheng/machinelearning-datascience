@@ -162,6 +162,7 @@
     - [Creating Our Own Validation Set](#creating-our-own-validation-set)
     - [Preprocess Images](#preprocess-images)
     - [Turning Data Into Batches](#turning-data-into-batches)
+    - [Visualizing Our Data](#visualizing-our-data)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4676,6 +4677,46 @@ val_data = create_data_batches(X_val, y_val, valid_data=True)
 
 # Check out the different attributes of our data batches
 train_data.element_spec, val_data.element_spec
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Visualizing Our Data
+
+```python
+import matplotlib.pyplot as plt
+
+# Create a function for viewing images in a data batch
+def show_25_images(images, labels):
+  """
+  Displays a plot of 25 images and their labels from a data batch.
+  """
+  # Setup the figure
+  plt.figure(figsize=(10, 10))
+  # Loop through 25 (for displaying 25 images)
+  for i in range(25):
+    # Create subplots (5 rows, 5 columns)
+    ax = plt.subplot(5, 5, i+1)
+    # Display an image 
+    plt.imshow(images[i])
+    # Add the image label as the title
+    plt.title(unique_breeds[labels[i].argmax()])
+    # Turn the grid lines off
+    plt.axis("off")
+
+train_data
+
+# Now let's visualize the data in a training batch
+train_images, train_labels = next(train_data.as_numpy_iterator())
+show_25_images(train_images, train_labels)
+
+# Now let's visualize our validation set
+val_images, val_labels = next(val_data.as_numpy_iterator())
+show_25_images(val_images, val_labels)
+
+# Now let's visualize our validation set
+val_images, val_labels = next(val_data.as_numpy_iterator())
+show_25_images(val_images, val_labels)
 ```
 
 **[⬆ back to top](#table-of-contents)**
