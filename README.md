@@ -164,6 +164,7 @@
     - [Turning Data Into Batches](#turning-data-into-batches)
     - [Visualizing Our Data](#visualizing-our-data)
     - [Preparing Our Inputs and Outputs](#preparing-our-inputs-and-outputs)
+    - [How machines learn and what's going on behind the scenes?](#how-machines-learn-and-whats-going-on-behind-the-scenes)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4413,7 +4414,7 @@ Which activation? Which loss?
 
 **[⬆ back to top](#table-of-contents)**
 
-### Importing TensorFlow 2
+### [Importing TensorFlow 2](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=d4DgYi9Zceiy)
 
 ```python
 # Import necessary tools
@@ -4443,7 +4444,7 @@ But we can fix this going to runtime and then changing the runtime type:
 
 **[⬆ back to top](#table-of-contents)**
 
-### Loading Our Data Labels
+### [Loading Our Data Labels](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=d4DgYi9Zceiy)
 
 [Preparing your training data](https://cloud.google.com/vision/automl/object-detection/docs/prepare)
 
@@ -4462,7 +4463,7 @@ labels_csv["breed"].value_counts().median()
 
 **[⬆ back to top](#table-of-contents)**
 
-### Preparing The Images
+### [Preparing The Images](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=d4DgYi9Zceiy)
 
 ```python
 # Let's view an image
@@ -4492,7 +4493,7 @@ labels_csv["breed"][9000]
 
 **[⬆ back to top](#table-of-contents)**
 
-### Turning Data Labels Into Numbers
+### [Turning Data Labels Into Numbers](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=d4DgYi9Zceiy)
 
 ```python
 import numpy as np
@@ -4528,7 +4529,7 @@ filenames[:10]
 
 **[⬆ back to top](#table-of-contents)**
 
-### Creating Our Own Validation Set
+### [Creating Our Own Validation Set](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=d4DgYi9Zceiy)
 
 [How (and why) to create a good validation set](https://www.fast.ai/2017/11/13/validation-sets/)
 
@@ -4559,7 +4560,7 @@ X_train[:5], y_train[:2]
 
 **[⬆ back to top](#table-of-contents)**
 
-### Preprocess Images
+### [Preprocess Images](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=d4DgYi9Zceiy)
 
 - tensors are numerical representation
 - like a matrix
@@ -4615,7 +4616,7 @@ def process_image(image_path, img_size=IMG_SIZE):
 
 **[⬆ back to top](#table-of-contents)**
 
-### Turning Data Into Batches
+### [Turning Data Into Batches](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=d4DgYi9Zceiy)
 
 [Yann LeCun Batch Size](https://twitter.com/ylecun/status/989610208497360896?s=20)
 
@@ -4682,7 +4683,7 @@ train_data.element_spec, val_data.element_spec
 
 **[⬆ back to top](#table-of-contents)**
 
-### Visualizing Our Data
+### [Visualizing Our Data](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=d4DgYi9Zceiy)
 
 ```python
 import matplotlib.pyplot as plt
@@ -4722,7 +4723,7 @@ show_25_images(val_images, val_labels)
 
 **[⬆ back to top](#table-of-contents)**
 
-### Preparing Our Inputs and Outputs
+### [Preparing Our Inputs and Outputs](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=d4DgYi9Zceiy)
 
 Building a model
 
@@ -4745,6 +4746,40 @@ MODEL_URL = "https://tfhub.dev/google/imagenet/mobilenet_v2_130_224/classificati
 
 INPUT_SHAPE
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+### How machines learn and what's going on behind the scenes?
+
+Massive effort getting the data ready for use with a machine learning model! This is one of the most important steps in any machine learning project.
+
+Now you've got the data ready, you're about to dive headfirst into writing deep learning code with TensorFlow 2.x.
+
+Since we're focused on writing code first and foremost, these videos are optional but they're here for those who want to start to get an understanding of what goes on behind the scenes.
+
+How Machines Learn
+
+The first is a video called [How Machines Learn](https://www.youtube.com/watch?v=R9OHn5ZF4Uo) by GCP Grey on YouTube.
+
+It's a non-technical narrative explaining how some of the biggest tech companies in the world use data to improve their businesses. In short, they're leveraging techniques like the ones you've been learning. Instead of trying to think of every possible rule to code, they collect data and then use machines to figure out the patterns for them.
+
+What actually is a neural network?
+
+You're going to be writing code which builds a neural network (a type of machine learning model) so you might start to wonder, what's going on when you run the code?
+
+When you pass inputs (often data and labels) to a neural network and it figures out patterns between them, how is it doing so?
+
+When it tries to make predictions and gets them wrong, how does it improve itself?
+
+[The deep learning series](https://www.youtube.com/watch?v=aircAruvnKk) by 3Blue1Brown on YouTube contains a technical deep-dive into what's going on behind the code you're writing.
+
+Be warned though, it isn't for the faint of heart. The videos explain the topics in a beautiful way but it doesn't mean the topics aren't still difficult to comprehend.
+
+If you're up for it, a good idea would be to watch 1 video in the series one day and then another the day after and so on.
+
+Remember, you don't need to know all of these things to get started writing machine learning code. Focus on solving problems first (like we're doing in this project) and then dive deeper when you need to.
+
+And since these videos are optional, feel free to bookmark them for now, continue with the course and come back later!
 
 **[⬆ back to top](#table-of-contents)**
 
