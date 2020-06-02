@@ -157,6 +157,7 @@
     - [Importing TensorFlow 2](#importing-tensorflow-2)
     - [Using A GPU](#using-a-gpu)
     - [Loading Our Data Labels](#loading-our-data-labels)
+    - [Preparing The Images](#preparing-the-images)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4451,6 +4452,36 @@ labels_csv["breed"].value_counts().plot.bar(figsize=(20, 10))
 
 # What's the median number of images per class?
 labels_csv["breed"].value_counts().median()
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Preparing The Images
+
+```python
+# Let's view an image
+from IPython.display import Image
+Image("drive/My Drive/Dog Vision/train/001513dfcb2ffafc82cccf4d8bbaba97.jpg")
+
+labels_csv.head()
+
+# Create pathnames from image ID's
+filenames = ["drive/My Drive/Dog Vision/train/" + fname + ".jpg" for fname in labels_csv["id"]]
+
+# Check the first 10 filenames
+filenames[:10]
+
+# Check whether number of filenames matches number of actual image files
+import os
+if len(os.listdir("drive/My Drive/Dog Vision/train/")) == len(filenames):
+  print("Filenames match actual amount of files!")
+else:
+  print("Filenames do not match actual amount of files, check the target directory.")
+
+# One more check
+Image(filenames[9000])
+
+labels_csv["breed"][9000]
 ```
 
 **[⬆ back to top](#table-of-contents)**
