@@ -160,6 +160,7 @@
     - [Preparing The Images](#preparing-the-images)
     - [Turning Data Labels Into Numbers](#turning-data-labels-into-numbers)
     - [Creating Our Own Validation Set](#creating-our-own-validation-set)
+    - [Preprocess Images](#preprocess-images)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4492,7 +4493,7 @@ labels_csv["breed"][9000]
 
 ```python
 import numpy as np
-labels = labels_csv["breed"].to_numpy() 
+labels = labels_csv["breed"].to_numpy()
 # labels = np.array(labels) # does same thing as above
 
 len(labels)
@@ -4526,6 +4527,8 @@ filenames[:10]
 
 ### Creating Our Own Validation Set
 
+[How (and why) to create a good validation set](https://www.fast.ai/2017/11/13/validation-sets/)
+
 ```python
 # Setup X & y variables
 X = filenames
@@ -4549,6 +4552,62 @@ len(X_train), len(y_train), len(X_val), len(y_val)
 
 # Check out the training data (image file paths and labels)
 X_train[:5], y_train[:2]
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Preprocess Images
+
+- tensors are numerical representation
+- like a matrix
+- [Load images](https://www.tensorflow.org/tutorials/load_data/images)
+- [tf.data: Build TensorFlow input pipelines](https://www.tensorflow.org/guide/data)
+
+```python
+# Convert image to NumPy array
+from matplotlib.pyplot import imread
+image = imread(filenames[42])
+image.shape # color channel
+# dimensions: 350 x 257
+# each pixel has 3 part (rgb)
+
+image.max(), image.min()
+image[:2]
+
+# turn image into a tensor
+tf.constant(image)[:2]
+```
+
+Now we've seen what an image looks like as a Tensor, let's make a function to preprocess them.
+
+We'll create a function to:
+
+1. Take an image filepath as input
+2. Use TensorFlow to read the file and save it to a variable, `image`
+3. Turn our `image` (a jpg) into Tensors
+4. Normalize our image (convert color channel values from from 0-255 to 0-1).
+5. Resize the `image` to be a shape of (224, 224)
+6. Return the modified `image`
+
+```python
+# Define image size
+IMG_SIZE = 224
+
+# Create a function for preprocessing images
+def process_image(image_path, img_size=IMG_SIZE):
+  """
+  Takes an image file path and turns the image into a Tensor.
+  """
+  # Read in an image file
+  image = tf.io.read_file(image_path)
+  # Turn the jpeg image into numerical Tensor with 3 colour channels (Red, Green, Blue)
+  image = tf.image.decode_jpeg(image, channels=3)
+  # Convert the colour channel values from 0-255 to 0-1 values
+  image = tf.image.convert_image_dtype(image, tf.float32)
+  # Resize the image to our desired value (224, 224)
+  image = tf.image.resize(image, size=[IMG_SIZE, IMG_SIZE])
+
+  return image
 ```
 
 **[⬆ back to top](#table-of-contents)**
