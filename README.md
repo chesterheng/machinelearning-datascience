@@ -158,6 +158,7 @@
     - [Using A GPU](#using-a-gpu)
     - [Loading Our Data Labels](#loading-our-data-labels)
     - [Preparing The Images](#preparing-the-images)
+    - [Turning Data Labels Into Numbers](#turning-data-labels-into-numbers)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4482,6 +4483,42 @@ else:
 Image(filenames[9000])
 
 labels_csv["breed"][9000]
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Turning Data Labels Into Numbers
+
+```python
+import numpy as np
+labels = labels_csv["breed"].to_numpy() 
+# labels = np.array(labels) # does same thing as above
+
+len(labels)
+
+# Find the unique label values
+unique_breeds = np.unique(labels)
+len(unique_breeds)
+
+# Turn a single label into an array of booleans
+print(labels[0])
+labels[0] == unique_breeds
+
+# Turn every label into a boolean array
+boolean_labels = [label == unique_breeds for label in labels]
+boolean_labels[:2]
+len(boolean_labels)
+
+# Example: Turning boolean array into integers
+print(labels[0]) # original label
+print(np.where(unique_breeds == labels[0])) # index where label occurs
+print(boolean_labels[0].argmax()) # index where label occurs in boolean array
+print(boolean_labels[0].astype(int)) # there will be a 1 where the sample label occurs
+
+print(labels[2])
+print(boolean_labels[2].astype(int))
+
+filenames[:10]
 ```
 
 **[⬆ back to top](#table-of-contents)**
