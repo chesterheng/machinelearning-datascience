@@ -159,6 +159,7 @@
     - [Loading Our Data Labels](#loading-our-data-labels)
     - [Preparing The Images](#preparing-the-images)
     - [Turning Data Labels Into Numbers](#turning-data-labels-into-numbers)
+    - [Creating Our Own Validation Set](#creating-our-own-validation-set)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4519,6 +4520,35 @@ print(labels[2])
 print(boolean_labels[2].astype(int))
 
 filenames[:10]
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Creating Our Own Validation Set
+
+```python
+# Setup X & y variables
+X = filenames
+y = boolean_labels
+
+len(filenames)
+
+# Set number of images to use for experimenting
+NUM_IMAGES = 1000 #@param {type:"slider", min:1000, max:10000, step:1000}
+
+# Let's split our data into train and validation sets
+from sklearn.model_selection import train_test_split
+
+# Split them into training and validation of total size NUM_IMAGES
+X_train, X_val, y_train, y_val = train_test_split(X[:NUM_IMAGES],
+                                                  y[:NUM_IMAGES],
+                                                  test_size=0.2,
+                                                  random_state=42)
+
+len(X_train), len(y_train), len(X_val), len(y_val)
+
+# Check out the training data (image file paths and labels)
+X_train[:5], y_train[:2]
 ```
 
 **[⬆ back to top](#table-of-contents)**
