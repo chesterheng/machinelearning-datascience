@@ -163,6 +163,7 @@
     - [Preprocess Images](#preprocess-images)
     - [Turning Data Into Batches](#turning-data-into-batches)
     - [Visualizing Our Data](#visualizing-our-data)
+    - [Preparing Our Inputs and Outputs](#preparing-our-inputs-and-outputs)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4717,6 +4718,32 @@ show_25_images(val_images, val_labels)
 # Now let's visualize our validation set
 val_images, val_labels = next(val_data.as_numpy_iterator())
 show_25_images(val_images, val_labels)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Preparing Our Inputs and Outputs
+
+Building a model
+
+Before we build a model, there are a few things we need to define:
+- The input shape (our images shape, in the form of Tensors) to our model.
+- The output shape (image labels, in the form of Tensors) of our model.
+- The URL of the model we want to use from TensorFlow Hub https://tfhub.dev/google/imagenet/mobilenet_v2_130_224/classification/4
+
+```python
+IMG_SIZE
+
+# Setup input shape to the model
+INPUT_SHAPE = [None, IMG_SIZE, IMG_SIZE, 3] # batch, height, width, colour channels
+
+# Setup output shape of our model
+OUTPUT_SHAPE = len(unique_breeds)
+
+# Setup model URL from TensorFlow Hub
+MODEL_URL = "https://tfhub.dev/google/imagenet/mobilenet_v2_130_224/classification/4"
+
+INPUT_SHAPE
 ```
 
 **[⬆ back to top](#table-of-contents)**
