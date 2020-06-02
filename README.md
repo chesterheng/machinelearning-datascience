@@ -154,6 +154,7 @@
     - [Google Colab Workspace](#google-colab-workspace)
     - [Uploading Project Data](#uploading-project-data)
     - [Setting Up Our Data](#setting-up-our-data)
+    - [Importing TensorFlow 2](#importing-tensorflow-2)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4399,6 +4400,23 @@ Which activation? Which loss?
 
 ```python
 !unzip "drive/My Drive/Dog Vision/dog-breed-identification.zip" -d "drive/My Drive/Dog Vision/"
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Importing TensorFlow 2
+
+[Tensorflow with GPU](https://colab.research.google.com/notebooks/gpu.ipynb)
+
+```python
+# Import necessary tools
+import tensorflow as tf
+import tensorflow_hub as hub 
+print("TF version:", tf.__version__)
+print("TF Hub version:", hub.__version__)
+
+# Check for GPU availability
+print("GPU", "available (YESSSS!!!!!)" if tf.config.list_physical_devices("GPU") else "not available :(")
 ```
 
 **[⬆ back to top](#table-of-contents)**
