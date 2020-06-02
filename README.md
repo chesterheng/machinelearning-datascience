@@ -156,6 +156,7 @@
     - [Setting Up Our Data](#setting-up-our-data)
     - [Importing TensorFlow 2](#importing-tensorflow-2)
     - [Using A GPU](#using-a-gpu)
+    - [Loading Our Data Labels](#loading-our-data-labels)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4432,6 +4433,25 @@ But we can fix this going to runtime and then changing the runtime type:
 - Click save.
 - The runtime will be restarted to activate the new hardware, so you'll have to rerun the above cells.
   - If the steps have worked you should see a print out saying "GPU available".
+
+**[⬆ back to top](#table-of-contents)**
+
+### Loading Our Data Labels
+
+[Preparing your training data](https://cloud.google.com/vision/automl/object-detection/docs/prepare)
+
+```python
+import pandas as pd
+labels_csv = pd.read_csv("drive/My Drive/Dog Vision/labels.csv")
+labels_csv.describe()
+labels_csv.head()
+
+# How many images are there of each breed?
+labels_csv["breed"].value_counts().plot.bar(figsize=(20, 10))
+
+# What's the median number of images per class?
+labels_csv["breed"].value_counts().median()
+```
 
 **[⬆ back to top](#table-of-contents)**
 
