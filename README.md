@@ -166,6 +166,7 @@
     - [Preparing Our Inputs and Outputs](#preparing-our-inputs-and-outputs)
     - [How machines learn and what's going on behind the scenes?](#how-machines-learn-and-whats-going-on-behind-the-scenes)
     - [Building A Deep Learning Model](#building-a-deep-learning-model)
+    - [Summarizing Our Model](#summarizing-our-model)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4836,6 +4837,12 @@ def create_model(input_shape=INPUT_SHAPE, output_shape=OUTPUT_SHAPE, model_url=M
 model = create_model()
 model.summary()
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Summarizing Our Model
+
+[ImageNet](http://www.image-net.org/)
 
 **[⬆ back to top](#table-of-contents)**
 
