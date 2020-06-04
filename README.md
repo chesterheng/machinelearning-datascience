@@ -172,6 +172,7 @@
     - [Training Your Deep Neural Network](#training-your-deep-neural-network)
     - [Evaluating Performance With TensorBoard](#evaluating-performance-with-tensorboard)
     - [Make And Transform Predictions](#make-and-transform-predictions)
+    - [Transform Predictions To Text](#transform-predictions-to-text)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4955,6 +4956,40 @@ print(f"Max index: {np.argmax(predictions[index])}")
 print(f"Predicted label: {unique_breeds[np.argmax(predictions[index])]}")
 
 unique_breeds[113]
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Transform Predictions To Text
+
+```python
+# Turn prediction probabilities into their respective label (easier to understand)
+def get_pred_label(prediction_probabilities):
+  """
+  Turns an array of prediction probabilities into a label.
+  """
+  return unique_breeds[np.argmax(prediction_probabilities)]
+
+# Get a predicted label based on an array of prediction probabilities
+pred_label = get_pred_label(predictions[81])
+
+# Create a function to unbatch a batch dataset
+def unbatchify(data):
+  """
+  Takes a batched dataset of (image, label) Tensors and reutrns separate arrays
+  of images and labels.
+  """
+  images = []
+  labels = []
+  # Loop through unbatched data
+  for image, label in data.unbatch().as_numpy_iterator():
+    images.append(image)
+    labels.append(unique_breeds[np.argmax(label)])
+  return images, labels
+
+# Unbatchify the validation data
+val_images, val_labels = unbatchify(val_data)
+val_images[0], val_labels[0]
 ```
 
 **[⬆ back to top](#table-of-contents)**
