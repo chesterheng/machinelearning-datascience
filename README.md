@@ -174,6 +174,7 @@
     - [Make And Transform Predictions](#make-and-transform-predictions)
     - [Transform Predictions To Text](#transform-predictions-to-text)
     - [Visualizing Model Predictions](#visualizing-model-predictions)
+    - [Saving And Loading A Trained Model](#saving-and-loading-a-trained-model)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -5095,6 +5096,49 @@ for i in range(num_images):
                  n=i+i_multiplier)
 plt.tight_layout(h_pad=1.0)
 plt.show()
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Saving And Loading A Trained Model
+
+[Save and load models](https://www.tensorflow.org/tutorials/keras/save_and_load)
+
+```python
+# Create a function to save a model
+def save_model(model, suffix=None):
+  """
+  Saves a given model in a models directory and appends a suffix (string).
+  """
+  # Create a model directory pathname with current time
+  modeldir = os.path.join("drive/My Drive/Dog Vision/models",
+                          datetime.datetime.now().strftime("%Y%m%d-%H%M%s"))
+  model_path = modeldir + "-" + suffix + ".h5" # save format of model
+  print(f"Saving model to: {model_path}...")
+  model.save(model_path)
+  return model_path
+
+# Create a function to load a trained model
+def load_model(model_path):
+  """
+  Loads a saved model from a specified path.
+  """
+  print(f"Loading saved model from: {model_path}")
+  model = tf.keras.models.load_model(model_path, 
+                                     custom_objects={"KerasLayer":hub.KerasLayer})
+  return model
+
+# Save our model trained on 1000 images
+save_model(model, suffix="1000-images-mobilenetv2-Adam")
+
+# Load a trained model
+loaded_1000_image_model = load_model('drive/My Drive/Dog Vision/models/20200604-22561591311380-1000-images-mobilenetv2-Adam.h5')
+
+# Evaluate the pre-saved model
+model.evaluate(val_data)
+
+# Evaluate the loaded model
+loaded_1000_image_model.evaluate(val_data)
 ```
 
 **[⬆ back to top](#table-of-contents)**
