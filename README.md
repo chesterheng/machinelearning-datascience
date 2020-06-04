@@ -165,6 +165,7 @@
     - [Visualizing Our Data](#visualizing-our-data)
     - [Preparing Our Inputs and Outputs](#preparing-our-inputs-and-outputs)
     - [How machines learn and what's going on behind the scenes?](#how-machines-learn-and-whats-going-on-behind-the-scenes)
+    - [Building A Deep Learning Model](#building-a-deep-learning-model)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4374,12 +4375,6 @@ A TensorFlow workflow
   - Saving and loading models
 - Using a trained model to make predictions on custom data
 
-Which activation? Which loss?
-| |Binary classification| Multi-class classification|
-|-|-|-|
-|Activation| Sigmoid |Softmax|
-| Loss | Binary Crossentropy|Categorical Crossentropy|
-
 **[⬆ back to top](#table-of-contents)**
 
 ### Setting Up Google Colab
@@ -4649,7 +4644,7 @@ def create_data_batches(X, y=None, batch_size=BATCH_SIZE, valid_data=False, test
     data = tf.data.Dataset.from_tensor_slices((tf.constant(X))) # only filepaths (no labels)
     data_batch = data.map(process_image).batch(BATCH_SIZE)
     return data_batch
-  
+
   # If the data is a valid dataset, we don't need to shuffle it
   elif valid_data:
     print("Creating validation data batches...")
@@ -4699,7 +4694,7 @@ def show_25_images(images, labels):
   for i in range(25):
     # Create subplots (5 rows, 5 columns)
     ax = plt.subplot(5, 5, i+1)
-    # Display an image 
+    # Display an image
     plt.imshow(images[i])
     # Add the image label as the title
     plt.title(unique_breeds[labels[i].argmax()])
@@ -4728,6 +4723,7 @@ show_25_images(val_images, val_labels)
 Building a model
 
 Before we build a model, there are a few things we need to define:
+
 - The input shape (our images shape, in the form of Tensors) to our model.
 - The output shape (image labels, in the form of Tensors) of our model.
 - The URL of the model we want to use from TensorFlow Hub https://tfhub.dev/google/imagenet/mobilenet_v2_130_224/classification/4
@@ -4780,6 +4776,66 @@ If you're up for it, a good idea would be to watch 1 video in the series one day
 Remember, you don't need to know all of these things to get started writing machine learning code. Focus on solving problems first (like we're doing in this project) and then dive deeper when you need to.
 
 And since these videos are optional, feel free to bookmark them for now, continue with the course and come back later!
+
+**[⬆ back to top](#table-of-contents)**
+
+### Building A Deep Learning Model
+
+[TensorFlow Hub](https://www.tensorflow.org/hub)
+[Papers With Code](https://paperswithcode.com/)
+[PyTouch Hub](https://pytorch.org/hub/)
+[Model Zoo](https://modelzoo.co/)
+[TensorFlow Keras](https://www.tensorflow.org/guide/keras)
+
+```python
+# Setup input shape to the model
+INPUT_SHAPE = [None, IMG_SIZE, IMG_SIZE, 3] # batch, height, width, colour channels
+
+# Setup output shape of our model
+OUTPUT_SHAPE = len(unique_breeds)
+
+# Setup model URL from TensorFlow Hub
+MODEL_URL = "https://tfhub.dev/google/imagenet/mobilenet_v2_130_224/classification/4"
+```
+
+[A Comprehensive Guide to Convolutional Neural Networks — the ELI5 way](https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53)
+[Review: MobileNetV2 — Light Weight Model (Image Classification)](https://towardsdatascience.com/review-mobilenetv2-light-weight-model-image-classification-8febb490e61c)
+[How to Choose Loss Functions When Training Deep Learning Neural Networks](https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/)
+[TensorFlow Metrics](https://www.tensorflow.org/api_docs/python/tf/keras/metrics)
+
+Which activation? Which loss?
+| |Binary classification| Multi-class classification|
+|-|-|-|
+| Activation| Sigmoid | Softmax|
+| Loss | Binary Crossentropy| Categorical Crossentropy|
+
+```python
+# Create a function which builds a Keras model
+def create_model(input_shape=INPUT_SHAPE, output_shape=OUTPUT_SHAPE, model_url=MODEL_URL):
+  print("Building model with:", MODEL_URL)
+
+  # Setup the model layers
+  model = tf.keras.Sequential([
+    hub.KerasLayer(MODEL_URL), # Layer 1 (input layer)
+    tf.keras.layers.Dense(units=OUTPUT_SHAPE,
+                          activation="softmax") # Layer 2 (output layer)
+  ])
+
+  # Compile the model
+  model.compile(
+      loss=tf.keras.losses.CategoricalCrossentropy(),
+      optimizer=tf.keras.optimizers.Adam(),
+      metrics=["accuracy"]
+  )
+
+  # Build the model
+  model.build(INPUT_SHAPE)
+
+  return model
+
+model = create_model()
+model.summary()
+```
 
 **[⬆ back to top](#table-of-contents)**
 
