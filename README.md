@@ -173,6 +173,7 @@
     - [Evaluating Performance With TensorBoard](#evaluating-performance-with-tensorboard)
     - [Make And Transform Predictions](#make-and-transform-predictions)
     - [Transform Predictions To Text](#transform-predictions-to-text)
+    - [Visualizing Model Predictions](#visualizing-model-predictions)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4990,6 +4991,43 @@ def unbatchify(data):
 # Unbatchify the validation data
 val_images, val_labels = unbatchify(val_data)
 val_images[0], val_labels[0]
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Visualizing Model Predictions
+
+```python
+def plot_pred(prediction_probabilities, labels, images, n=1):
+  """
+  View the prediction, ground truth and image for sample n
+  """
+  pred_prob, true_label, image = prediction_probabilities[n], labels[n], images[n]
+
+  # Get the pred label
+  pred_label = get_pred_label(pred_prob)
+
+  # Plot image & remove ticks
+  plt.imshow(image)
+  plt.xticks([])
+  plt.yticks([])
+
+  # Change the colour of the title depending on if the prediction is right or wrong
+  if pred_label == true_label:
+    color = "green"
+  else:
+    color = "red"
+  
+  # Change plot title to be predicted, probability of prediction and truth label
+  plt.title("{} {:2.0f}% {}".format(pred_label,
+                                    np.max(pred_prob)*100,
+                                    true_label),
+                                    color=color)
+
+plot_pred(prediction_probabilities=predictions,
+          labels=val_labels,
+          images=val_images,
+          n=0)
 ```
 
 **[⬆ back to top](#table-of-contents)**
