@@ -167,6 +167,8 @@
     - [How machines learn and what's going on behind the scenes?](#how-machines-learn-and-whats-going-on-behind-the-scenes)
     - [Building A Deep Learning Model](#building-a-deep-learning-model)
     - [Summarizing Our Model](#summarizing-our-model)
+    - [Evaluating Our Model](#evaluating-our-model-1)
+    - [Preventing Overfitting](#preventing-overfitting)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4843,6 +4845,46 @@ model.summary()
 ### Summarizing Our Model
 
 [ImageNet](http://www.image-net.org/)
+
+**[⬆ back to top](#table-of-contents)**
+
+### Evaluating Our Model
+
+Callbacks are helper functions a model can use during training to do such things as save its progress, check its progress or stop training early if a model stops improving.
+
+To setup a TensorBoard callback, we need to do 3 things:
+- Load the TensorBoard notebook extension ✅
+- Create a TensorBoard callback which is able to save logs to a directory and pass it to our model's `fit()` function. ✅
+- Visualize our models training logs with the `%tensorboard` magic function (we'll do this after model training).
+ 
+```python
+# Load TensorBoard notebook extension
+%load_ext tensorboard
+
+import datetime
+
+# Create a function to build a TensorBoard callback
+# to help track our models progress
+
+def create_tensorboard_callback():
+  # Create a log directory for storing TensorBoard logs
+  logdir = os.path.join("drive/My Drive/Dog Vision/logs",
+                        # Make it so the logs get tracked whenever we run an experiment
+                        datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
+  return tf.keras.callbacks.TensorBoard(logdir)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Preventing Overfitting
+
+[EarlyStopping Callback](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/EarlyStopping)
+
+```
+# Create early stopping callback
+early_stopping = tf.keras.callbacks.EarlyStopping(monitor="val_accuracy",
+                                                  patience=3)
+```
 
 **[⬆ back to top](#table-of-contents)**
 
