@@ -175,6 +175,7 @@
     - [Transform Predictions To Text](#transform-predictions-to-text)
     - [Visualizing Model Predictions](#visualizing-model-predictions)
     - [Saving And Loading A Trained Model](#saving-and-loading-a-trained-model)
+    - [Training Model On Full Dataset](#training-model-on-full-dataset)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -5139,6 +5140,36 @@ model.evaluate(val_data)
 
 # Evaluate the loaded model
 loaded_1000_image_model.evaluate(val_data)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Training Model On Full Dataset
+
+```python
+len(X), len(y)
+
+# Create a data batch with the full data set
+full_data = create_data_batches(X, y)
+
+# Create a model for full model
+full_model = create_model()
+
+# Create full model callbacks
+full_model_tensorboard = create_tensorboard_callback()
+# No validation set when training on all the data, so we can't monitor validation accuracy
+full_model_early_stopping = tf.keras.callbacks.EarlyStopping(monitor="accuracy",
+                                                             patience=3)
+                                                          
+# Fit the full model to the full data
+full_model.fit(x=full_data,
+               epochs=NUM_EPOCHS,
+               callbacks=[full_model_tensorboard, full_model_early_stopping])
+
+save_model(full_model, suffix="full-image-set-mobilenetv2-Adam")
+
+# Load in the full model
+loaded_full_model = load_model('drive/My Drive/Dog Vision/models/20200205-07041580886291-full-image-set-mobilenetv2-Adam.h5')
 ```
 
 **[⬆ back to top](#table-of-contents)**
