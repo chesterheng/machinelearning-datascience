@@ -4997,6 +4997,12 @@ val_images[0], val_labels[0]
 
 ### Visualizing Model Predictions
 
+We'll create a function which:
+
+- Takes an array of prediction probabilities, an array of truth labels and an array of images and an integer. ✅
+- Convert the prediction probabilities to a predicted label. ✅
+- Plot the predicted label, its predicted probability, the truth label and the target image on a single plot. ✅
+
 ```python
 def plot_pred(prediction_probabilities, labels, images, n=1):
   """
@@ -5028,6 +5034,67 @@ plot_pred(prediction_probabilities=predictions,
           labels=val_labels,
           images=val_images,
           n=0)
+```
+
+Now we've got one function to visualize our models top prediction, let's make another to view our models top 10 predictions.
+
+```python
+def plot_pred_conf(prediction_probabilities, labels, n=1):
+  """
+  Plus the top 10 highest prediction confidences along with the truth label for sample n.
+  """
+  pred_prob, true_label = prediction_probabilities[n], labels[n]
+
+  # Get the predicted label
+  pred_label = get_pred_label(pred_prob)
+
+  # Find the top 10 prediction confidence indexes
+  top_10_pred_indexes = pred_prob.argsort()[-10:][::-1]
+  # Find the top 10 prediction confidence values
+  top_10_pred_values = pred_prob[top_10_pred_indexes]
+  # Find the top 10 prediction labels
+  top_10_pred_labels = unique_breeds[top_10_pred_indexes]
+
+  # Setup plot
+  top_plot = plt.bar(np.arange(len(top_10_pred_labels)),
+                     top_10_pred_values,
+                     color="grey")
+  plt.xticks(np.arange(len(top_10_pred_labels)),
+             labels=top_10_pred_labels,
+             rotation="vertical")
+  
+  # Change color of true label
+  if np.isin(true_label, top_10_pred_labels):
+    top_plot[np.argmax(top_10_pred_labels == true_label)].set_color("green")
+  else:
+    pass
+
+plot_pred_conf(prediction_probabilities=predictions,
+               labels=val_labels,
+               n=9)
+```
+
+Now we've got some function to help us visualize our predictions and evaluate our modle, let's check out a few.
+
+```python
+# Let's check out a few predictions and their different values
+i_multiplier = 20
+num_rows = 3
+num_cols = 2
+num_images = num_rows*num_cols
+plt.figure(figsize=(10*num_cols, 5*num_rows))
+for i in range(num_images):
+  plt.subplot(num_rows, 2*num_cols, 2*i+1)
+  plot_pred(prediction_probabilities=predictions,
+            labels=val_labels,
+            images=val_images,
+            n=i+i_multiplier)
+  plt.subplot(num_rows, 2*num_cols, 2*i+2)
+  plot_pred_conf(prediction_probabilities=predictions,
+                 labels=val_labels,
+                 n=i+i_multiplier)
+plt.tight_layout(h_pad=1.0)
+plt.show()
 ```
 
 **[⬆ back to top](#table-of-contents)**
