@@ -170,6 +170,8 @@
     - [Evaluating Our Model](#evaluating-our-model-1)
     - [Preventing Overfitting](#preventing-overfitting)
     - [Training Your Deep Neural Network](#training-your-deep-neural-network)
+    - [Evaluating Performance With TensorBoard](#evaluating-performance-with-tensorboard)
+    - [Make And Transform Predictions](#make-and-transform-predictions)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4891,6 +4893,8 @@ early_stopping = tf.keras.callbacks.EarlyStopping(monitor="val_accuracy",
 
 ### Training Your Deep Neural Network
 
+Our first model is only going to train on 1000 images, to make sure everything is working.
+
 ```python
 NUM_EPOCHS = 100 #@param {type:"slider", min:10, max:100, step:10}
 
@@ -4918,8 +4922,39 @@ def train_model():
 # Train: 800 / 32 = 25
 # Validate: 200 / 32 = 7
 model = train_model()
+```
 
+**[⬆ back to top](#table-of-contents)**
+
+### Evaluating Performance With TensorBoard
+
+The TensorBoard magic function (%tensorboard) will access the logs directory we created earlier and visualize its contents.
+
+```python
 %tensorboard --logdir drive/My\ Drive/Dog\ Vision/logs
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Make And Transform Predictions
+
+```python
+# Make predictions on the validation data (not used to train on)
+predictions = model.predict(val_data, verbose=1)
+
+predictions.shape
+len(y_val)
+len(unique_breeds)
+
+# First prediction
+index = 42
+print(predictions[index])
+print(f"Max value (probability of prediction): {np.max(predictions[index])}")
+print(f"Sum: {np.sum(predictions[index])}")
+print(f"Max index: {np.argmax(predictions[index])}")
+print(f"Predicted label: {unique_breeds[np.argmax(predictions[index])]}")
+
+unique_breeds[113]
 ```
 
 **[⬆ back to top](#table-of-contents)**
