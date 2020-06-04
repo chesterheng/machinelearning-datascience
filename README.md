@@ -169,6 +169,7 @@
     - [Summarizing Our Model](#summarizing-our-model)
     - [Evaluating Our Model](#evaluating-our-model-1)
     - [Preventing Overfitting](#preventing-overfitting)
+    - [Training Your Deep Neural Network](#training-your-deep-neural-network)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4884,6 +4885,41 @@ def create_tensorboard_callback():
 # Create early stopping callback
 early_stopping = tf.keras.callbacks.EarlyStopping(monitor="val_accuracy",
                                                   patience=3)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Training Your Deep Neural Network
+
+```python
+NUM_EPOCHS = 100 #@param {type:"slider", min:10, max:100, step:10}
+
+# Build a function to train and return a trained model
+def train_model():
+  """
+  Trains a given model and returns the trained version.
+  """
+  # Create a model
+  model = create_model()
+
+  # Create new TensorBoard session everytime we train a model
+  tensorboard = create_tensorboard_callback()
+
+  # Fit the model to the data passing it the callbacks we created
+  model.fit(x=train_data,
+            epochs=NUM_EPOCHS,
+            validation_data=val_data,
+            validation_freq=1,
+            callbacks=[tensorboard, early_stopping])
+  # Return the fitted model
+  return model
+
+# Fit the model to the data
+# Train: 800 / 32 = 25
+# Validate: 200 / 32 = 7
+model = train_model()
+
+%tensorboard --logdir drive/My\ Drive/Dog\ Vision/logs
 ```
 
 **[⬆ back to top](#table-of-contents)**
