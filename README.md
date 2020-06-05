@@ -176,6 +176,7 @@
     - [Visualizing Model Predictions](#visualizing-model-predictions)
     - [Saving And Loading A Trained Model](#saving-and-loading-a-trained-model)
     - [Training Model On Full Dataset](#training-model-on-full-dataset)
+    - [Making Predictions On Test Images](#making-predictions-on-test-images)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -5170,6 +5171,31 @@ save_model(full_model, suffix="full-image-set-mobilenetv2-Adam")
 
 # Load in the full model
 loaded_full_model = load_model('drive/My Drive/Dog Vision/models/20200205-07041580886291-full-image-set-mobilenetv2-Adam.h5')
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Making Predictions On Test Images
+
+```python
+# Load test image filenames
+test_path = "drive/My Drive/Dog Vision/test/"
+test_filenames = [test_path + fname for fname in os.listdir(test_path)]
+
+# Create test data batch
+test_data = create_data_batches(test_filenames, test_data=True)
+
+# Make predictions on test data batch using the loaded full model
+test_predictions = loaded_full_model.predict(test_data,
+                                             verbose=1)
+
+# Save predictions (NumPy array) to csv file (for access later)
+np.savetxt("drive/My Drive/Dog Vision/preds_array.csv", test_predictions, delimiter=",")
+
+# Load predictions (NumPy array) from csv file
+test_predictions = np.loadtxt("drive/My Drive/Dog Vision/preds_array.csv", delimiter=",")
+
+test_predictions.shape
 ```
 
 **[⬆ back to top](#table-of-contents)**
