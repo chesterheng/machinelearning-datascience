@@ -178,6 +178,7 @@
     - [Training Model On Full Dataset](#training-model-on-full-dataset)
     - [Making Predictions On Test Images](#making-predictions-on-test-images)
     - [Submitting Model to Kaggle](#submitting-model-to-kaggle)
+    - [Making Predictions On Our Images](#making-predictions-on-our-images)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -4791,7 +4792,7 @@ And since these videos are optional, feel free to bookmark them for now, continu
 
 **[⬆ back to top](#table-of-contents)**
 
-### Building A Deep Learning Model
+### [Building A Deep Learning Model](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=LrjvXtrpszqp)
 
 [TensorFlow Hub](https://www.tensorflow.org/hub)
 [Papers With Code](https://paperswithcode.com/)
@@ -4851,13 +4852,13 @@ model.summary()
 
 **[⬆ back to top](#table-of-contents)**
 
-### Summarizing Our Model
+### [Summarizing Our Model](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=LrjvXtrpszqp)
 
 [ImageNet](http://www.image-net.org/)
 
 **[⬆ back to top](#table-of-contents)**
 
-### Evaluating Our Model
+### [Evaluating Our Model](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=LrjvXtrpszqp)
 
 Callbacks are helper functions a model can use during training to do such things as save its progress, check its progress or stop training early if a model stops improving.
 
@@ -4885,7 +4886,7 @@ def create_tensorboard_callback():
 
 **[⬆ back to top](#table-of-contents)**
 
-### Preventing Overfitting
+### [Preventing Overfitting](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=LrjvXtrpszqp)
 
 [EarlyStopping Callback](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/EarlyStopping)
 
@@ -4897,7 +4898,7 @@ early_stopping = tf.keras.callbacks.EarlyStopping(monitor="val_accuracy",
 
 **[⬆ back to top](#table-of-contents)**
 
-### Training Your Deep Neural Network
+### [Training Your Deep Neural Network](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=LrjvXtrpszqp)
 
 Our first model is only going to train on 1000 images, to make sure everything is working.
 
@@ -4932,7 +4933,7 @@ model = train_model()
 
 **[⬆ back to top](#table-of-contents)**
 
-### Evaluating Performance With TensorBoard
+### [Evaluating Performance With TensorBoard](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=LrjvXtrpszqp)
 
 The TensorBoard magic function (%tensorboard) will access the logs directory we created earlier and visualize its contents.
 
@@ -4942,7 +4943,7 @@ The TensorBoard magic function (%tensorboard) will access the logs directory we 
 
 **[⬆ back to top](#table-of-contents)**
 
-### Make And Transform Predictions
+### [Make And Transform Predictions](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=LrjvXtrpszqp)
 
 ```python
 # Make predictions on the validation data (not used to train on)
@@ -4965,7 +4966,7 @@ unique_breeds[113]
 
 **[⬆ back to top](#table-of-contents)**
 
-### Transform Predictions To Text
+### [Transform Predictions To Text](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=LrjvXtrpszqp)
 
 ```python
 # Turn prediction probabilities into their respective label (easier to understand)
@@ -4999,7 +5000,7 @@ val_images[0], val_labels[0]
 
 **[⬆ back to top](#table-of-contents)**
 
-### Visualizing Model Predictions
+### [Visualizing Model Predictions](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=LrjvXtrpszqp)
 
 We'll create a function which:
 
@@ -5103,7 +5104,7 @@ plt.show()
 
 **[⬆ back to top](#table-of-contents)**
 
-### Saving And Loading A Trained Model
+### [Saving And Loading A Trained Model](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=LrjvXtrpszqp)
 
 [Save and load models](https://www.tensorflow.org/tutorials/keras/save_and_load)
 
@@ -5146,7 +5147,7 @@ loaded_1000_image_model.evaluate(val_data)
 
 **[⬆ back to top](#table-of-contents)**
 
-### Training Model On Full Dataset
+### [Training Model On Full Dataset](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=LrjvXtrpszqp)
 
 ```python
 len(X), len(y)
@@ -5176,7 +5177,7 @@ loaded_full_model = load_model('drive/My Drive/Dog Vision/models/20200205-070415
 
 **[⬆ back to top](#table-of-contents)**
 
-### Making Predictions On Test Images
+### [Making Predictions On Test Images](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=LrjvXtrpszqp)
 
 ```python
 # Load test image filenames
@@ -5201,7 +5202,7 @@ test_predictions.shape
 
 **[⬆ back to top](#table-of-contents)**
 
-### Submitting Model to Kaggle
+### [Submitting Model to Kaggle](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=LrjvXtrpszqp)
 
 ```python
 # Create a pandas DataFrame with empty columns
@@ -5220,6 +5221,42 @@ preds_df.head()
 # Save our predictions dataframe to CSV for submission to Kaggle
 preds_df.to_csv("drive/My Drive/Dog Vision/full_model_predictions_submission_1_mobilenetV2.csv",
                 index=False)
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### [Making Predictions On Our Images](https://colab.research.google.com/drive/1OZLn22hAZkNY1hHaK-FePk8sLVnbTBwV#scrollTo=LrjvXtrpszqp)
+
+```python
+# Get custom image filepaths
+custom_path = "drive/My Drive/Dog Vision/my-dog-photos/"
+custom_image_paths = [custom_path + fname for fname in os.listdir(custom_path)]
+
+# Turn custom images into batch datasets 
+custom_data = create_data_batches(custom_image_paths, test_data=True)
+custom_data
+
+# Make predictions on the custom data
+custom_preds = loaded_full_model.predict(custom_data)
+
+# Get custom image prediction labels
+custom_pred_labels = [get_pred_label(custom_preds[i]) for i in range(len(custom_preds))]
+custom_pred_labels
+
+# Get custom images (our unbatchify() function won't work since there aren't labels... maybe we could fix this later)
+custom_images = []
+# Loop through unbatched data
+for image in custom_data.unbatch().as_numpy_iterator():
+  custom_images.append(image)
+
+# Check custom image predictions
+plt.figure(figsize=(10, 10))
+for i, image in enumerate(custom_images):
+  plt.subplot(1, 3, i+1)
+  plt.xticks([])
+  plt.yticks([])
+  plt.title(custom_pred_labels[i])
+  plt.imshow(image)
 ```
 
 **[⬆ back to top](#table-of-contents)**
