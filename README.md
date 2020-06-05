@@ -177,6 +177,7 @@
     - [Saving And Loading A Trained Model](#saving-and-loading-a-trained-model)
     - [Training Model On Full Dataset](#training-model-on-full-dataset)
     - [Making Predictions On Test Images](#making-predictions-on-test-images)
+    - [Submitting Model to Kaggle](#submitting-model-to-kaggle)
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
@@ -5196,6 +5197,29 @@ np.savetxt("drive/My Drive/Dog Vision/preds_array.csv", test_predictions, delimi
 test_predictions = np.loadtxt("drive/My Drive/Dog Vision/preds_array.csv", delimiter=",")
 
 test_predictions.shape
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+### Submitting Model to Kaggle
+
+```python
+# Create a pandas DataFrame with empty columns
+preds_df = pd.DataFrame(columns=["id"] + list(unique_breeds))
+preds_df.head()
+
+# Append test image ID's to predictions DataFrame
+test_ids = [os.path.splitext(path)[0] for path in os.listdir(test_path)]
+preds_df["id"] = test_ids
+preds_df.head()
+
+# Add the prediction probabilities to each dog breed column
+preds_df[list(unique_breeds)] = test_predictions
+preds_df.head()
+
+# Save our predictions dataframe to CSV for submission to Kaggle
+preds_df.to_csv("drive/My Drive/Dog Vision/full_model_predictions_submission_1_mobilenetV2.csv",
+                index=False)
 ```
 
 **[⬆ back to top](#table-of-contents)**
