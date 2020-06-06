@@ -5,12 +5,19 @@
 - [Complete Machine Learning and Data Science: Zero to Mastery (2020)](#complete-machine-learning-and-data-science-zero-to-mastery-2020)
   - [Table of Contents](#table-of-contents)
   - [**Section 2: Machine Learning 101**](#section-2-machine-learning-101)
+    <details>
+    <summary>Click to view all steps</summary>
+    
     - [What Is Machine Learning?](#what-is-machine-learning)
     - [AI/Machine Learning/Data Science](#aimachine-learningdata-science)
     - [How Did We Get Here?](#how-did-we-get-here)
     - [Types of Machine Learning](#types-of-machine-learning)
     - [What Is Machine Learning? Round 2](#what-is-machine-learning-round-2)
+    </details>
   - [**Section 3: Machine Learning and Data Science Framework**](#section-3-machine-learning-and-data-science-framework)
+    <details>
+    <summary>Click to view all steps</summary>
+    
     - [Introducing Our Framework](#introducing-our-framework)
     - [6 Step Machine Learning Framework](#6-step-machine-learning-framework)
     - [Types of Machine Learning Problems](#types-of-machine-learning-problems)
@@ -23,8 +30,12 @@
     - [Modelling Part 4 - Comparison](#modelling-part-4---comparison)
     - [Experimentation](#experimentation)
     - [Tools We Will Use](#tools-we-will-use)
+     </details>
   - [**Section 4: The 2 Paths**](#section-4-the-2-paths)
   - [**Section 5: Data Science Environment Setup**](#section-5-data-science-environment-setup)
+    <details>
+    <summary>Click to view all steps</summary>
+
     - [Introducing Our Tools](#introducing-our-tools)
     - [What is Conda?](#what-is-conda)
     - [Conda Environments](#conda-environments)
@@ -32,7 +43,11 @@
     - [Mac Environment Setup 2](#mac-environment-setup-2)
     - [Sharing your Conda Environment](#sharing-your-conda-environment)
     - [Jupyter Notebook Walkthrough](#jupyter-notebook-walkthrough)
+    </details>
   - [**Section 6: Pandas: Data Analysis**](#section-6-pandas-data-analysis)
+    <details>
+    <summary>Click to view all steps</summary>
+
     - [Pandas Introduction](#pandas-introduction)
     - [Series, Data Frames and CSVs](#series-data-frames-and-csvs)
     - [Data from URLs](#data-from-urls)
@@ -40,7 +55,11 @@
     - [Selecting and Viewing Data with Pandas](#selecting-and-viewing-data-with-pandas)
     - [Manipulating Data](#manipulating-data)
     - [Assignment: Pandas Practice](#assignment-pandas-practice)
+    </details>
   - [**Section 7: NumPy**](#section-7-numpy)
+    <details>
+    <summary>Click to view all steps</summary>
+
     - [Section Overview](#section-overview)
     - [NumPy Introduction](#numpy-introduction)
     - [NumPy DataTypes and Attributes](#numpy-datatypes-and-attributes)
@@ -56,7 +75,11 @@
     - [Sorting Arrays](#sorting-arrays)
     - [Turn Images Into NumPy Arrays](#turn-images-into-numpy-arrays)
     - [Optional: Extra NumPy resources](#optional-extra-numpy-resources)
+    </details>
   - [**Section 8: Matplotlib: Plotting and Data Visualization**](#section-8-matplotlib-plotting-and-data-visualization)
+    <details>
+    <summary>Click to view all steps</summary>
+
     - [Data Visualizations](#data-visualizations)
     - [Matplotlib Introduction](#matplotlib-introduction)
     - [Importing And Using Matplotlib](#importing-and-using-matplotlib)
@@ -66,7 +89,11 @@
     - [Subplots](#subplots)
     - [Plotting From Pandas DataFrames](#plotting-from-pandas-dataframes)
     - [Customizing Your Plots](#customizing-your-plots)
+    </details>
   - [**Section 9: Scikit-learn: Creating Machine Learning Models**](#section-9-scikit-learn-creating-machine-learning-models)
+    <details>
+    <summary>Click to view all steps</summary>
+
     - [Scikit-learn Introduction](#scikit-learn-introduction)
     - [Refresher: What Is Machine Learning?](#refresher-what-is-machine-learning)
     - [Typical scikit-learn Workflow](#typical-scikit-learn-workflow)
@@ -103,8 +130,12 @@
     - [Quick Tip: Correlation Analysis](#quick-tip-correlation-analysis)
     - [Saving And Loading A Model](#saving-and-loading-a-model)
     - [Putting It All Together](#putting-it-all-together)
+    </details>
   - [**Section 10: Supervised Learning: Classification + Regression**](#section-10-supervised-learning-classification--regression)
   - [**Section 11: Milestone Project 1: Supervised Learning (Classification)**](#section-11-milestone-project-1-supervised-learning-classification)
+    <details>
+    <summary>Click to view all steps</summary>
+
     - [Project Environment Setup](#project-environment-setup)
     - [Step 1~4 Framework Setup](#step-14-framework-setup)
     - [Getting Our Tools Ready](#getting-our-tools-ready)
@@ -120,7 +151,11 @@
     - [Evaluating Our Model](#evaluating-our-model)
     - [Finding The Most Important Features](#finding-the-most-important-features)
     - [Reviewing The Project](#reviewing-the-project)
+    </details>
   - [**Section 12: Milestone Project 2: Supervised Learning (Time Series Data)**](#section-12-milestone-project-2-supervised-learning-time-series-data)
+    <details>
+    <summary>Click to view all steps</summary>
+
     - [[Project Environment Setup]](#project-environment-setup-1)
     - [Step 1~4 Framework Setup](#step-14-framework-setup-1)
     - [Exploring Our Data](#exploring-our-data-1)
@@ -138,7 +173,11 @@
     - [Preproccessing Our Data](#preproccessing-our-data)
     - [Making Predictions](#making-predictions)
     - [Feature Importance](#feature-importance)
+    </details>
   - [**Section 13: Data Engineering**](#section-13-data-engineering)
+    <details>
+    <summary>Click to view all steps</summary>
+
     - [Data Engineering Introduction](#data-engineering-introduction)
     - [What Is Data?](#what-is-data)
     - [What Is A Data Engineer?](#what-is-a-data-engineer)
@@ -148,7 +187,11 @@
     - [Hadoop, HDFS and MapReduce](#hadoop-hdfs-and-mapreduce)
     - [Apache Spark and Apache Flink](#apache-spark-and-apache-flink)
     - [Kafka and Stream Processing](#kafka-and-stream-processing)
+    </details>
   - [**Section 14: Neural Networks: Deep Learning, Transfer Learning and TensorFlow 2**](#section-14-neural-networks-deep-learning-transfer-learning-and-tensorflow-2)
+    <details>
+    <summary>Click to view all steps</summary>
+
     - [Deep Learning and Unstructured Data](#deep-learning-and-unstructured-data)
     - [Setting Up Google Colab](#setting-up-google-colab)
     - [Google Colab Workspace](#google-colab-workspace)
@@ -179,13 +222,18 @@
     - [Making Predictions On Test Images](#making-predictions-on-test-images)
     - [Submitting Model to Kaggle](#submitting-model-to-kaggle)
     - [Making Predictions On Our Images](#making-predictions-on-our-images)
+    </details>
   - [**Section 15: Storytelling + Communication: How To Present Your Work**](#section-15-storytelling--communication-how-to-present-your-work)
+    <details>
+    <summary>Click to view all steps</summary>
+
     - [Communicating Your Work](#communicating-your-work)
     - [Communicating With Managers](#communicating-with-managers)
     - [Communicating With Co-Workers](#communicating-with-co-workers)
     - [Weekend Project Principle](#weekend-project-principle)
     - [Communicating With Outside World](#communicating-with-outside-world)
     - [Storytelling](#storytelling)
+    </details>
   - [**Section 16: Career Advice + Extra Bits**](#section-16-career-advice--extra-bits)
   - [**Section 17: Learn Python**](#section-17-learn-python)
   - [**Section 18: Learn Python Part 2**](#section-18-learn-python-part-2)
@@ -5409,6 +5457,7 @@ What If I Don't Have Enough Experience?
 
 - [Statistics Course](https://www.youtube.com/watch?v=zouPoc49xbk&list=PL8dPuuaLjXtNM_Y-bUAhblSAdWRnmBUcr)
 - [Mathematics Course](https://www.khanacademy.org/math)
+- [Mathematics for Machine Learning](https://mml-book.github.io/)
 
 **[⬆ back to top](#table-of-contents)**
 
